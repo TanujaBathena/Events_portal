@@ -1,11 +1,9 @@
-* {
-  padding: 0;
-  margin: 0;
-}
-
 .mainHead {
   align-content: center;
+  /* margin-top: 10vh; */
+
 }
+
 
 .form {
   border: 1px solid red;
@@ -13,13 +11,19 @@
   flex-direction: column;
   background-color: #b8c6db;
   background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+  width:75%;
+  height:75vh;
+  margin: auto;
+  margin-top: 8vh;
+  justify-content: space-around;
 }
 .attribute {
   display: flex;
   color: black;
   gap: 5%;
 }
-.label {
+
+label {
   font-size: x-large;
   width: 30%;
 }

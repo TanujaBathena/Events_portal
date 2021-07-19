@@ -12,6 +12,7 @@ import ReceivedRequests from "./components/ReceivedRequests";
 import logout from "./components/logout";
 import Teamupform from './components/TeamUp-form'
 import InternshipForm from "./components/InternshipForm1";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/Events" component={Events} />
-          <Route path="/Internships" component={Internships} />
+          <Route path="/Internships" exact component={Internships} />
+          <Route path="/Internship/form" component={InternshipForm} />
           <Route path="/Teamup" exact component={Teamup} />
           <Route path="/Teamup/form" component={Teamupform} />
           <Route path="/Challenges" component={Challenges} />
