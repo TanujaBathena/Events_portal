@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import Select from "react-select";
+import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
 import "../styles/Teamupform.css";
 const Dropdown = (props) => {
   const options = [
@@ -38,9 +38,9 @@ const Teamup_form = () => {
   const [skill, setskill] = useState("");
   const [Description, setDescription] = useState("");
 
-  const HandleInputs = (event) => {
-    event.preventDefault();
-  };
+  //const HandleInputs = (event) => {
+  //event.preventDefault();
+  //};
 
   useEffect(() => {
     if (Title.length > 5) {
@@ -58,7 +58,7 @@ const Teamup_form = () => {
   });
 
   return (
-    <>
+    <div>
       <form className="Form">
         <div className="Title">
           <p>TeamUp Post Form</p>
@@ -108,7 +108,7 @@ const Teamup_form = () => {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

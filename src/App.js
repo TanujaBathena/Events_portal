@@ -1,4 +1,5 @@
 import "./App.css";
+import React from 'react'
 import Navbar from "./components/navBar";
 import Events from "./components/Events";
 import Challenges from "./components/Challenges";
@@ -10,7 +11,7 @@ import MyRequests from "./components/MyRequests";
 import ReceivedRequests from "./components/ReceivedRequests";
 import logout from "./components/logout";
 import Teamupform from './components/TeamUp-form'
-
+import InternshipForm from "./components/InternshipForm1";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -22,13 +23,15 @@ function App() {
           <Route path="/Events" component={Events} />
           <Route path="/Internships" component={Internships} />
           <Route path="/Teamup" exact component={Teamup} />
-          <Route path="/Teamup/form"  component={Teamupform} />
+          <Route path="/Teamup/form" component={Teamupform} />
           <Route path="/Challenges" component={Challenges} />
           <Route path="/myProfile" component={MyProfile} />
           <Route path="/myposts" component={MyPosts} />
           <Route path="/myRequests" component={MyRequests} />
           <Route path="/ReceivedRequests" component={ReceivedRequests} />
           <Route path="/logout" component={logout} />
+          <Route path="/internshipform" component={InternshipForm} />
+
         </Switch>
       </div>
     </Router>
