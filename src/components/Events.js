@@ -1,11 +1,20 @@
-import React from 'react'
+import React from "react";
 
 const Events = () => {
-    return (
-        <div>
-            <h1>Events</h1>
-        </div>
-    )
-}
+  return (
+    <div>
+      <h1
+        style={{
+          marginLeft: "20%",
+          marginTop: "50vh",
+          fontSize: "15vh",
+          color: "grey",
+        }}
+      >
+        coming soon..
+      </h1>
+    </div>
+  );
+};
 
-export default Events
+export default Events;
