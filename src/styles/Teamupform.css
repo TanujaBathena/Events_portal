@@ -49,7 +49,7 @@
   height: 180px;
 }
 
-select {
+.forminput select {
   border-radius: 0px;
   border: 0px;
 }
@@ -57,7 +57,6 @@ select {
 .forminput .select {
   display: inline-block;
   width: 102%;
-  /* height: 100%; */
   outline: none;
   border: 2px solid #d5dbd9;
   font-size: 15px;
@@ -96,10 +95,10 @@ select {
   background-color: lightpink;
 }
 
-/* button {
+.btndiv button {
   margin: auto;
   display: block;
-} */
+}
 
 @media (max-width: 420px) {
   .forminput {
