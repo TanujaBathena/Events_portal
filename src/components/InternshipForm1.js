@@ -2,9 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import MultiSelect from "react-multi-select-component";
 import uuid from "react-uuid";
 import axios from "axios";
-import "./form.css";
+import "../styles/internshipForm.css"
 
-import "./internshipForm.css";
 const Dropdown = (props) => {
   const options = [
     { label: "CSE", value: "CSE" },

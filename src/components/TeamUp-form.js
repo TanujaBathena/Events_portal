@@ -34,8 +34,8 @@ const Dropdown = (props) => {
 };
 
 const Teamup_form = () => {
-  const [Title, settitle] = useState("");
-  const [skill, setskill] = useState("");
+  const [Title, setTitle] = useState("");
+  const [skill, setSkill] = useState("");
   const [Description, setDescription] = useState("");
 
   const HandleInputs = (event) => {
@@ -45,11 +45,11 @@ const Teamup_form = () => {
   useEffect(() => {
     if (Title.length > 5) {
       alert("Title cannot be more than 5 characters");
-      settitle(Title.slice(0, -1));
+      setTitle(Title.slice(0, -1));
     }
     if (skill.length > 5) {
       alert("skill cannot be more than 5 characters");
-      setskill(skill.slice(0, -1));
+      setSkill(skill.slice(0, -1));
     }
     if (Description.length > 5) {
       alert("Description cannot be more than 5 characters");
@@ -74,7 +74,7 @@ const Teamup_form = () => {
             id="name"
             placeholder="Looking fro WEB developer"
             value={Title}
-            onChange={(e) => settitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           ></input>
         </div>
         <div className="forminput">
@@ -88,7 +88,7 @@ const Teamup_form = () => {
             id="Skill"
             placeholder="Reactjs,kotlin"
             value={skill}
-            onChange={(e) => setskill(e.target.value)}
+            onChange={(e) => setSkill(e.target.value)}
           ></input>
         </div>
         <Dropdown />
