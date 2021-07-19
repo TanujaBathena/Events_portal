@@ -1,33 +1,33 @@
-*{
-    padding: 0%;
-    margin: 0%;
-    box-sizing: border-box;
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
 }
-nav{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 8vh;
-    background-color: #2a2a72;
-    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
-    font-family: 'Rubik', sans-serif;
-    position: fixed; 
-    top: 0; 
-    width: 100%;
+nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 8vh;
+  background-color: #2a2a72;
+  background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+  font-family: "Rubik", sans-serif;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 a:-webkit-any-link {
   text-decoration: none;
   color: inherit;
 }
-ul li{
-    color: aliceblue;
-    text-decoration: none;
-    list-style: none;
+ul li {
+  color: aliceblue;
+  text-decoration: none;
+  list-style: none;
 }
-ul li:hover{
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-    color: grey;
+ul li:hover {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  color: grey;
 }
 .arrow {
   border: solid black;
@@ -39,197 +39,184 @@ ul li:hover{
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
-.logo{
-    margin-right: auto;
-    text-align: center;
-    width: 10%;
-    color: white;
+.logo {
+  margin-right: auto;
+  text-align: center;
+  width: 10%;
+  color: white;
 }
-.list{
-    display: flex;
-    width: 90%;
-    height: 100%;
-    justify-content: flex-end; 
-    gap:5%;
-    align-items: center;
+.list {
+  display: flex;
+  width: 90%;
+  height: 100%;
+  justify-content: flex-end;
+  gap: 5%;
+  align-items: center;
 }
 
-
-
-
-.lines{
-    display: flex;
-    flex-direction: column;
-    height: 50%;
-    width: 30px;
-    margin-left: auto;
-    display: none;
-    cursor:pointer;
-    justify-content: center;
-    margin-right: 5%;
-    box-sizing: border-box;
-
-   
+.lines {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 30px;
+  margin-left: auto;
+  display: none;
+  cursor: pointer;
+  justify-content: center;
+  margin-right: 5%;
+  box-sizing: border-box;
 }
-.profilelink:hover{
-    background-color: blue;
-    border-top: 0px;
-    border-bottom: 0px;
-    border-left:1px solid red ;
-     border-right:1px solid red ;
+.profilelink:hover {
+  background-color: blue;
+  border-top: 0px;
+  border-bottom: 0px;
+  border-left: 1px solid red;
+  border-right: 1px solid red;
 }
-.line{
-    width: 100%;
-    height: 1px;
-    background-color: white;
-    margin-top: 1px;
-    margin-bottom: 2px;
-    margin-left: 5px;
-    
-    
-  
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: white;
+  margin-top: 1px;
+  margin-bottom: 2px;
+  margin-left: 5px;
 }
-.profile:hover{
-    border: 0px solid red;
+.profile:hover {
+  border: 0px solid red;
 }
-.profile{
+.profile {
   width: 20%;
-    display: flex;
-    justify-content: center;
-
+  display: flex;
+  justify-content: center;
 }
-.profilelinks{
-            background-color: #2a2a72;
-    box-sizing: border-box;
-    position: absolute;
-    width: 20%;
-    top: 8vh;
-    display: flex;
-    flex-direction: column;
-    height: 25vh;
-    justify-content: space-evenly;
-    display: none;
+.profilelinks {
+  background-color: #2a2a72;
+  box-sizing: border-box;
+  position: absolute;
+  width: 20%;
+  top: 8vh;
+  display: flex;
+  flex-direction: column;
+  height: 25vh;
+  justify-content: space-evenly;
+  display: none;
 }
-.profilelinks div a{
-    width: 100%;
-    text-align: center;
-        display: block;
-    text-decoration: none;
-    letter-spacing: 1px;
-     color: white;
-     font-size: large;
+.profilelinks div a {
+  width: 100%;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: white;
+  font-size: large;
 }
-.dropbtn{
-    display: block;
-    height: 100%;
-    width: 50%;
-    font-size: large;
-    color: white;
-    background-color: rgba(0, 0, 0, 0);
-    border: 0px;
+.dropbtn {
+  display: block;
+  height: 100%;
+  width: 50%;
+  font-size: large;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0px;
 }
-.dropbtn i{
-    margin-bottom: 3%;
-    margin-left: 10%;
+.dropbtn i {
+  margin-bottom: 3%;
+  margin-left: 10%;
 }
-#a{
-    display: none;
+#a {
+  display: none;
 }
 /* .profile:hover .profilelinks {display: flex;} */
-.profile:hover .dropbtn {color: #3e8e41;}
- @keyframes mymove {
-        from {
-          right: -30%;
-        }
-        to {
-          right: 0%;
-        }
-      }
-      @keyframes mymove1 {
-        from {
-          right: 0%;
-        }
-        to {
-          right: -50%;
-        }
-      }
-@media only screen and (max-width: 768px) {
-    .list{
-        position:absolute;
-        right:0px;
-        height:92vh;
-        top: 8vh;
-        background-color: yellow;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 50%;
-        background-color: #2a2a72;
-        gap: 10%;
-background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
-    }
-    .profile{
-        margin-top: 25px;
-    }
-
-  .lines{
-      display: flex;
-      
+.profile:hover .dropbtn {
+  color: #3e8e41;
+}
+@keyframes mymove {
+  from {
+    right: -30%;
   }
-  .line{
+  to {
+    right: 0%;
+  }
+}
+@keyframes mymove1 {
+  from {
+    right: 0%;
+  }
+  to {
+    right: -50%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .list {
+    position: absolute;
+    right: 0px;
+    height: 92vh;
+    top: 8vh;
+    background-color: yellow;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 50%;
+    background-color: #2a2a72;
+    gap: 10%;
+    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+  }
+  .profile {
+    margin-top: 25px;
+  }
+
+  .lines {
+    display: flex;
+  }
+  .line {
     width: 15px;
     height: 1px;
     background-color: white;
-    
-  
-    }
-    .logo{
-        text-align: center;
-    }
-    .profile{
-        
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        align-items: center;
-    }
-    .dropbtn{
-        text-align: center;        
-        height: 3vh;
-    }
-    .profilelinks{
-        display: none;
-        position: static;
-        width: 100%;
-
-    }
-    #a{
-        display: flex;
-    }
-    #b{
-        display: none;
-    }
-    /* .profile:hover .profilelinks {display: flex;} */
+  }
+  .logo {
+    text-align: center;
+  }
+  .profile {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .dropbtn {
+    text-align: center;
+    height: 3vh;
+  }
+  .profilelinks {
+    display: none;
+    position: static;
+    width: 100%;
+  }
+  #a {
+    display: flex;
+  }
+  #b {
+    display: none;
+  }
+  /* .profile:hover .profilelinks {display: flex;} */
 }
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
-  background-color: transparent; 
+  background-color: transparent;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0); 
+  background: rgba(0, 0, 0, 0);
   width: 10px;
-  
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background:rgba(1,1,1,0.1);
+  background: rgba(1, 1, 1, 0.1);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }

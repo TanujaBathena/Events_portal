@@ -9,6 +9,7 @@ import MyPosts from "./components/MyPosts";
 import MyRequests from "./components/MyRequests";
 import ReceivedRequests from "./components/ReceivedRequests";
 import logout from "./components/logout";
+import Teamupform from './components/TeamUp-form'
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -20,7 +21,8 @@ function App() {
         <Switch>
           <Route path="/Events" component={Events} />
           <Route path="/Internships" component={Internships} />
-          <Route path="/Teamup" component={Teamup} />
+          <Route path="/Teamup" exact component={Teamup} />
+          <Route path="/Teamup/form"  component={Teamupform} />
           <Route path="/Challenges" component={Challenges} />
           <Route path="/myProfile" component={MyProfile} />
           <Route path="/myposts" component={MyPosts} />

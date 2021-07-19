@@ -4,7 +4,7 @@ import uuid from 'react-uuid';
 import axios from 'axios';
 import "./form.css"
 
-import '../styles/internsipForm.css'
+import './internshipForm.css'
  const Dropdown=(props)=> {
   const options = [
     { label: "CSE", value: "CSE" },
@@ -187,6 +187,7 @@ const InternshipForm = () => {
     let [date,setDate]=useState();
     let [description,setDescription]=useState('');
     let [links,setLinks]=useState([]);
+    let [uploadPercentage,setUploadPercentage]=useState(0);
 
 
     const lengthValidation=(strng,maxlen)=>{
@@ -219,10 +220,36 @@ const InternshipForm = () => {
     });
 
 
-    const onSubmitHandler=(e)=>{
+    const onSubmitHandler=async(e)=>{
         e.preventDefault();
         const data=new FormData();
-        data.append()
+        data.append('files',fileList[0]);
+
+        try{
+            const res=await axios.post('http://localhost:4444/upload',data,{
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }, onUploadProgress: ProgressEvent =>{
+                    setUploadPercentage(
+                        parseInt(
+                            Math.round((ProgressEvent.loaded*100)/ProgressEvent.total)
+                        )
+                    );
+                    //Clear percentage
+                    setTimeout(()=>setUploadPercentage(0),10000);
+                }
+
+            });
+            const {filename,filePath} =res.data;
+            console.log(filename);
+        } catch(err){
+            if(err.response.status===500){
+                console.log('There was a problem with the server');
+            }
+            else{
+                console.log(err.response.data.msg);
+            }
+        }
     }
 
     return (
