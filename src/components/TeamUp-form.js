@@ -38,9 +38,9 @@ const Teamup_form = () => {
   const [skill, setskill] = useState("");
   const [Description, setDescription] = useState("");
 
-  const HandleInputs = (event) => {
-    event.preventDefault();
-  };
+  // const HandleInputs = (event) => {
+  //   event.preventDefault();
+  // };
 
   useEffect(() => {
     if (Title.length > 5) {
@@ -55,7 +55,7 @@ const Teamup_form = () => {
       alert("Description cannot be more than 5 characters");
       setDescription(Description.slice(0, -1));
     }
-  });
+  }, [Title]);
 
   return (
     <>

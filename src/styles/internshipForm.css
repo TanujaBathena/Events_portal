@@ -17,7 +17,6 @@
 .attribute {
   display: flex;
   color: black;
-
   gap: 5%;
 }
 label {

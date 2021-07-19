@@ -14,7 +14,7 @@ const Teamup = () => {
           display: "flex",
         }}
       >
-        <h1 style={{ marginTop: "3vh", margin: "auto" }}>TeamUp portal</h1>
+        <h1 style={{ alignSelf: "center", margin: "auto" }}>TeamUp portal</h1>
         <button
           style={{
             alignSelf: "center",
