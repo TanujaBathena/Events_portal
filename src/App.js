@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./components/navBar";
+import Events from "./components/Events";
+import Challenges from "./components/Challenges";
+import Internships from "./components/Internships";
+import Teamup from "./components/Teamup";
+import MyProfile from "./components/MyProfile";
+import MyPosts from "./components/MyPosts";
+import MyRequests from "./components/MyRequests";
+import ReceivedRequests from "./components/ReceivedRequests";
+import logout from "./components/logout";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Switch>
+          <Route path="/Events" component={Events} />
+          <Route path="/Internships" component={Internships} />
+          <Route path="/Teamup" component={Teamup} />
+          <Route path="/Challenges" component={Challenges} />
+          <Route path="/myProfile" component={MyProfile} />
+          <Route path="/myposts" component={MyPosts} />
+          <Route path="/myRequests" component={MyRequests} />
+          <Route path="/ReceivedRequests" component={ReceivedRequests} />
+          <Route path="/logout" component={logout} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
