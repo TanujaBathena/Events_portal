@@ -1,0 +1,114 @@
+body {
+  background-color: #b3c7d6ff;
+  padding: 0 10px;
+}
+
+.Form {
+  max-width: 550px;
+  background: #e7ebe0ff;
+  width: 150%;
+  margin: auto;
+  margin-top: 10vh;
+  padding: 30px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+}
+.Form .Title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.forminput {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.forminput label {
+  width: 180px;
+  margin-right: 10px;
+  font-size: 20px;
+}
+.forminput .input,
+.forminput textarea {
+  width: 100%;
+  outline: none;
+  border: 2px solid #d5dbd9;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+
+.forminput .checkinput {
+  display: inline-block;
+  color: red;
+  font-size: 8px;
+}
+
+.forminput .input {
+  overflow: auto;
+}
+.forminput textarea {
+  resize: none;
+  height: 180px;
+}
+
+select {
+  border-radius: 0px;
+  border: 0px;
+}
+
+.forminput .select {
+  display: inline-block;
+  width: 102%;
+  /* height: 100%; */
+  outline: none;
+  border: 2px solid #d5dbd9;
+  font-size: 15px;
+  padding: 1px 1px;
+  border-radius: 3px;
+  transition: 0.3s ease;
+  background-color: white;
+  z-index: 0;
+}
+
+.forminput .input:focus,
+.forminput textarea:focus {
+  border: 2px solid #ffd480;
+}
+
+.forminput .select:hover {
+  border: 2px solid #ffd480;
+}
+
+.Form .btn {
+  width: 25%;
+  padding: 8px 10px;
+  font-size: 15px;
+  border: 0;
+  background-color: blueviolet;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+  align-content: center;
+}
+.Form .btndiv:last-child {
+  margin-bottom: 0;
+}
+
+.Form .btn:hover {
+  background-color: lightpink;
+}
+
+button {
+  margin: auto;
+  display: block;
+}
+
+@media (max-width: 420px) {
+  .forminput {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
