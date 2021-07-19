@@ -199,7 +199,7 @@ ul li:hover {
   }
   /* .profile:hover .profilelinks {display: flex;} */
 }
-/* width */
+width
 ::-webkit-scrollbar {
   width: 10px;
   background-color: transparent;

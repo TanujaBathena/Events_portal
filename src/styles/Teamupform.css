@@ -1,8 +1,3 @@
-body {
-  background-color: #b3c7d6ff;
-  padding: 0 10px;
-}
-
 .Form {
   max-width: 550px;
   background: #e7ebe0ff;
@@ -54,7 +49,7 @@ body {
   height: 180px;
 }
 
-select {
+.forminput select {
   border-radius: 0px;
   border: 0px;
 }
@@ -62,7 +57,6 @@ select {
 .forminput .select {
   display: inline-block;
   width: 102%;
-  /* height: 100%; */
   outline: none;
   border: 2px solid #d5dbd9;
   font-size: 15px;
@@ -101,7 +95,7 @@ select {
   background-color: lightpink;
 }
 
-button {
+.btndiv button {
   margin: auto;
   display: block;
 }

@@ -14,7 +14,9 @@ const ReceivedRequests = () => {
           display: "flex",
         }}
       >
-        <h1 style={{ marginTop: "3vh", margin: "auto" }}>Received Requests</h1>
+        <h1 style={{ alignSelf: "center", margin: "auto" }}>
+          Received Requests
+        </h1>
         <button
           style={{
             alignSelf: "center",

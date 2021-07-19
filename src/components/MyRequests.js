@@ -14,7 +14,7 @@ const MyRequests = () => {
           display: "flex",
         }}
       >
-        <h1 style={{ marginTop: "3vh", margin: "auto" }}>My Requests</h1>
+        <h1 style={{ alignSelf: "center", margin: "auto" }}>My Requests</h1>
         <button
           style={{
             alignSelf: "center",
