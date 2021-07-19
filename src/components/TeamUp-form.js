@@ -42,6 +42,10 @@ const Teamup_form = () => {
   //   event.preventDefault();
   // };
 
+  const HandleInputs = (event) => {
+    event.preventDefault();
+  };
+
   useEffect(() => {
     if (Title.length > 5) {
       alert("Title cannot be more than 5 characters");
@@ -58,7 +62,7 @@ const Teamup_form = () => {
   }, [Title]);
 
   return (
-    <>
+    <div>
       <form className="Form">
         <div className="Title">
           <p>TeamUp Post Form</p>
@@ -108,7 +112,7 @@ const Teamup_form = () => {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
