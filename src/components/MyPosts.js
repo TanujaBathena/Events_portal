@@ -14,7 +14,7 @@ const MyPosts = () => {
           display: "flex",
         }}
       >
-        <h1 style={{ marginTop: "3vh", margin: "auto" }}>My Posts</h1>
+        <h1 style={{ alignSelf: "center", margin: "auto" }}>My Posts</h1>
         <button
           style={{
             alignSelf: "center",

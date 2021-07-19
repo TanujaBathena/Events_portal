@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import Select from 'react-select';
+import React, { useState, useEffect } from "react";
+import Select from "react-select";
 import "../styles/Teamupform.css";
 const Dropdown = (props) => {
   const options = [
@@ -38,9 +38,13 @@ const Teamup_form = () => {
   const [skill, setskill] = useState("");
   const [Description, setDescription] = useState("");
 
-  //const HandleInputs = (event) => {
-  //event.preventDefault();
-  //};
+  // const HandleInputs = (event) => {
+  //   event.preventDefault();
+  // };
+
+  const HandleInputs = (event) => {
+    event.preventDefault();
+  };
 
   useEffect(() => {
     if (Title.length > 5) {
@@ -55,7 +59,7 @@ const Teamup_form = () => {
       alert("Description cannot be more than 5 characters");
       setDescription(Description.slice(0, -1));
     }
-  });
+  }, [Title]);
 
   return (
     <div>

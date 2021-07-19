@@ -15,7 +15,9 @@ const Internships = () => {
           display: "flex",
         }}
       >
-        <h1 style={{ marginTop: "3vh", margin: "auto" }}>Internships portal</h1>
+        <h1 style={{ alignSelf: "center", margin: "auto" }}>
+          Internships portal
+        </h1>
         <button
           style={{
             alignSelf: "center",
@@ -24,7 +26,7 @@ const Internships = () => {
             border: "0px solid red",
           }}
         >
-          <i class="fas fa-plus-circle fa-5x"></i>
+          <i class="fas fa-plus-circle fa-4x"></i>
         </button>
       </div>
 
