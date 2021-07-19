@@ -8,7 +8,7 @@ const Navbar = (props) => {
     var y = document.getElementsByClassName("lines");
     if (x[0].style.display === "none") {
       x[0].style.display = "flex";
-      y[0].style.backgroundColor = "red";
+      y[0].style.backgroundColor = "rgba(0,0,0,1)";
       x[0].style.animation = "mymove 1s ";
     } else {
       x[0].style.animation = "mymove1 0.5s ";
@@ -53,25 +53,26 @@ const Navbar = (props) => {
         <li className="profile" onClick={dropProfile} id="a">
           <button className="dropbtn">
             <p>
-              Profile<i className="arrow down"></i>
+              <i class="far fa-user-circle fa-1x"></i>
+              <i className="arrow down"></i>
             </p>
           </button>
 
           <div className="profilelinks">
             <div className="profilelink">
-            <a href="">My posts</a>
+              <Link to="/myposts">My Posts</Link>
             </div>
             <div className="profilelink">
-              <a href="">My requests</a>
+              <Link to="/myrequests">My requests</Link>
             </div>
             <div className="profilelink">
-              <a href="">Received Requests</a>
+              <Link to="/receivedrequests">received requests</Link>
             </div>
             <div className="profilelink">
-              <a href="">My Profile</a>
+              <Link to="/myprofile">my profile</Link>
             </div>
             <div className="profilelink">
-              <a href="">LogOut</a>
+              <Link to="/logout">logout</Link>
             </div>
           </div>
         </li>
@@ -79,7 +80,9 @@ const Navbar = (props) => {
           <li>home</li>
         </Link>
         <Link to="/Events">
-          <li>Events</li>
+          <li>
+            <p>Events</p>
+          </li>
         </Link>
         <Link to="/Challenges">
           <li>Challenges</li>
@@ -94,25 +97,26 @@ const Navbar = (props) => {
         <li className="profile" onClick={dropProfile1} id="b">
           <button className="dropbtn">
             <p>
-              profile<i className="arrow down"></i>
+              <i class="far fa-user-circle fa-2x"></i>
+              <i className="arrow down"></i>
             </p>
           </button>
 
           <div className="profilelinks">
             <div className="profilelink">
-              <a href="">My Posts</a>
+              <Link to="/myposts">My Posts</Link>
             </div>
             <div className="profilelink">
-              <a href="">My requests</a>
+              <Link to="/myrequests">My requests</Link>
             </div>
             <div className="profilelink">
-              <a href="">Received Requests</a>
+              <Link to="/receivedrequests">received requests</Link>
             </div>
             <div className="profilelink">
-              <a href="">My Profile</a>
+              <Link to="/myprofile">my profile</Link>
             </div>
             <div className="profilelink">
-              <a href="">LogOut</a>
+              <Link to="/logout">logout</Link>
             </div>
           </div>
         </li>
