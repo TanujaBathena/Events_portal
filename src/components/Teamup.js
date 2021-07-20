@@ -10,7 +10,6 @@ const Teamup = () => {
           height: "10vh",
           textAlign: "center",
           boxSizing: "border-box",
-          backgroundColor: "aqua",
           display: "flex",
         }}
       >
@@ -23,7 +22,7 @@ const Teamup = () => {
             border: "0px solid red",
           }}
         >
-          <i class="fas fa-plus-circle fa-5x"></i>
+          <i class="fas fa-plus-circle fa-3x"></i>
         </button>
       </div>
       <TeamupCard />
