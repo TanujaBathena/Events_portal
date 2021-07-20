@@ -172,16 +172,16 @@ const FilesUploader = (props) => {
       <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
         <input
           type="file"
-          title=" "
+          value=""
+          title="&nbsp;"
           id="files"
           name="files"
           multiple={true}
           accept="image/*,.pdf,.doc,.docx"
           onChange={(e) => {
             onNewFiles(Array.from(e.target.files));
-            console.log("Hiiiiii");
           }}
-          style={{ height: "25px", margin: "auto", width: "25%" }}
+          style={{ height: "25px", margin: "auto", width: "25%"}}
         />
         <div style={{ display: "flex" }}>
           {fileList.map((file) => {
@@ -212,13 +212,12 @@ const FilesUploader = (props) => {
 
 const InternshipForm = () => {
   let [fileList, updateFileList] = useState([]);
-  let [internshipTitle, setInternshipTitle] = useState("");
+  let [internshipRole, setInternshipRole] = useState("");
   let [company, setCompany] = useState("");
   let [stipend, setStipend] = useState("");
   const [selected, setSelected] = useState([]); //branches data
   let [date, setDate] = useState();
   let [description, setDescription] = useState("");
-  let [links, setLinks] = useState([]);
   let [uploadPercentage, setUploadPercentage] = useState(0);
 
   const lengthValidation = (strng, maxlen) => {
@@ -226,32 +225,48 @@ const InternshipForm = () => {
     return true;
   };
 
+  let maxLen1=10;
+  let maxLen2=20;
   useEffect(() => {
-    if (!lengthValidation(internshipTitle, 5)) {
-      alert("Only 5 characters allowed");
-      setInternshipTitle(internshipTitle.slice(0, -1));
+    if (!lengthValidation(internshipRole, maxLen1)) {
+      alert(`Only ${maxLen1} characters allowed`);
+      setInternshipRole(internshipRole.slice(0, maxLen1));
     }
 
-    if (!lengthValidation(company, 5)) {
-      alert("Only 5 characters allowed");
-      setCompany(company.slice(0, -2));
+    if (!lengthValidation(company, maxLen1)) {
+      alert(`Only ${maxLen1} characters allowed`);
+      setCompany(company.slice(0, maxLen1));
     }
 
-    if (!lengthValidation(stipend, 5)) {
-      alert("Only 5 characters allowed");
-      setStipend(stipend.slice(0, -1));
+    if (!lengthValidation(stipend, maxLen1)) {
+      alert(`Only ${maxLen1} characters allowed`);
+      setStipend(stipend.slice(0, maxLen1));
     }
 
-    if (!lengthValidation(description, 5)) {
-      alert("Only 5 characters allowed");
-      setDescription(description.slice(0, -1));
+    if (!lengthValidation(description, maxLen2)) {
+      alert(`Only ${maxLen2} characters allowed`);
+      setDescription(description.slice(0, maxLen2));
     }
   });
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    // Checking if branches array is empty
+    if(selected.length==0) alert("Atleast 1 Branch need to be selected")
+    let branchesSelected=[];
+    for(let i=0;i<selected.length;i++){
+      branchesSelected.push(selected[i].value);
+    } 
     const data = new FormData();
-    data.append("files", fileList[0]);
+    data.append("role",internshipRole);
+    data.append("company",company);
+    data.append("stipend",stipend);
+    data.append("branches",branchesSelected);
+    data.append("deadline",date);
+    data.append("description",description);
+    console.log("No of files :",fileList.length);
+    for(let i=0;i<fileList.length;i++)
+      data.append("files", fileList[i]);
 
     try {
       const res = await axios.post("http://localhost:4444/upload", data, {
@@ -284,31 +299,22 @@ const InternshipForm = () => {
       <h2 className="mainHead">Internship Form</h2>
       <form className="form" onSubmit={onSubmitHandler} className="form">
         <div className="attribute">
-          <label htmlFor="intTitle">Internship Title </label>
+          <label htmlFor="intTitle">Internship Role <span style={{color:'red'}}>*</span> </label>
           <input
             type="text"
             id="intTitle"
             name="intTitle"
-            value={internshipTitle}
+            value={internshipRole}
             onChange={(e) => {
-              // if(lengthValidation(internshipTitle,5)){
-              //     changeInternshipTitle(e.target.value);
-              //     console.log(internshipTitle);
-              // }
-              // else{
-              //     console.log(internshipTitle);
-              //     alert('Only 30 characters allowed');
-              //     changeInternshipTitle(e.target.value.slice(0,-1));
-              //     console.log(internshipTitle);
-              // }
-              setInternshipTitle(e.target.value);
+              setInternshipRole(e.target.value);
             }}
             style={{ width: "70%", height: "4vh" }}
+            required placeholder="SDE"
           />
         </div>
 
         <div className="attribute">
-          <label htmlFor="company">Company </label>
+          <label htmlFor="company">Company <span style={{color:'red'}}>*</span></label>
           <input
             type="text"
             id="company"
@@ -318,6 +324,7 @@ const InternshipForm = () => {
               setCompany(e.target.value);
             }}
             style={{ width: "70%", height: "4vh" }}
+          required placeholder="Amazon"
           />
         </div>
 
@@ -340,7 +347,7 @@ const InternshipForm = () => {
             htmlFor="branches"
             style={{ width: "20%", height: "4vh", marginTop: "3%" }}
           >
-            Branches{" "}
+            Branches{" "}<span style={{color:'red'}}>*</span>
           </label>
           {/* <div>
                         <div>
@@ -360,7 +367,7 @@ const InternshipForm = () => {
         </div>
 
         <div className="attribute">
-          <label htmlFor="deadline">Deadline </label>
+          <label htmlFor="deadline">Deadline <span style={{color:'red'}}>*</span> </label>
           <input
             type="datetime-local"
             id="deadline"
@@ -368,6 +375,7 @@ const InternshipForm = () => {
             value={date}
             onChange={(e) => setDate(e.target.value)}
             style={{ width: "70%", height: "4vh" }}
+            required
           />
           {console.log(date)}
         </div>
@@ -383,8 +391,8 @@ const InternshipForm = () => {
             onChange={(e) => {
               setDescription(e.target.value);
             }}
-            style={{ width: "70%", height: "4vh" }}
-          ></textarea>
+            style={{ width: "70%", height: "4vh",resize:"none" }}
+          placeholder="Any additional details and Links here" ></textarea>
         </div>
 
         <FilesUploader
