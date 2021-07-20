@@ -8,7 +8,7 @@ const Navbar = (props) => {
     var y = document.getElementsByClassName("lines");
     if (x[0].style.display === "none") {
       x[0].style.display = "flex";
-      y[0].style.backgroundColor = "rgba(0,0,0,1)";
+      y[0].style.backgroundColor = "rgba(1,1,1,0.5)";
       x[0].style.animation = "mymove 1s ";
     } else {
       x[0].style.animation = "mymove1 0.5s ";

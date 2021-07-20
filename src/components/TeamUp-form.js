@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import "../styles/Teamupform.css";
+import axios from 'axios';
+
+
 const Dropdown = (props) => {
+    let tag_value=props.tag;
+    let settag=props.func;
   const options = [
     { value: "Web", label: "Web" },
     { value: "Android", label: "Android" },
@@ -28,7 +33,7 @@ const Dropdown = (props) => {
       <label>
         Tag<span style={{ color: "red" }}>*</span>
       </label>
-      <Select className="select" options={options} styles={style} />
+      <Select className="select" options={options} value={tag_value} onChange={settag} styles={style} />
     </div>
   );
 };
@@ -36,6 +41,7 @@ const Dropdown = (props) => {
 const Teamup_form = () => {
   const [Title, setTitle] = useState("");
   const [skill, setSkill] = useState("");
+  const [Tag,settag]= useState('');
   const [Description, setDescription] = useState("");
 
   // const HandleInputs = (event) => {
@@ -43,7 +49,22 @@ const Teamup_form = () => {
   // };
 
   const HandleInputs = (event) => {
+      console.log("hi")
+      let url="http://localhost:30000/courses"
     event.preventDefault();
+    if(Tag===""){
+        alert('Tag field should not be empty');
+    }
+    const datatobesent = {
+        title:Title,
+        skill:skill,
+        tag:Tag,
+        Description:Description
+    }
+    axios.post(url,datatobesent).then(res=>{
+        console.log(res.data);
+    })
+
   };
 
   useEffect(() => {
@@ -95,7 +116,7 @@ const Teamup_form = () => {
             onChange={(e) => setSkill(e.target.value)}
           ></input>
         </div>
-        <Dropdown />
+        <Dropdown tag={Tag} func={settag}/>
         <div className="forminput">
           <label>Description</label>
           <textarea
@@ -107,7 +128,7 @@ const Teamup_form = () => {
           ></textarea>
         </div>
         <div className="btndiv">
-          <button className="btn" type="submit">
+          <button className="btn" type="submit" onClick={HandleInputs}>
             Submit
           </button>
         </div>

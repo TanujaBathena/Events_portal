@@ -37,6 +37,7 @@ body{
     flex-direction: column;
     background-color: white;
     margin-top: 3%;
+    border-radius: 5px;
  
 
 
@@ -79,7 +80,7 @@ body{
 .label {
   color: white;
   padding: 2px;
-  border-radius: 2px;
+  border-radius: 5px;
   font-size: x-small;
 }
 
@@ -152,13 +153,9 @@ body{
 }
 .readmore{
     width: 30%;
-    height: 30%;
-    margin-top: auto;
+    height: 10%;
     margin: auto;
-    
 
-
-    
 }
 @media only screen and (max-width: 500px) {
     .card{
@@ -196,7 +193,7 @@ body{
 
     box-sizing: border-box;
     width: fit-content;
-    height: 35px;
+    height: fit-content;
     padding: 5px;
     align-self: flex-end;
     margin-right: 3%;

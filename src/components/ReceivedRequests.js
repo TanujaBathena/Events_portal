@@ -10,23 +10,12 @@ const ReceivedRequests = () => {
           height: "10vh",
           textAlign: "center",
           boxSizing: "border-box",
-          backgroundColor: "aqua",
           display: "flex",
         }}
       >
         <h1 style={{ alignSelf: "center", margin: "auto" }}>
-          Received Requests
+          <u>Received Requests</u>
         </h1>
-        <button
-          style={{
-            alignSelf: "center",
-            marginRight: "3%",
-            backgroundColor: "rgba(1,1,1,0)",
-            border: "0px solid red",
-          }}
-        >
-          <i class="fas fa-plus-circle fa-5x"></i>
-        </button>
       </div>
       <ReceivedRequestsCards />
       <ReceivedRequestsCards />
