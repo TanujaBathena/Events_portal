@@ -8,19 +8,19 @@ nav {
   justify-content: flex-start;
   align-items: center;
   height: 8vh;
-  background-color: #2a2a72;
-  background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
-  font-family: "Rubik", sans-serif;
+  background-color: #ffffff;
+  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
   position: fixed;
   top: 0;
   width: 100%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
 }
 a:-webkit-any-link {
   text-decoration: none;
   color: inherit;
 }
 ul li {
-  color: aliceblue;
   text-decoration: none;
   list-style: none;
 }
@@ -67,7 +67,7 @@ ul li:hover {
   box-sizing: border-box;
 }
 .profilelink:hover {
-  background-color: blue;
+  background-color: white;
   border-top: 0px;
   border-bottom: 0px;
   border-left: 1px solid red;
@@ -90,7 +90,7 @@ ul li:hover {
   justify-content: center;
 }
 .profilelinks {
-  background-color: #2a2a72;
+  background-color: aliceblue;
   box-sizing: border-box;
   position: absolute;
   width: 20%;
@@ -107,7 +107,7 @@ ul li:hover {
   display: block;
   text-decoration: none;
   letter-spacing: 1px;
-  color: white;
+  color: black;
   font-size: large;
 }
 .dropbtn {
@@ -129,6 +129,9 @@ ul li:hover {
 /* .profile:hover .profilelinks {display: flex;} */
 .profile:hover .dropbtn {
   color: #3e8e41;
+}
+.dropbtn{
+  color: #555;
 }
 @keyframes mymove {
   from {
@@ -152,13 +155,13 @@ ul li:hover {
     right: 0px;
     height: 92vh;
     top: 8vh;
-    background-color: yellow;
     flex-direction: column;
     justify-content: flex-start;
     width: 50%;
-    background-color: #2a2a72;
+      background-color: #ffffff;
+  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
     gap: 10%;
-    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+    
   }
   .profile {
     margin-top: 25px;
@@ -170,7 +173,7 @@ ul li:hover {
   .line {
     width: 15px;
     height: 1px;
-    background-color: white;
+    background-color: black;
   }
   .logo {
     text-align: center;
@@ -199,16 +202,16 @@ ul li:hover {
   }
   /* .profile:hover .profilelinks {display: flex;} */
 }
-/* width */
+width
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 15px;
   background-color: transparent;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0);
-  width: 10px;
+  width: 5px;
 }
 
 /* Handle */

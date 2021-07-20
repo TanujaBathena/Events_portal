@@ -44,6 +44,10 @@ const Teamup_form = () => {
   const [Tag,settag]= useState('');
   const [Description, setDescription] = useState("");
 
+  // const HandleInputs = (event) => {
+  //   event.preventDefault();
+  // };
+
   const HandleInputs = (event) => {
       console.log("hi")
       let url="http://localhost:30000/courses"
@@ -76,10 +80,10 @@ const Teamup_form = () => {
       alert("Description cannot be more than 5 characters");
       setDescription(Description.slice(0, -1));
     }
-  });
+  }, [Title]);
 
   return (
-    <>
+    <div>
       <form className="Form">
         <div className="Title">
           <p>TeamUp Post Form</p>
@@ -129,7 +133,7 @@ const Teamup_form = () => {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

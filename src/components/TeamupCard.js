@@ -3,27 +3,49 @@ import "../styles/card.css";
 import "../styles/fontawesome-free-5.15.3-web/css/all.css";
 const TeamupCard = () => {
   return (
-    <div className="card" style={{ height: "350px" }}>
-      <div className="card_title" style={{ height: "30%" }}>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi,
+    <div className="card" style={{ height: "250px" }}>
+      <div
+        className="card_title"
+        style={{
+          width: "85%",
+          height: "fit-content",
+
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+        }}
+      >
+        <h5>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi,
+        </h5>
       </div>
-      <div className="card_tags">
+
+      <div className="card_tags" style={{ marginLeft: "3%" }}>
         <span className="label success">Success</span>
         <span className="label info">Info</span>
         <span className="label warning">Warning</span>
         <span className="label danger">Danger</span>
         <span className="label other">Other</span>
       </div>
-      <b style={{ marginTop: "2%", height: "5%" }}>NoelVincent</b>
-      <b style={{ marginTop: "2%", height: "5%" }}>Skills Required:</b>
-      <div className="card_description" style={{ height: "10%" }}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-        nesciunt sunt labore, accusantium dolores ipsam quo alias debitis!
-        Impedit tempore perferendis adipisci id velit nostrum nam commodi ad
-        quas itaque. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Fugit reprehenderit facilis quibusdam illum dolore ipsam ad fugiat,
-        beatae repellat ea nam, odit magnam animi dignissimos impedit reiciendis
-        saepe modi labore.
+      <h5
+        style={{
+          height: "5%",
+          color: "GrayText",
+          marginLeft: "3%",
+          marginTop: "2%",
+          alignSelf: "flex-start",
+        }}
+      >
+        Noel Vincent
+      </h5>
+      <div
+        className="card_description"
+        style={{ marginTop: "0px", height: "10%" }}
+      >
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <p style={{ color: "GrayText" }}>skills required</p>
+          <p>Lorem Lorem Lorem</p>
+        </div>
       </div>
 
       <div
@@ -31,13 +53,16 @@ const TeamupCard = () => {
         style={{
           flexDirection: "row",
           justifyContent: "space-around",
-          marginBottom: "3%",
         }}
       >
-        <button className="btn" type="submit">
+        {/* <button className="btn" type="submit">
           Interested
-        </button>
-        <button className="btn" type="submit">
+        </button> */}
+        <button
+          className="btn"
+          type="submit"
+          style={{ marginLeft: "auto", alignSelf: "flex-end" }}
+        >
           Know More
         </button>
       </div>

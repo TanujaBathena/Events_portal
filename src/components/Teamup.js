@@ -10,11 +10,10 @@ const Teamup = () => {
           height: "10vh",
           textAlign: "center",
           boxSizing: "border-box",
-          backgroundColor: "aqua",
           display: "flex",
         }}
       >
-        <h1 style={{ marginTop: "3vh", margin: "auto" }}>TeamUp portal</h1>
+        <h1 style={{ alignSelf: "center", margin: "auto" }}>TeamUp portal</h1>
         <button
           style={{
             alignSelf: "center",
@@ -23,7 +22,7 @@ const Teamup = () => {
             border: "0px solid red",
           }}
         >
-          <i class="fas fa-plus-circle fa-5x"></i>
+          <i class="fas fa-plus-circle fa-3x"></i>
         </button>
       </div>
       <TeamupCard />

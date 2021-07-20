@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import MultiSelect from "react-multi-select-component";
 import uuid from "react-uuid";
+
 import axios from "axios";
-import "../styles/internshipForm.css"
+import "../styles/internshipForm.css";
 
 const Dropdown = (props) => {
   const options = [
@@ -198,7 +199,7 @@ const FilesUploader = (props) => {
                     deleteFile(file.id);
                   }}
                 >
-                  Delete
+                  <i class="fas fa-times"></i>
                 </button>
               </div>
             );
