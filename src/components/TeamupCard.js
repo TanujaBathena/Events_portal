@@ -7,13 +7,12 @@ const TeamupCard = () => {
       <div
         className="card_title"
         style={{
-          width: "100%",
+          width: "85%",
           height: "fit-content",
-          justifyContent: "flex-start",
+
           display: "flex",
           flexDirection: "column",
-          marginLeft: "auto",
-          alignSelf: "flex-start",
+          justifyContent: "flex-start",
         }}
       >
         <h5>
@@ -44,7 +43,6 @@ const TeamupCard = () => {
         style={{ marginTop: "0px", height: "10%" }}
       >
         <div style={{ display: "flex", flexDirection: "column" }}>
-          {/* <b style={{ marginTop: "2%", height: "5%" }}>Skills Required:</b> */}
           <p style={{ color: "GrayText" }}>skills required</p>
           <p>Lorem Lorem Lorem</p>
         </div>

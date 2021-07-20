@@ -2,12 +2,26 @@ import React from "react";
 import "../styles/card.css";
 const MyRequestCards = () => {
   return (
-    <div className="card" style={{ height: "250px" }}>
+    <div
+      className="card"
+      style={{ height: "250px", backgroundColor: "#c1fec1" }}
+    >
       <div className="card_title">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi,
       </div>
-      <b style={{ marginTop: "2%", height: "10%" }}>Descrption:</b>
-      <div className="card_description" style={{ height: "205" }}>
+      <b style={{ marginLeft: "3%", marginTop: "2%", height: "10%" }}>
+        Descrption:
+      </b>
+      <div
+        className="card_description"
+        style={{
+          height: "20%",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          marginTop: "0px",
+        }}
+      >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
         nesciunt sunt labore, accusantium dolores ipsam quo alias debitis!
         Impedit tempore perferendis adipisci id velit nostrum nam commodi ad
@@ -21,7 +35,11 @@ const MyRequestCards = () => {
         className="card_footer"
         style={{ flexDirection: "row", justifyContent: "space-around" }}
       >
-        <button className="btn" type="submit">
+        <button
+          className="btn"
+          type="submit"
+          style={{ backgroundColor: "white", color: "GrayText" }}
+        >
           accepted
         </button>
         <button className="btn" type="submit">

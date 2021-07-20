@@ -6,10 +6,10 @@ const InternshipCards = () => {
     <div className="card">
       <div className="card_header">
         <div className="calender">
-          <i className="fas fa-calendar-week fa-2x"></i>
+          <i className="fas fa-calendar-week fa-1x"></i>
         </div>
         <div className="star">
-          <i className="fas fa-star fa-2x"></i>
+          <i className="fas fa-star fa-1x"></i>
         </div>
       </div>
       <div className="card_title">
@@ -22,37 +22,32 @@ const InternshipCards = () => {
         <span className="label danger">Danger</span>
         <span className="label other">Other</span>
       </div>
-      <b style={{ marginTop: "2%" }}>Descrption:</b>
-      <div className="card_description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-        nesciunt sunt labore, accusantium dolores ipsam quo alias debitis!
-        Impedit tempore perferendis adipisci id velit nostrum nam commodi ad
-        quas itaque. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Fugit reprehenderit facilis quibusdam illum dolore ipsam ad fugiat,
-        beatae repellat ea nam, odit magnam animi dignissimos impedit reiciendis
-        saepe modi labore.
+      <div
+        className="card_description"
+        style={{ display: "flex", gap: "5%", flexWrap: "wrap", width: "100%" }}
+      >
+        <div
+          style={{ display: "flex", flexDirection: "column", width: "100%" }}
+        >
+          <p style={{ color: "GrayText" }}>Role</p>
+          <p>Lorem Lorem Lorem</p>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <p style={{ color: "GrayText" }}>Stipend</p>
+          <p>Lorem Lorem Lorem</p>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <p style={{ color: "GrayText" }}>Duration</p>
+          <p>Lorem Lorem Lorem</p>
+        </div>
       </div>
       <div className="readmore">
-        <button
-          className="btn"
-          type="submit"
-          style={{
-            boxSizing: "border-box",
-            width: "100px",
-            height: "50px",
-            padding: "5px",
-            alignSelf: "flex-end",
-            marginRight: "3%",
-            marginBottom: "2%",
-            fontSize: "medium",
-            borderRadius: "5px",
-          }}
-        >
+        <button className="btn" type="submit">
           Read More
         </button>
       </div>
       <div className="card_footer">
-        <div className="deadline">DeadLine:27 july evening 5:30pm</div>
+        <div className="deadline">Dead Line:27 july evening 5:30pm</div>
       </div>
     </div>
   );
