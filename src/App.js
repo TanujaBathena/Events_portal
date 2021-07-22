@@ -19,6 +19,8 @@ import Home from "./components/Home";
 
 
 function App() {
+    let [isloading,setisloading]= useState(false);
+    
   return (
     <Router>
       <div className="App">
