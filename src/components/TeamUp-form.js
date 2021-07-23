@@ -55,16 +55,17 @@ const Teamup_form = () => {
     if(Tag===""){
         alert('Tag field should not be empty');
     }
-    const datatobesent = {
-        title:Title,
-        skill:skill,
-        tag:Tag,
-        Description:Description
+    else {
+        const datatobesent = {
+            title:Title,
+            skill:skill,
+            tag:Tag,
+            Description:Description
+        }
+        axios.post(url,datatobesent).then(res=>{
+            console.log(res.data);
+        })
     }
-    axios.post(url,datatobesent).then(res=>{
-        console.log(res.data);
-    })
-
   };
 
   useEffect(() => {

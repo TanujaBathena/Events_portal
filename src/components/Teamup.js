@@ -1,6 +1,9 @@
-import React from "react";
+import {React,useState,useEffect} from "react";
 import TeamupCard from "./TeamupCard";
+import axios from "axios";
+import Auth from './auth'
 const Teamup = () => {
+
   const people = [
     {
       id: "11",
@@ -51,8 +54,30 @@ const Teamup = () => {
       skills: "react",
     },
   ];
-  return (
-    <div className="container">
+      let[isLoading,setIsLoading]=useState(false)
+      useEffect(()=>{
+        setIsLoading(false);
+        axios.get("http://localhost:4444/teamup",{
+            withCredentials: true,
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Credentials": true
+      }
+        }).then(res=>{
+            console.log(res.data)
+            if (res.data!=="notloggedin") {
+                Auth.login()
+                console.log(res.data);
+                setIsLoading(true);
+            } });
+    },[])
+
+
+  return ( 
+    
+    isLoading && <div className="container">
+
       <div
         style={{
           marginTop: "8vh",
