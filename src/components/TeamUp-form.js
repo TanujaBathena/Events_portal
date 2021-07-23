@@ -48,9 +48,8 @@ const Teamup_form = () => {
   //   event.preventDefault();
   // };
 
-  const HandleInputs = (event) => {
-      console.log("hi")
-      let url="http://localhost:30000/courses"
+  const  HandleInputs = async (event) => {
+    let url="http://localhost:4444/teamup/submit"
     event.preventDefault();
     if(Tag===""){
         alert('Tag field should not be empty');
@@ -59,12 +58,11 @@ const Teamup_form = () => {
         const datatobesent = {
             title:Title,
             skill:skill,
-            tag:Tag,
-            Description:Description
+            tag:Tag.value,
+            description:Description
         }
-        axios.post(url,datatobesent).then(res=>{
-            console.log(res.data);
-        })
+        const res= await axios.post(url,datatobesent,{withCredentials: true})
+        console.log(res);
     }
   };
 

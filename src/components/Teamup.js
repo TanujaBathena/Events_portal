@@ -14,10 +14,10 @@ const Teamup = () => {
             "Access-Control-Allow-Credentials": true
       }
         }).then(res=>{
-            console.log(res.data)
+            console.log(res.data[0])
             if (res.data!=="notloggedin") {
                 Auth.login()
-                console.log(res.data);
+                console.log(res.data[1]);
                 setIsLoading(true);
             } });
     },[])
