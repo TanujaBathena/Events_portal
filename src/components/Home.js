@@ -15,7 +15,7 @@ const Home = () => {
       }
         }).then(res=>{
             console.log(res.data)
-            if (res.data.mail) {
+            if (res.data!=="notloggedin") {
                 Auth.login()
                 console.log(res.data);
             } });
