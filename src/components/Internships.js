@@ -25,7 +25,7 @@ const Internships = () => {
             border: "0px solid red",
           }}
         >
-          <i class="fas fa-plus-circle fa-3x"></i>
+          <i className="fas fa-plus-circle fa-3x"></i>
         </button>
       </div>
 
