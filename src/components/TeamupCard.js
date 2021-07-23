@@ -1,7 +1,9 @@
-import React from "react";
+import { React, useState } from "react";
 import "../styles/card.css";
 import "../styles/fontawesome-free-5.15.3-web/css/all.css";
-const TeamupCard = () => {
+import Modal from "./Modal";
+const TeamupCard = (props) => {
+  const [open, setOpen] = useState(false);
   return (
     <div className="card" style={{ height: "250px" }}>
       <div
@@ -9,15 +11,13 @@ const TeamupCard = () => {
         style={{
           width: "85%",
           height: "fit-content",
-
+          marginTop: "4%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
         }}
       >
-        <h5>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi,
-        </h5>
+        <h5>{props.title}</h5>
       </div>
 
       <div className="card_tags" style={{ marginLeft: "3%" }}>
@@ -36,15 +36,15 @@ const TeamupCard = () => {
           alignSelf: "flex-start",
         }}
       >
-        Noel Vincent
+        {props.name}
       </h5>
       <div
         className="card_description"
         style={{ marginTop: "0px", height: "10%" }}
       >
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <p style={{ color: "GrayText" }}>skills required</p>
-          <p>Lorem Lorem Lorem</p>
+          <p style={{ color: "GrayText" }}>Skills Required</p>
+          <p>{props.skills}</p>
         </div>
       </div>
 
@@ -55,17 +55,16 @@ const TeamupCard = () => {
           justifyContent: "space-around",
         }}
       >
-        {/* <button className="btn" type="submit">
-          Interested
-        </button> */}
         <button
           className="btn"
           type="submit"
           style={{ marginLeft: "auto", alignSelf: "flex-end" }}
+          onClick={() => setOpen(true)}
         >
           Know More
         </button>
       </div>
+      <Modal isOpen={open} onClose={() => setOpen(false)}></Modal>
     </div>
   );
 };
