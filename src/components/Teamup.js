@@ -1,6 +1,56 @@
 import React from "react";
 import TeamupCard from "./TeamupCard";
 const Teamup = () => {
+  const people = [
+    {
+      id: "11",
+      title: "Required web developer",
+      name: "chris",
+      skills: "react",
+    },
+    {
+      id: "12",
+      title: "Required web developer",
+      name: "chris",
+      skills: "react",
+    },
+    {
+      id: "13",
+      title: "Required web developer",
+      name: "chris",
+      skills: "react",
+    },
+    {
+      id: "14",
+      title: "Required web developer",
+      name: "chris",
+      skills: "react",
+    },
+    {
+      id: "15",
+      title: "Required web developer",
+      name: "chris",
+      skills: "react",
+    },
+    {
+      id: "16",
+      title: "Required web developer",
+      name: "chris",
+      skills: "react",
+    },
+    {
+      id: "17",
+      title: "Required web developer",
+      name: "chris",
+      skills: "react",
+    },
+    {
+      id: "18",
+      title: "Required web developer",
+      name: "chris",
+      skills: "react",
+    },
+  ];
   return (
     <div className="container">
       <div
@@ -22,20 +72,17 @@ const Teamup = () => {
             border: "0px solid red",
           }}
         >
-          <i class="fas fa-plus-circle fa-3x"></i>
+          <i className="fas fa-plus-circle fa-3x"></i>
         </button>
       </div>
-      <TeamupCard />
-      <TeamupCard />
-      <TeamupCard />
-      <TeamupCard />
-      <TeamupCard />
-      <TeamupCard />
-      <TeamupCard />
-      <TeamupCard />
-      <TeamupCard />
-      <TeamupCard />
-      <TeamupCard />
+      {people.map((person) => (
+        <TeamupCard
+          key={person.id}
+          title={person.title}
+          name={person.name}
+          skills={person.skills}
+        />
+      ))}
     </div>
   );
 };

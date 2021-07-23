@@ -53,7 +53,7 @@ const Navbar = (props) => {
         <li className="profile" onClick={dropProfile} id="a">
           <button className="dropbtn">
             <p>
-              <i class="far fa-user-circle fa-1x"></i>
+              <i className="far fa-user-circle fa-1x"></i>
               <i className="arrow down"></i>
             </p>
           </button>
@@ -97,7 +97,7 @@ const Navbar = (props) => {
         <li className="profile" onClick={dropProfile1} id="b">
           <button className="dropbtn">
             <p>
-              <i class="far fa-user-circle fa-2x"></i>
+              <i className="far fa-user-circle fa-2x"></i>
               <i className="arrow down"></i>
             </p>
           </button>
