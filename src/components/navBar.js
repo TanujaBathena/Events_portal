@@ -76,7 +76,7 @@ const Navbar = (props) => {
             </div>
           </div>
         </li>
-        <Link to="/">
+        <Link to="/home">
           <li>home</li>
         </Link>
         <Link to="/Events">
