@@ -3,14 +3,14 @@ import { Route } from "react-router-dom";
 import Auth from "./auth";
 import Login from "./login";
 import axios from "axios";
-import auth from "./auth";
+import auth from "./auth";  
+
 const Protectedroutes = ({ component: Component, ...rest }) => {
-  let [isLoading, setIsLoading] = useState(false);
+  let [loading, setloading] = useState(false);    
 
   useEffect(() => {
-    setIsLoading(false);
-    axios
-      .get("http://localhost:4444/checkauth", {
+    setloading(false);//while calling api setting loading state to false.
+    axios.get("http://localhost:4444/checkauth", {
         withCredentials: true,
         headers: {
           Accept: "application/json",
@@ -19,20 +19,46 @@ const Protectedroutes = ({ component: Component, ...rest }) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
-        if (res.data !== "notloggedin") {
-          Auth.login();
-          console.log(res.data);
+        if (res.data !== "notloggedin") {//checking if user is logged in
+          Auth.login();                   //changing is authenticated to true after checking if the user is legitimate.
+    
         } else {
-          auth.logout();
+          auth.logout();              //if the user is not legitimate we will change the is authenticates attribute to false.
         }
-        setIsLoading(true);
+        setloading(true);
       });
   }, []);
-  console.log(rest);
+
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+        if (Auth.isAuthenticated()) {
+          return loading && <Component {...props} />;
+        } else {
+          return loading && <Login {...props} />;
+        }
+      }}
+    />
+  );
+};
+
+export default Protectedroutes;
+
+
+
+
+
+
+
+
+
+
+
+
   // if(rest.path==='/Login' || Auth.isAuthenticated===false){
   //     return
-  //     isLoading && <Route {...rest} render={(props)=>{
+  //     loading && <Route {...rest} render={(props)=>{
   //         return
   //             <Redirect to={
   //                 {
@@ -46,18 +72,3 @@ const Protectedroutes = ({ component: Component, ...rest }) => {
   //     />
 
   // }
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        if (Auth.isAuthenticated()) {
-          return isLoading && <Component {...props} />;
-        } else {
-          return isLoading && <Login {...props} />;
-        }
-      }}
-    />
-  );
-};
-
-export default Protectedroutes;

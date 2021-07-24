@@ -58,9 +58,7 @@ const Teamup_form = () => {
   const [btn_disable, setbtn_disable] = useState(false);
   const [Description, setDescription] = useState("");
   let history = useHistory();
-  // const HandleInputs = (event) => {
-  //   event.preventDefault();
-  // };
+ 
 
   const HandleInputs = async (event) => {
     event.preventDefault();
@@ -69,12 +67,15 @@ const Teamup_form = () => {
       alert("Tag field should not be empty");
     } else {
       var tag_list = [];
-      // for(let i=0;i<Tag.length();i++){
-      //     tag_list.push(Tag[i].value);
-      // }
-      Tag.map((tag) => {
-        tag_list.push(tag.value);
-      });
+
+        for (let i = 0; i < Tag.length; i++) {
+        tag_list.push(Tag[i].value);
+        }
+    
+
+    //   Tag.map((tag) => {
+    //     tag_list.push(tag.value);
+    //   });
       const datatobesent = {
         title: Title,
         skill: skill,
@@ -107,7 +108,7 @@ const Teamup_form = () => {
       alert("Description cannot be more than 5 characters");
       setDescription(Description.slice(0, 300));
     }
-  }, [Title]);
+  }, [Title,skill,Description]);
 
   return (
     <div>

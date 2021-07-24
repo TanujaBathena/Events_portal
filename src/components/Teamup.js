@@ -17,15 +17,15 @@ const Teamup = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
         if (res.data !== "notloggedin") {
           Auth.login();
           setCards(res.data);
-
           setIsLoading(true);
         }
+
       });
   }, []);
+  
 
   return (
     isLoading && (
@@ -54,7 +54,7 @@ const Teamup = () => {
         </div>
         {cards.map((card) => (
           <TeamupCard
-            key={card.id}
+            key={card._id}
             title={card.Requirements}
             name={card.Name}
             skills={card.Skill}

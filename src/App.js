@@ -1,3 +1,4 @@
+//importing all components
 import "./App.css";
 import React from "react";
 import Navbar from "./components/navBar";
@@ -11,27 +12,26 @@ import MyRequests from "./components/MyRequests";
 import ReceivedRequests from "./components/ReceivedRequests";
 import logout from "./components/logout";
 import Teamupform from "./components/TeamUp-form";
-import InternshipForm from "./components/InternshipForm1";
+import InternshipForm from "./components/InternshipForm";
 import Login from "./components/login";
-import Protectedroutes from "./components/protectedroutes";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
+
+import Protectedroutes from "./components/protectedroutes"; //a component which is protects all the routes routing to the components.
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"; //used for routing
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Navbar />
+        {/* //initialising all the routes and protecting them using protected routes component. */}
         <Switch>
+          <Protectedroutes path="/home" component={Home} />
           <Protectedroutes path="/Events" component={Events} />
+          <Protectedroutes path="/Challenges" component={Challenges} />
           <Protectedroutes path="/Internships" exact component={Internships} />
-          <Protectedroutes
-            path="/Internships/form"
-            component={InternshipForm}
-          />
           <Protectedroutes component={Teamup} path="/Teamup" exact />
           <Protectedroutes path="/Teamup/form" component={Teamupform} />
-          <Protectedroutes path="/Challenges" component={Challenges} />
           <Protectedroutes path="/myProfile" component={MyProfile} />
           <Protectedroutes path="/myposts" component={MyPosts} />
           <Protectedroutes path="/myRequests" component={MyRequests} />
@@ -39,9 +39,12 @@ function App() {
             path="/ReceivedRequests"
             component={ReceivedRequests}
           />
+          <Protectedroutes
+            path="/Internships/form"
+            component={InternshipForm}
+          />
           <Protectedroutes path="/logout" component={logout} />
           <Route path="/Login" component={Login} />
-          <Route path="/home" component={Home} />
         </Switch>
       </div>
     </Router>

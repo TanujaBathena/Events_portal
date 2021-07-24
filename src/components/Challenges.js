@@ -11,7 +11,7 @@ const Challenges = () => {
           color: "grey",
         }}
       >
-        coming soon..
+        Coming soon..
       </h1>
     </div>
   );

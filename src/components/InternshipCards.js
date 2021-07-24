@@ -3,6 +3,7 @@ import "../styles/card.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarWeek } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+
 const InternshipCards = () => {
   return (
     <div className="card">

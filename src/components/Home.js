@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const Home = () => {
     useEffect(()=>{
-        console.log("hiiiiiiiiiiiiiiii");
+        console.log("In home page");
         axios.get("http://localhost:4444/home",{
             withCredentials: true,
         headers: {
@@ -14,16 +14,14 @@ const Home = () => {
             "Access-Control-Allow-Credentials": true
       }
         }).then(res=>{
-            console.log(res.data)
             if (res.data!=="notloggedin") {
                 Auth.login()
-                console.log(res.data);
             } });
     },[])
 
     return (
-        <div>
-            <h1>home page</h1>
+        <div className="container" style={{margin:"auto",marginTop:"50vh"}}>
+            <h1>Your starred messages will be shown here..</h1>
         </div>
     )
 }

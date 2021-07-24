@@ -26,12 +26,12 @@ const Navbar = (props) => {
       x[0].style.display = "flex";
       y[0].style.transform = "rotate(-135deg)";
 
-      //   x[0].style.animation ="mymove 1s ";
+    
     } else {
       x[0].style.display = "none";
       x[0].style.animation = "mymove1 0.5s ";
       y[0].style.transform = "rotate(45deg)";
-      // setTimeout(function(){  x[0].style.display ="none"; }, 200);
+
     }
   }
 
@@ -130,7 +130,5 @@ const Navbar = (props) => {
     </nav>
   );
 };
-
-Navbar.propTypes = {};
 
 export default Navbar;
