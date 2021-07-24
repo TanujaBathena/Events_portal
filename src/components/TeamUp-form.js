@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Select from "react-select";
+// import Select from "react-select";
+import { useHistory } from "react-router";
+import MultiSelect from "react-multi-select-component";
+// import Multiselect from 'multiselect-react-dropdown';
 import "../styles/Teamupform.css";
-import axios from 'axios';
+import axios from "axios";
 
 //multiselecect
 //teamup submit redirect and disable
 const Dropdown = (props) => {
-    let tag_value=props.tag;
-    let settag=props.func;
+  let tag_value = props.tag;
+  let settag = props.func;
   const options = [
     { value: "Web", label: "Web" },
     { value: "Android", label: "Android" },
@@ -20,7 +23,6 @@ const Dropdown = (props) => {
     control: (base) => ({
       ...base,
       border: 0,
-      zIndex: -1,
       boxSizing: "border-box",
       boxShadow: "none",
       "&:Focus": {
@@ -34,7 +36,17 @@ const Dropdown = (props) => {
       <label>
         Tag<span style={{ color: "red" }}>*</span>
       </label>
-      <Select className="select" options={options} value={tag_value} onChange={settag} styles={style} />
+      {/* <Select className="select" multiple={true} options={options} value={tag_value} onChange={settag} styles={style} /> */}
+      {/* <span> */}
+      <MultiSelect
+        className="select"
+        options={options}
+        value={tag_value}
+        onChange={settag}
+        labelledBy={"Select"}
+        disableSearch={true}
+        styles={style}
+      />
     </div>
   );
 };
@@ -42,28 +54,43 @@ const Dropdown = (props) => {
 const Teamup_form = () => {
   const [Title, setTitle] = useState("");
   const [skill, setSkill] = useState("");
-  const [Tag,settag]= useState('');
+  const [Tag, settag] = useState([]);
+  const [btn_disable, setbtn_disable] = useState(false);
   const [Description, setDescription] = useState("");
-
+  let history = useHistory();
   // const HandleInputs = (event) => {
   //   event.preventDefault();
   // };
 
-  const  HandleInputs = async (event) => {
-    let url="http://localhost:4444/teamup/submit"
+  const HandleInputs = async (event) => {
     event.preventDefault();
-    if(Tag===""){
-        alert('Tag field should not be empty');
-    }
-    else {
-        const datatobesent = {
-            title:Title,
-            skill:skill,
-            tag:Tag.value,
-            description:Description
-        }
-        const res= await axios.post(url,datatobesent,{withCredentials: true})
-        console.log(res);
+    let url = "http://localhost:4444/teamup/submit";
+    if (Tag === "") {
+      alert("Tag field should not be empty");
+    } else {
+      var tag_list = [];
+      // for(let i=0;i<Tag.length();i++){
+      //     tag_list.push(Tag[i].value);
+      // }
+      Tag.map((tag) => {
+        tag_list.push(tag.value);
+      });
+      const datatobesent = {
+        title: Title,
+        skill: skill,
+        tag: tag_list,
+        description: Description,
+      };
+      console.log(datatobesent);
+      const res = await axios.post(url, datatobesent, {
+        withCredentials: true,
+      });
+      console.log(res.status);
+      if (res.status === 200) {
+        setbtn_disable(true);
+        // return <Redirect to="/myposts"/>
+        history.push("/myposts");
+      }
     }
   };
 
@@ -116,7 +143,7 @@ const Teamup_form = () => {
             onChange={(e) => setSkill(e.target.value)}
           ></input>
         </div>
-        <Dropdown tag={Tag} func={settag}/>
+        <Dropdown tag={Tag} func={settag} />
         <div className="forminput">
           <label>Description</label>
           <textarea
@@ -128,7 +155,12 @@ const Teamup_form = () => {
           ></textarea>
         </div>
         <div className="btndiv">
-          <button className="btn" type="submit" onClick={HandleInputs}>
+          <button
+            className="btn"
+            type="submit"
+            onClick={HandleInputs}
+            disabled={btn_disable}
+          >
             Submit
           </button>
         </div>
