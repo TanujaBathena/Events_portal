@@ -3,6 +3,8 @@ import Select from "react-select";
 import "../styles/Teamupform.css";
 import axios from "axios";
 
+//multiselecect
+//teamup submit redirect and disable
 const Dropdown = (props) => {
   let tag_value = props.tag;
   let settag = props.func;
@@ -53,9 +55,8 @@ const Teamup_form = () => {
   //   event.preventDefault();
   // };
 
-  const HandleInputs = (event) => {
-    console.log("hi");
-    let url = "http://localhost:30000/courses";
+  const HandleInputs = async (event) => {
+    let url = "http://localhost:4444/teamup/submit";
     event.preventDefault();
     if (Tag === "") {
       alert("Tag field should not be empty");
@@ -63,27 +64,28 @@ const Teamup_form = () => {
       const datatobesent = {
         title: Title,
         skill: skill,
-        tag: Tag,
-        Description: Description,
+        tag: Tag.value,
+        description: Description,
       };
-      axios.post(url, datatobesent).then((res) => {
-        console.log(res.data);
+      const res = await axios.post(url, datatobesent, {
+        withCredentials: true,
       });
+      console.log(res);
     }
   };
 
   useEffect(() => {
-    if (Title.length > 5) {
+    if (Title.length > 50) {
       alert("Title cannot be more than 5 characters");
-      setTitle(Title.slice(0, -1));
+      setTitle(Title.slice(0, 50));
     }
-    if (skill.length > 5) {
+    if (skill.length > 50) {
       alert("skill cannot be more than 5 characters");
-      setSkill(skill.slice(0, -1));
+      setSkill(skill.slice(0, 50));
     }
-    if (Description.length > 5) {
+    if (Description.length > 300) {
       alert("Description cannot be more than 5 characters");
-      setDescription(Description.slice(0, -1));
+      setDescription(Description.slice(0, 300));
     }
   }, [Title]);
 
@@ -102,7 +104,7 @@ const Teamup_form = () => {
             type="text"
             required
             id="name"
-            placeholder="Looking fro WEB developer"
+            placeholder="Looking for WEB developer"
             value={Title}
             onChange={(e) => setTitle(e.target.value)}
           ></input>

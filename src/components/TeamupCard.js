@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import "../styles/card.css";
-import "../styles/fontawesome-free-5.15.3-web/css/all.css";
 import Modal from "./Modal";
+
 const TeamupCard = (props) => {
   const [open, setOpen] = useState(false);
   return (

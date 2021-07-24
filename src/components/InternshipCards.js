@@ -1,15 +1,17 @@
 import React from "react";
 import "../styles/card.css";
-import "../styles/fontawesome-free-5.15.3-web/css/all.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendarWeek } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 const InternshipCards = () => {
   return (
     <div className="card">
       <div className="card_header">
         <div className="calender">
-          <i className="fas fa-calendar-week fa-1x"></i>
+          <FontAwesomeIcon icon={faCalendarWeek} size="1x" />
         </div>
         <div className="star">
-          <i className="fas fa-star fa-1x"></i>
+          <FontAwesomeIcon icon={faStar} size="1x" />
         </div>
       </div>
       <div className="card_title">

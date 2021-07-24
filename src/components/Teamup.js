@@ -3,56 +3,7 @@ import TeamupCard from "./TeamupCard";
 import axios from "axios";
 import Auth from "./auth";
 const Teamup = () => {
-  const people = [
-    {
-      id: "11",
-      title: "Required web developer",
-      name: "chris",
-      skills: "react",
-    },
-    {
-      id: "12",
-      title: "Required web developer",
-      name: "chris",
-      skills: "react",
-    },
-    {
-      id: "13",
-      title: "Required web developer",
-      name: "chris",
-      skills: "react",
-    },
-    {
-      id: "14",
-      title: "Required web developer",
-      name: "chris",
-      skills: "react",
-    },
-    {
-      id: "15",
-      title: "Required web developer",
-      name: "chris",
-      skills: "react",
-    },
-    {
-      id: "16",
-      title: "Required web developer",
-      name: "chris",
-      skills: "react",
-    },
-    {
-      id: "17",
-      title: "Required web developer",
-      name: "chris",
-      skills: "react",
-    },
-    {
-      id: "18",
-      title: "Required web developer",
-      name: "chris",
-      skills: "react",
-    },
-  ];
+  const [cards, setCards] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setIsLoading(false);
@@ -69,7 +20,8 @@ const Teamup = () => {
         console.log(res.data);
         if (res.data !== "notloggedin") {
           Auth.login();
-          console.log(res.data);
+          setCards(res.data);
+
           setIsLoading(true);
         }
       });
@@ -100,12 +52,12 @@ const Teamup = () => {
             <i className="fas fa-plus-circle fa-3x"></i>
           </button>
         </div>
-        {people.map((person) => (
+        {cards.map((card) => (
           <TeamupCard
-            key={person.id}
-            title={person.title}
-            name={person.name}
-            skills={person.skills}
+            key={card.id}
+            title={card.Requirements}
+            name={card.Name}
+            skills={card.Skill}
           />
         ))}
       </div>
