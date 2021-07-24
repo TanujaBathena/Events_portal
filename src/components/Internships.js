@@ -1,6 +1,8 @@
 import React from "react";
 import InternshipCards from "./InternshipCards";
 import "../styles/card.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 const Internships = () => {
   return (
     <div className="container">
@@ -25,7 +27,7 @@ const Internships = () => {
             border: "0px solid red",
           }}
         >
-          <i className="fas fa-plus-circle fa-3x"></i>
+          <FontAwesomeIcon icon={faPlusCircle} size="3x" />
         </button>
       </div>
 

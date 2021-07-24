@@ -1,7 +1,8 @@
 import React from "react";
 import "../styles/nav.css";
 import { Link } from "react-router-dom";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 const Navbar = (props) => {
   const myFunction = function () {
     var x = document.getElementsByClassName("list");
@@ -53,7 +54,7 @@ const Navbar = (props) => {
         <li className="profile" onClick={dropProfile} id="a">
           <button className="dropbtn">
             <p>
-              <i className="far fa-user-circle fa-1x"></i>
+              <FontAwesomeIcon icon={faUser} size="2x" />
               <i className="arrow down"></i>
             </p>
           </button>
@@ -97,7 +98,7 @@ const Navbar = (props) => {
         <li className="profile" onClick={dropProfile1} id="b">
           <button className="dropbtn">
             <p>
-              <i className="far fa-user-circle fa-2x"></i>
+              <FontAwesomeIcon icon={faUser} size="2x" />
               <i className="arrow down"></i>
             </p>
           </button>
