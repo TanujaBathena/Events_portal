@@ -16,7 +16,7 @@ import InternshipForm from "./components/InternshipForm";
 import Login from "./components/login";
 import Home from "./components/Home";
 
-import Protectedroutes from "./components/protectedroutes"; //a component which is protects all the routes routing to the components.
+import Protectedroutes from "./components/protectedroutes"; //a component which  protects all the routes routing to the components.
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"; //used for routing
 
 function App() {

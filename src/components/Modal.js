@@ -1,11 +1,13 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
 const modal_styles = {
   position: "fixed",
   top: "50%",
   left: "50%",
   backgroundColor: "#ffffff",
   transform: "translate(-50%,-50%",
-  width: "75%",
+  width: "50%",
   height: "50vh",
   padding: "10px",
   zindex: "1000",
@@ -27,6 +29,14 @@ const header = {
   justifyContent: "flex-start",
   width: "100%",
   height: "10%",
+  borderBottom: "1px solid black",
+};
+const body = {
+  display: "flex",
+  marginTop: "3%",
+  justifyContent: "flex-start",
+  gap: "15%",
+  width: "100%",
 };
 
 const Modal = (props) => {
@@ -35,12 +45,40 @@ const Modal = (props) => {
     <div style={overlay}>
       <div className="modal" style={modal_styles}>
         <div style={header}>
-          <div>{props.children}</div>
-          <button onClick={props.onClose} style={{ marginLeft: "auto" }}>
-            Close
-          </button>
+          <div style={{ marginLeft: "3%" }}>{props.title}</div>
+
+          <FontAwesomeIcon
+            icon={faWindowClose}
+            size="2x"
+            onClick={props.onClose}
+            style={{ marginLeft: "auto" }}
+          />
         </div>
-        <div></div>
+        <div style={body}>
+          <h4 style={{ marginLeft: "3%", display: "block", width: "10%" }}>
+            Name
+          </h4>
+          <h5 style={{ display: "block", width: "10%" }}>Pranav</h5>
+        </div>
+        <div style={body}>
+          <h4 style={{ marginLeft: "3%", display: "block", width: "10%" }}>
+            Description
+          </h4>
+          <h5 style={{ display: "block", width: "70%" }}>
+            lorem lorem lorem epsium lorem lorem lorem epsium lorem lorem lorem
+            epsium lorem lorem lorem epsium lorem lorem lorem epsium lorem lorem
+            lorem epsium lorem lorem lorem epsium lorem lorem lorem epsium lorem
+            lorem lorem epsium lorem lorem lorem epsium lorem lorem lorem epsium
+            lorem lorem lorem epsium lorem lorem lorem epsium
+          </h5>
+        </div>
+        <div style={body}>
+          <h4 style={{ marginLeft: "3%", display: "block", width: "10%" }}>
+            Skills Required
+          </h4>
+          <h5 style={{ display: "block", width: "50%" }}>{props.skills}</h5>
+        </div>
+
         <div style={{ alignSelf: "flex-end", margin: "auto" }}>
           <button className="btn" type="submit">
             Interested
