@@ -1,10 +1,10 @@
 import React from "react";
 
-const MyPostCards = () => {
+const MyPostCards = (props) => {
   return (
     <div className="card" style={{ height: "200px" }}>
       <div className="card_title">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi,
+        {props.title}
       </div>
 
       <b
@@ -27,13 +27,7 @@ const MyPostCards = () => {
           marginTop: "0px",
         }}
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-        nesciunt sunt labore, accusantium dolores ipsam quo alias debitis!
-        Impedit tempore perferendis adipisci id velit nostrum nam commodi ad
-        quas itaque. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Fugit reprehenderit facilis quibusdam illum dolore ipsam ad fugiat,
-        beatae repellat ea nam, odit magnam animi dignissimos impedit reiciendis
-        saepe modi labore.
+          {props.description}
       </div>
 
       <div

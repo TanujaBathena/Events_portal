@@ -55,9 +55,11 @@ const Teamup = () => {
         {cards.map((card) => (
           <TeamupCard
             key={card._id}
+            ID={card._id}
             title={card.Requirements}
             name={card.Name}
             skills={card.Skill}
+            description={card.Description}
           />
         ))}
       </div>

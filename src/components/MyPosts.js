@@ -1,8 +1,37 @@
-import React from "react";
+import {React,useState,useEffect} from "react";
 import MyPostCards from "./MyPostCards";
-const MyPosts = () => {
+import axios from "axios"
+import Auth from './auth'
+
+const MyPosts = (props) => {
+  
+  const [cards, setCards] = useState([]);
+  let [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    setIsLoading(false);
+    axios
+      .get("http://localhost:4444/Profile/myposts", {
+        withCredentials: true,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+      .then((res) => {
+        if (res.data !== "notloggedin") {
+          Auth.login();
+          setCards(res.data);
+          setIsLoading(true);
+          console.log(res.data)
+        }
+
+      });
+  }, []);
+  
+  
   return (
-    <div className="container">
+    isLoading && <div className="container">
       <div
         style={{
           marginTop: "8vh",
@@ -17,17 +46,15 @@ const MyPosts = () => {
           <u>My Posts</u>
         </h1>
       </div>
-      <MyPostCards />
-      <MyPostCards />
-      <MyPostCards />
-      <MyPostCards />
-      <MyPostCards />
-      <MyPostCards />
-      <MyPostCards />
-      <MyPostCards />
-      <MyPostCards />
-      <MyPostCards />
-      <MyPostCards />
+        {cards.map((card) => (
+          <MyPostCards
+            key={card._id}
+            title={card.Requirements}
+            name={card.Name}
+            skills={card.Skill}
+            description={card.Description}
+          />
+        ))}
     </div>
   );
 };
