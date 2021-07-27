@@ -63,7 +63,7 @@ const Teamup_form = () => {
   const HandleInputs = async (event) => {
     event.preventDefault();
     let url = "http://localhost:4444/teamup/submit";
-    if (Tag === "") {
+    if (Tag === []) {
       alert("Tag field should not be empty");
     } else {
       var tag_list = [];
@@ -97,15 +97,15 @@ const Teamup_form = () => {
 
   useEffect(() => {
     if (Title.length > 50) {
-      alert("Title cannot be more than 5 characters");
+      alert("Title cannot be more than 50 characters");
       setTitle(Title.slice(0, 50));
     }
     if (skill.length > 50) {
-      alert("skill cannot be more than 5 characters");
+      alert("skill cannot be more than 50 characters");
       setSkill(skill.slice(0, 50));
     }
     if (Description.length > 300) {
-      alert("Description cannot be more than 5 characters");
+      alert("Description cannot be more than 300 characters");
       setDescription(Description.slice(0, 300));
     }
   }, [Title,skill,Description]);

@@ -69,6 +69,9 @@ const TeamupCard = (props) => {
         onClose={() => setOpen(false)}
         title={props.title}
         skills={props.skills}
+        description={props.description}
+        name={props.name}
+        ID={props.ID}
       ></Modal>
     </div>
   );

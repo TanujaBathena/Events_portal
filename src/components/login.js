@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/login.css";
 
-
 const Login = () => {
   const handleClick = (event) => {
     window.open("http://localhost:4444/login/google", "_self"); //opens  a new window where you can select your mail accounts.
@@ -18,7 +17,6 @@ const Login = () => {
                 border: "0px",
                 backgroundColor: "rgba(0,0,0,0)",
                 color: "white",
-                fontSize: "20px",
               }}
               onClick={handleClick}
             >
