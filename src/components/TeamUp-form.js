@@ -63,7 +63,7 @@ const Teamup_form = () => {
   const HandleInputs = async (event) => {
     event.preventDefault();
     let url = "http://localhost:4444/teamup/submit";
-    if (Tag === []) {
+    if (Tag.length===0) {
       alert("Tag field should not be empty");
     } else {
       var tag_list = [];
@@ -112,7 +112,7 @@ const Teamup_form = () => {
 
   return (
     <div>
-      <form className="Form">
+      <form className="Form" onSubmit={HandleInputs}>
         <div className="Title">
           <p>TeamUp Post Form</p>
         </div>
@@ -159,7 +159,6 @@ const Teamup_form = () => {
           <button
             className="btn"
             type="submit"
-            onClick={HandleInputs}
             disabled={btn_disable}
           >
             Submit

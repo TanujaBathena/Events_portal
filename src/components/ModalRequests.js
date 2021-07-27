@@ -1,10 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
-import Auth from "./auth";
+
 import "../styles/modal.css";
-import { useHistory } from "react-router";
 
 const overlay = {
   position: "fixed",
@@ -24,54 +22,17 @@ const header = {
 };
 const body = {
   display: "flex",
-  marginTop: "3%",
+  marginTop:"3%",
   justifyContent: "flex-start",
   gap: "5%",
   width: "100%",
-  height: "fit-content",
+  height: "85%",
 };
 
-const Modal = (props) => {
-    let history = useHistory();
+const ModalRequests = (props) => {
   if (!props.isOpen) return null;
 
-  const handleInterested = async () => {
-    const description = await prompt(
-      "Why do you want to collaborate with person"
-    );
-    if (description!=null){
-    console.log(description);
-    console.log(description, props.ID);
-    axios
-      .post(
-        "http://localhost:4444/Profile/interested",
-        {
-          post_mong_id: props.ID,
-          AlertDescription: description,
-        },
-        {
-          withCredentials: true,
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Credentials": true,
-          },
-        }
-      )
-      .then((res) => {
-        if (res.data !== "notloggedin") {
-          Auth.login();
-          //   setCards(res.data);
-          //   setIsLoading(true);
-          console.log(res.data);
-          history.push("/myrequests");
-        }
-      });
-    }
-    else{
-        alert("please fill the description")
-    }
-  };
+  
 
   return (
     <div style={overlay}>
@@ -119,25 +80,22 @@ const Modal = (props) => {
             {props.description}
           </h5>
         </div>
-        
+        <div style={body}>
+          <h4 style={{ marginLeft: "3%", display: "block", width: "20%" }}>
+            Your Description
+          </h4>
+          <h5 style={{ display: "block", width: "70%" }}>{props.yourdescription}</h5>
+        </div>
         <div style={body}>
           <h4 style={{ marginLeft: "3%", display: "block", width: "20%" }}>
             Skills Required
           </h4>
           <h5 style={{ display: "block", width: "70%" }}>{props.skills}</h5>
         </div>
-
-        <button
-          onClick={handleInterested}
-          className="btn"
-          type="submit"
-          style={{ marginTop: "auto", marginRight: "50%" }}
-        >
-          Interested
-        </button>
       </div>
     </div>
   );
 };
 
-export default Modal;
+export default ModalRequests;
+

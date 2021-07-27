@@ -1,10 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
-import Auth from "./auth";
+
 import "../styles/modal.css";
-import { useHistory } from "react-router";
+import axios from "axios";
+import Auth from "./auth"
+
 
 const overlay = {
   position: "fixed",
@@ -24,30 +25,30 @@ const header = {
 };
 const body = {
   display: "flex",
-  marginTop: "3%",
+  marginTop:"3%",
   justifyContent: "flex-start",
   gap: "5%",
   width: "100%",
-  height: "fit-content",
+  height: "85%",
 };
 
-const Modal = (props) => {
-    let history = useHistory();
+const ModalReceived = (props) => {
   if (!props.isOpen) return null;
-
-  const handleInterested = async () => {
-    const description = await prompt(
-      "Why do you want to collaborate with person"
-    );
-    if (description!=null){
-    console.log(description);
-    console.log(description, props.ID);
-    axios
-      .post(
-        "http://localhost:4444/Profile/interested",
+    const submit = (status)=>{
+        let description=""
+        if (status===2){
+            description = prompt(
+                "where/How/when contact/meet him"
+            );
+        }
+        if (description!=null){
+        axios.post(
+        "http://localhost:4444/Profile/confirmrequest",
         {
-          post_mong_id: props.ID,
+          post_mong_id: props.post_mong_id,
           AlertDescription: description,
+          status:status,
+          requesteduserid: props.requesteduserid
         },
         {
           withCredentials: true,
@@ -64,14 +65,14 @@ const Modal = (props) => {
           //   setCards(res.data);
           //   setIsLoading(true);
           console.log(res.data);
-          history.push("/myrequests");
         }
       });
     }
     else{
         alert("please fill the description")
     }
-  };
+}
+  
 
   return (
     <div style={overlay}>
@@ -119,25 +120,32 @@ const Modal = (props) => {
             {props.description}
           </h5>
         </div>
-        
+        <div style={body}>
+          <h4 style={{ marginLeft: "3%", display: "block", width: "20%" }}>
+            Your Description
+          </h4>
+          <h5 style={{ display: "block", width: "70%" }}>{props.yourdescription}</h5>
+        </div>
         <div style={body}>
           <h4 style={{ marginLeft: "3%", display: "block", width: "20%" }}>
             Skills Required
           </h4>
           <h5 style={{ display: "block", width: "70%" }}>{props.skills}</h5>
         </div>
-
-        <button
-          onClick={handleInterested}
-          className="btn"
-          type="submit"
-          style={{ marginTop: "auto", marginRight: "50%" }}
-        >
-          Interested
+        <div style={body}>
+                    
+        <button className="btn" type="submit"style={{marginLeft:"auto"}} onClick={()=>submit(0)}>
+          reject
         </button>
+        <button className="btn" type="submit" onClick={()=>submit(2)}>
+          accept
+        </button>
+        </div>
+
       </div>
     </div>
   );
 };
 
-export default Modal;
+export default ModalReceived;
+

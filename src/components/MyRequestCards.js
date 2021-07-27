@@ -1,18 +1,30 @@
-import React from "react";
+import {React,useState} from "react";
 import "../styles/card.css";
-const MyRequestCards = () => {
+import Modal from "./ModalRequests"
+const MyRequestCards = (props) => {
+   const [open, setOpen] = useState(false);
+   let status="";
+   if (props.status===1) {
+       status="Pending"
+   }
+   else if (props.status===0){
+        status="Rejected"
+   }
+   else if(props.status===2){
+     status = "Accepted"
+   }
   return (
     <div
       className="card"
-      style={{ height: "250px", backgroundColor: "#c1fec1" }}
+      style={{ height: "150px", backgroundColor: "#ffffff" }}
     >
-      <div className="card_title">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi,
+      <div className="card_title" style={{marginTop:"25px",border:"0px"}}>
+        <p style={{color:"grey"}}>You have requested to team up with </p><b>{props.postedname}</b>
       </div>
-      <b style={{ marginLeft: "3%", marginTop: "2%", height: "10%" }}>
-        Descrption:
-      </b>
-      <div
+      {/* <b style={{ marginLeft: "3%", marginTop: "2%", height: "10%" }}>
+        Description:
+      </b> */}
+      {/* <div
         className="card_description"
         style={{
           height: "20%",
@@ -29,7 +41,7 @@ const MyRequestCards = () => {
         Fugit reprehenderit facilis quibusdam illum dolore ipsam ad fugiat,
         beatae repellat ea nam, odit magnam animi dignissimos impedit reiciendis
         saepe modi labore.
-      </div>
+      </div> */}
 
       <div
         className="card_footer"
@@ -40,11 +52,21 @@ const MyRequestCards = () => {
           type="submit"
           style={{ backgroundColor: "white", color: "GrayText" }}
         >
-          accepted
+          {status}
         </button>
-        <button className="btn" type="submit">
+        <button className="btn" type="submit" onClick={() => setOpen(true)}>
           Know more
         </button>
+        <Modal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        title={props.title}
+        skills={props.skills}
+        description={props.postdescription}
+        name={props.postedname}
+        yourdescription={props.yourdescription}
+        ID={props.ID}
+      ></Modal>
       </div>
     </div>
   );
