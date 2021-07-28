@@ -1,25 +1,24 @@
-import {React,useState} from "react";
+import { React, useState } from "react";
 import "../styles/card.css";
-import Modal from "./ModalRequests"
+import Modal from "./ModalMyRequests";
 const MyRequestCards = (props) => {
-   const [open, setOpen] = useState(false);
-   let status="";
-   if (props.status===1) {
-       status="Pending"
-   }
-   else if (props.status===0){
-        status="Rejected"
-   }
-   else if(props.status===2){
-     status = "Accepted"
-   }
+  const [open, setOpen] = useState(false);
+  let status = "";
+  if (props.status === 1) {
+    status = "Pending";
+  } else if (props.status === 0) {
+    status = "Rejected";
+  } else if (props.status === 2) {
+    status = "Accepted";
+  }
   return (
     <div
       className="card"
       style={{ height: "150px", backgroundColor: "#ffffff" }}
     >
-      <div className="card_title" style={{marginTop:"25px",border:"0px"}}>
-        <p style={{color:"grey"}}>You have requested to team up with </p><b>{props.postedname}</b>
+      <div className="card_title" style={{ marginTop: "25px", border: "0px" }}>
+        <p style={{ color: "grey" }}>You have requested to team up with </p>
+        <b>{props.postedname}</b>
       </div>
       {/* <b style={{ marginLeft: "3%", marginTop: "2%", height: "10%" }}>
         Description:
@@ -58,15 +57,15 @@ const MyRequestCards = (props) => {
           Know more
         </button>
         <Modal
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        title={props.title}
-        skills={props.skills}
-        description={props.postdescription}
-        name={props.postedname}
-        yourdescription={props.yourdescription}
-        ID={props.ID}
-      ></Modal>
+          isOpen={open}
+          onClose={() => setOpen(false)}
+          title={props.title}
+          skills={props.skills}
+          description={props.postdescription}
+          name={props.postedname}
+          yourdescription={props.yourdescription}
+          ID={props.ID}
+        ></Modal>
       </div>
     </div>
   );

@@ -1,10 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
+
+import "../styles/modal.css";
 import axios from "axios";
 import Auth from "./auth";
-import "../styles/modal.css";
-import { useHistory } from "react-router";
+
 const overlay = {
   position: "fixed",
   top: 0,
@@ -34,23 +35,23 @@ const h45 = {
   display: "block",
   width: "800%",
 };
-const Modal = (props) => {
-  let history = useHistory();
-  if (!props.isOpen) return null;
 
-  const handleInterested = async () => {
-    const description = await prompt(
-      "Why do you want to collaborate with person"
-    );
+const ModalReceived = (props) => {
+  if (!props.isOpen) return null;
+  const submit = (status) => {
+    let description = "";
+    if (status === 2) {
+      description = prompt("where/How/when contact/meet him");
+    }
     if (description != null) {
-      console.log(description);
-      console.log(description, props.ID);
       axios
         .post(
-          "http://localhost:4444/Profile/interested",
+          "http://localhost:4444/Profile/confirmrequest",
           {
-            post_mong_id: props.ID,
+            post_mong_id: props.post_mong_id,
             AlertDescription: description,
+            status: status,
+            requesteduserid: props.requesteduserid,
           },
           {
             withCredentials: true,
@@ -67,7 +68,6 @@ const Modal = (props) => {
             //   setCards(res.data);
             //   setIsLoading(true);
             console.log(res.data);
-            history.push("/myrequests");
           }
         });
     } else {
@@ -96,23 +96,30 @@ const Modal = (props) => {
           <h4 style={h45}>Description</h4>
           <h5 style={h45}>{props.description}</h5>
         </div>
-
+        <div style={body}>
+          <h4 style={h45}>Your Description</h4>
+          <h5 style={h45}>{props.yourdescription}</h5>
+        </div>
         <div style={body}>
           <h4 style={h45}>Skills Required</h4>
           <h5 style={h45}>{props.skills}</h5>
         </div>
-
-        <button
-          onClick={handleInterested}
-          className="btn"
-          type="submit"
-          style={{ marginTop: "auto", marginRight: "50%" }}
-        >
-          Interested
-        </button>
+        <div style={body}>
+          <button
+            className="btn"
+            type="submit"
+            style={{ marginLeft: "auto" }}
+            onClick={() => submit(0)}
+          >
+            reject
+          </button>
+          <button className="btn" type="submit" onClick={() => submit(2)}>
+            accept
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Modal;
+export default ModalReceived;

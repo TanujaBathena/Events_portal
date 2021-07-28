@@ -1,11 +1,10 @@
-import {React,useEffect,useState} from "react";
+import { React, useEffect, useState } from "react";
 import ReceivedRequestsCards from "./ReceivedRequestsCards";
-import axios from 'axios'
-import Auth from "./auth"
-
+import axios from "axios";
+import Auth from "./auth";
+import Loader from "./Loader";
 const ReceivedRequests = () => {
-
-    const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setIsLoading(false);
@@ -27,39 +26,42 @@ const ReceivedRequests = () => {
         }
       });
   }, []);
-
-  return (
-    <div className="container">
-      <div
-        style={{
-          marginTop: "8vh",
-          width: "100%",
-          height: "10vh",
-          textAlign: "center",
-          boxSizing: "border-box",
-          display: "flex",
-        }}
-      >
-        <h1 style={{ alignSelf: "center", margin: "auto" }}>
-          <u>Received Requests</u>
-        </h1>
-      </div>
+  if (isLoading) {
+    return (
+      <div className="container">
+        <div
+          style={{
+            marginTop: "8vh",
+            width: "100%",
+            height: "10vh",
+            textAlign: "center",
+            boxSizing: "border-box",
+            display: "flex",
+          }}
+        >
+          <h1 style={{ alignSelf: "center", margin: "auto" }}>
+            <u>Received Requests</u>
+          </h1>
+        </div>
         {cards.map((card) => (
-            <ReceivedRequestsCards
-              key={card._id}
-              ID={card._id}
-              title={card.post.Requirements}
-              name={card.name}
-              skills={card.post.Skill}
-              postdescription={card.post.Description}
-              status={card.status}
-              description={card.Description}
-              requesteduserid={card.requestedUser_id}
-              post_mong_id={card.post._id}
-            />
+          <ReceivedRequestsCards
+            key={card._id}
+            ID={card._id}
+            title={card.post.Requirements}
+            name={card.name}
+            skills={card.post.Skill}
+            postdescription={card.post.Description}
+            status={card.status}
+            description={card.Description}
+            requesteduserid={card.requestedUser_id}
+            post_mong_id={card.post._id}
+          />
         ))}
-    </div>
-  );
+      </div>
+    );
+  } else {
+    return <Loader />;
+  }
 };
 
 export default ReceivedRequests;
