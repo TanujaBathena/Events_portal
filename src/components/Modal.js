@@ -28,6 +28,8 @@ const body = {
   justifyContent: "flex-start",
   width: "100%",
   marginBottom: "auto",
+  wordBreak:"break-all",
+  whiteSpace: "nowrap",
 };
 const h45 = {
   marginLeft: "3%",

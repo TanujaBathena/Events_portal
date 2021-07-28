@@ -1,6 +1,28 @@
-import React from "react";
-
+import {React} from "react";
+import axios from "axios"
+import Auth from "./auth";
 const MyPostCards = (props) => {
+  
+    const handleDelete = ()=>{
+        console.log(props.id);
+        const datatobesent ={
+            postid: props.id
+        }
+    axios.post("http://localhost:4444/Profile/myposts/delete",datatobesent ,{
+        withCredentials: true,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+      .then((res) => {
+        if (res.data !== "notloggedin") {
+          Auth.login();
+          console.log(res.data);
+        }
+      });
+    }
   return (
     <div className="card" style={{ height: "200px" }}>
       <div className="card_title">
@@ -41,6 +63,7 @@ const MyPostCards = (props) => {
           <i
             className="fas fa-trash-alt fa-1x"
             style={{ fontWeight: "normal", letterSpacing: "1.5px" }}
+            onClick={()=>handleDelete()}
           >
             Delete
           </i>

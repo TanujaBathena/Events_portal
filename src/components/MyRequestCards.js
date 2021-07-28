@@ -65,6 +65,7 @@ const MyRequestCards = (props) => {
           name={props.postedname}
           yourdescription={props.yourdescription}
           ID={props.ID}
+          meetdescription={props.meetdescription}
         ></Modal>
       </div>
     </div>

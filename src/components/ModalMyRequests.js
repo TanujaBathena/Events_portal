@@ -27,6 +27,8 @@ const body = {
   justifyContent: "flex-start",
   width: "100%",
   marginBottom: "auto",
+  wordBreak:"break-all",
+  whiteSpace: "nowrap",
 };
 const h45 = {
   marginLeft: "3%",
@@ -55,16 +57,21 @@ const ModalRequests = (props) => {
           <h5 style={h45}>{props.name}</h5>
         </div>
         <div style={body}>
-          <h4 style={h45}>Description</h4>
+          <h4 style={h45}>Skills Required</h4>
+          <h5 style={h45}>{props.skills}</h5>
+        </div>
+        <div style={body}>
+          <h4 style={h45}>Post Description</h4>
           <h5 style={h45}>{props.description}</h5>
         </div>
         <div style={body}>
-          <h4 style={h45}>Your Description</h4>
+          <h4 style={h45}>Your Message</h4>
           <h5 style={h45}>{props.yourdescription}</h5>
         </div>
+
         <div style={body}>
-          <h4 style={h45}>Skills Required</h4>
-          <h5 style={h45}>{props.skills}</h5>
+          <h4 style={h45}>Meeting/contact info</h4>
+          <h5 style={h45}>{props.meetdescription}</h5>
         </div>
       </div>
     </div>

@@ -47,6 +47,7 @@ const MyPosts = (props) => {
           </div>
           {cards.map((card) => (
             <MyPostCards
+              id={card._id}
               key={card._id}
               title={card.Requirements}
               name={card.Name}

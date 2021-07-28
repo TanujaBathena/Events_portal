@@ -47,8 +47,9 @@ const MyRequests = () => {
           <u>My Requests</u>
         </h1>
       </div>
-        {cards.map((card) => (
-            <MyRequestCards
+        {cards.map((card) =>{
+          if(card.post!==null){
+            return(<MyRequestCards
               key={card.post._id}
               ID={card.post._id}
               title={card.post.Requirements}
@@ -57,8 +58,24 @@ const MyRequests = () => {
               skills={card.post.Skill}
               yourdescription={card.Description}
               status={card.status}
-            />
-          ))}
+              meetdescription={card.MeetDescription}
+            />)
+          }
+          else{
+              return (<MyRequestCards
+              key={card.id}
+              ID={card.id}
+              title={card.PostTitle}
+              postedname={card.PostOwner}
+              postdescription={"this post is deleted"}
+              skills={"this post is deleted"}
+              yourdescription={card.Description}
+              status={card.status}
+              meetdescription={card.MeetDescription}
+            />)
+          }
+
+        })}
     </div>
   );
   }else{

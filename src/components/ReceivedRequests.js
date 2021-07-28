@@ -43,8 +43,9 @@ const ReceivedRequests = () => {
             <u>Received Requests</u>
           </h1>
         </div>
-        {cards.map((card) => (
-          <ReceivedRequestsCards
+        {cards.map((card) => {
+          if(card.post!==null){
+            return(<ReceivedRequestsCards
             key={card._id}
             ID={card._id}
             title={card.post.Requirements}
@@ -55,8 +56,25 @@ const ReceivedRequests = () => {
             description={card.Description}
             requesteduserid={card.requestedUser_id}
             post_mong_id={card.post._id}
-          />
-        ))}
+            mydescription={card.MyDescription}
+          />)
+          }else{
+            return(<ReceivedRequestsCards
+              key={card._id}
+              ID={card._id}
+              title={card.PostTitle}
+              name={card.name}
+              skills={"post is deleted"}
+              postdescription={"this post is deleted"}
+              status={card.status}
+              description={card.Description}
+              requesteduserid={card.requestedUser_id}
+              post_mong_id={0}
+              mydescription={card.MyDescription}
+            />)
+          }
+
+        })}
       </div>
     );
   } else {

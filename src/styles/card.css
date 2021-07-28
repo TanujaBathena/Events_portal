@@ -163,7 +163,7 @@ body{
         height: 50vh;
     }
     .card_title{
-        font-size: 3vw;
+        font-size: large;
     }
 }
 @media only screen and (max-width: 280px) {
@@ -173,7 +173,7 @@ body{
     }
     .card_title{
         height: 10vh;
-        font-size: 5vw;
+        font-size: large;
     }
     .deadline{
         height: fit-content;

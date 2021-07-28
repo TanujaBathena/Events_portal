@@ -26,9 +26,13 @@ const body = {
   display: "flex",
   flexDirection: "column",
   marginTop: "1%",
+
   justifyContent: "flex-start",
   width: "100%",
+  
   marginBottom: "auto",
+  wordBreak:"break-all",
+  whiteSpace: "prewrap",
 };
 const h45 = {
   marginLeft: "3%",
@@ -89,26 +93,26 @@ const ModalReceived = (props) => {
           />
         </div>
         <div style={body}>
-          <h4 style={h45}>Posted By</h4>
+          <h4 style={h45}>Interested User</h4>
           <h5 style={h45}>{props.name}</h5>
         </div>
         <div style={body}>
-          <h4 style={h45}>Description</h4>
+          <h4 style={h45}>Interested user's Description </h4>
           <h5 style={h45}>{props.description}</h5>
         </div>
         <div style={body}>
           <h4 style={h45}>Your Description</h4>
-          <h5 style={h45}>{props.yourdescription}</h5>
+          <h5 style={h45}>{props.mydescription}</h5>
         </div>
         <div style={body}>
           <h4 style={h45}>Skills Required</h4>
           <h5 style={h45}>{props.skills}</h5>
         </div>
-        <div style={body}>
+        <div style={{flexDirection:"row",justifyContent:"center"}}>
           <button
             className="btn"
             type="submit"
-            style={{ marginLeft: "auto" }}
+            
             onClick={() => submit(0)}
           >
             reject
