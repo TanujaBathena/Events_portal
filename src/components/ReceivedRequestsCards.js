@@ -1,13 +1,14 @@
-import {React,useState} from "react";
+import { React, useState } from "react";
 import "../styles/card.css";
-import Modal from "./ModelReceivedRequests"
+import Modal from "./ModalReceivedRequests";
 
 const ReceivedRequestsCards = (props) => {
-   const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   return (
     <div className="card" style={{ height: "150px" }}>
       <div className="card_title" v style={{ border: "0px" }}>
-        {props.name} is interested to team up with you in your post named {props.title}
+        {props.name} is interested to team up with you in your post named{" "}
+        {props.title}
       </div>
 
       <div
@@ -18,24 +19,22 @@ const ReceivedRequestsCards = (props) => {
           className="btn"
           style={{
             marginLeft: "auto",
-            
           }}
           onClick={() => setOpen(true)}
         >
           View details
         </button>
-             <Modal
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        title={props.title}
-        skills={props.skills}
-        description={props.description}
-        name={props.name}
-        ID={props.ID}
-        requesteduserid={props.requesteduserid}
-        post_mong_id={props.post_mong_id}
-      ></Modal>
-
+        <Modal
+          isOpen={open}
+          onClose={() => setOpen(false)}
+          title={props.title}
+          skills={props.skills}
+          description={props.description}
+          name={props.name}
+          ID={props.ID}
+          requesteduserid={props.requesteduserid}
+          post_mong_id={props.post_mong_id}
+        ></Modal>
       </div>
     </div>
   );
