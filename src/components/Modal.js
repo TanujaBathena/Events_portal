@@ -27,14 +27,17 @@ const body = {
   marginTop: "1%",
   justifyContent: "flex-start",
   width: "100%",
+  height:"50px",
   marginBottom: "auto",
-  wordBreak:"break-all",
-  whiteSpace: "nowrap",
+  // overflow: 'ellipsis', textOverflow: 'ellipsis',
+  wordBreak:"break",
+  whiteSpace: 'pre-wrap', overflowWrap: 'break-word'
 };
 const h45 = {
   marginLeft: "3%",
   display: "block",
-  width: "800%",
+  width: "80%",
+  height:"20px"
 };
 const Modal = (props) => {
   let history = useHistory();

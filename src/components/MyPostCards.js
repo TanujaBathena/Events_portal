@@ -1,28 +1,40 @@
 import {React} from "react";
 import axios from "axios"
 import Auth from "./auth";
+// import { useHistory } from "react-router-dom";
+
+
 const MyPostCards = (props) => {
   
+    // const [deleted,setdeleted]= useState(false);
+
     const handleDelete = ()=>{
-        console.log(props.id);
-        const datatobesent ={
-            postid: props.id
+        const confirm= window.confirm("By deleting this post, all the received request for this post will be deleted,except the accepted ones. Are you sure want to delete? ")
+        console.log("confirm consolelog",confirm)
+        if (confirm){
+            console.log(props.id);
+            const datatobesent ={
+                postid: props.id
+            }
+            console.log("deleting"); 
+        axios.post("http://localhost:4444/Profile/myposts/delete",datatobesent ,{
+            withCredentials: true,
+            headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Credentials": true,
+            },
+        })
+        .then((res) => {
+            if (res.data !== "notloggedin") {
+            Auth.login();
+            console.log(res.data);
+            props.delfunc(!props.deleted)
+            }
+        });
         }
-    axios.post("http://localhost:4444/Profile/myposts/delete",datatobesent ,{
-        withCredentials: true,
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
-      })
-      .then((res) => {
-        if (res.data !== "notloggedin") {
-          Auth.login();
-          console.log(res.data);
-        }
-      });
     }
+
   return (
     <div className="card" style={{ height: "200px" }}>
       <div className="card_title">

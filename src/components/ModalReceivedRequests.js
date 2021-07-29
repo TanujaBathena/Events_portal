@@ -31,13 +31,12 @@ const body = {
   width: "100%",
   
   marginBottom: "auto",
-  wordBreak:"break-all",
-  whiteSpace: "prewrap",
+  whiteSpace: 'pre-wrap', overflowWrap: 'break-word'
 };
 const h45 = {
   marginLeft: "3%",
   display: "block",
-  width: "800%",
+  width: "80%",
 };
 
 const ModalReceived = (props) => {

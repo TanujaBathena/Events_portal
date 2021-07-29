@@ -1,6 +1,32 @@
 import { React, useState } from "react";
 import "../styles/card.css";
 import Modal from "./ModalMyRequests";
+import axios from "axios"
+import Auth from "./auth"
+
+const post_deleted={
+  marginRight: "auto",
+  height: "fit-content",
+  padding:"3px",
+  background: "red",
+  color: "white",
+  border: "0px",
+}
+const deleted={
+  height: "fit-content",
+  padding:"3px",
+  background:"red",
+  color: "white",
+  border: "0px",
+}
+const cancel={
+  marginLeft: "auto",
+  height: "fit-content",
+  padding:"3px",
+  background:"green",
+  color: "white",
+  border: "0px",
+}
 const MyRequestCards = (props) => {
   const [open, setOpen] = useState(false);
   let status = "";
@@ -11,36 +37,99 @@ const MyRequestCards = (props) => {
   } else if (props.status === 2) {
     status = "Accepted";
   }
+    const handleDelete = ()=>{
+        const confirm= window.confirm("Are you sure want to delete this request? ")
+        console.log("confirm consolelog",confirm)
+        if (confirm){
+            console.log(props.id);
+            const datatobesent ={
+                postid: props.ID,
+                status:props.status
+            }
+        axios.post("http://localhost:4444/Profile/myrequests/delete",datatobesent ,{
+            withCredentials: true,
+            headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Credentials": true,
+            },
+        })
+        .then((res) => {
+            if (res.data !== "notloggedin") {
+            Auth.login();
+            window.location.reload();
+            }
+        });
+        }
+    }
+    const handleCancel = ()=>{
+      const confirm= window.confirm("Are you sure want to cancel this request? ")
+      console.log("confirm consolelog",confirm)
+      if (confirm){
+          console.log(props.id);
+          const datatobesent ={
+              postid: props.ID
+          }
+          console.log("deleting"); 
+      axios.post("http://localhost:4444/Profile/myrequests/cancelrequest",datatobesent ,{
+          withCredentials: true,
+          headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+          },
+      })
+      .then((res) => {
+          if (res.data !== "notloggedin") {
+          Auth.login();
+          window.location.reload();
+        }
+      });
+      }
+    }
+
+
   return (
     <div
       className="card"
       style={{ height: "150px", backgroundColor: "#ffffff" }}
     >
+      <div style={{display:"flex"}}>
+        {props.deleted && (
+          <button
+            style={post_deleted}
+          >
+            This Post is Deleted
+          </button>)}
+        {props.deleted && (
+          <button
+            onClick={handleDelete}
+            style={deleted}
+          >
+            Delete
+          </button>)}
+      
+        {!props.deleted && (props.status===1) && (
+          <button
+          onClick={handleCancel}
+            style={cancel}
+          >
+            Cancel Request
+          </button>)}
+        {!props.deleted && (props.status!==1) && (
+          <button
+          onClick={handleDelete}
+            style={cancel}
+          >
+            Delete
+          </button>)}
+        
+      </div>
       <div className="card_title" style={{ marginTop: "25px", border: "0px" }}>
         <p style={{ color: "grey" }}>You have requested to team up with </p>
         <b>{props.postedname}</b>
       </div>
-      {/* <b style={{ marginLeft: "3%", marginTop: "2%", height: "10%" }}>
-        Description:
-      </b> */}
-      {/* <div
-        className="card_description"
-        style={{
-          height: "20%",
-          whiteSpace: "nowrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          marginTop: "0px",
-        }}
-      >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-        nesciunt sunt labore, accusantium dolores ipsam quo alias debitis!
-        Impedit tempore perferendis adipisci id velit nostrum nam commodi ad
-        quas itaque. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Fugit reprehenderit facilis quibusdam illum dolore ipsam ad fugiat,
-        beatae repellat ea nam, odit magnam animi dignissimos impedit reiciendis
-        saepe modi labore.
-      </div> */}
+  
 
       <div
         className="card_footer"
@@ -53,6 +142,7 @@ const MyRequestCards = (props) => {
         >
           {status}
         </button>
+
         <button className="btn" type="submit" onClick={() => setOpen(true)}>
           Know more
         </button>

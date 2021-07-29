@@ -5,7 +5,6 @@ import Auth from './auth'
 import Loader from "./Loader"
 const MyRequests = () => {
     const [cards, setCards] = useState([]);
-   
     let [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
       setIsLoading(false);
@@ -48,7 +47,7 @@ const MyRequests = () => {
         </h1>
       </div>
         {cards.map((card) =>{
-          if(card.post!==null){
+          if(card.post!==null ){
             return(<MyRequestCards
               key={card.post._id}
               ID={card.post._id}
@@ -59,6 +58,7 @@ const MyRequests = () => {
               yourdescription={card.Description}
               status={card.status}
               meetdescription={card.MeetDescription}
+              deleted={false}
             />)
           }
           else{
@@ -72,6 +72,7 @@ const MyRequests = () => {
               yourdescription={card.Description}
               status={card.status}
               meetdescription={card.MeetDescription}
+              deleted={true}
             />)
           }
 
