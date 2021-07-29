@@ -189,8 +189,13 @@ ul li:hover {
     text-align: center;
     height: 3vh;
   }
+  .profilelink{
+    display: block;
+ 
+  }
   .profilelinks {
-    display: none;
+    display: block;
+    margin-top: 25px;
     position: static;
     width: 100%;
   }

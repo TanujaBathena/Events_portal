@@ -3,6 +3,9 @@ import TeamupCard from "./TeamupCard";
 import axios from "axios";
 import Auth from "./auth";
 import Loader from "./Loader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 const Teamup = () => {
   const [cards, setCards] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
@@ -51,7 +54,9 @@ const Teamup = () => {
                 border: "0px solid red",
               }}
             >
-              <i className="fas fa-plus-circle fa-3x"></i>
+              <Link to="/Teamup/form">
+                <FontAwesomeIcon icon={faPlusCircle} size="3x" />
+              </Link>
             </button>
           </div>
           {cards.map((card) => (
