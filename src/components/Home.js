@@ -21,7 +21,11 @@ const Home = () => {
 
     return (
         <div className="container" style={{margin:"auto",marginTop:"50vh"}}>
-            <h1>Your starred messages will be shown here..</h1>
+        <h1 style={{
+          margin:"auto",
+
+          color: "grey",
+        }}> Your starred messages will be shown here..</h1>
         </div>
     )
 }

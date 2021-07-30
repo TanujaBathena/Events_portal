@@ -46,6 +46,7 @@ function App() {
           <Protectedroutes path="/logout" component={logout} />
           <Route path="/Login" component={Login} />
         </Switch>
+        <div style={{width:"100%",height:"15vh"}}></div>
       </div>
     </Router>
   );

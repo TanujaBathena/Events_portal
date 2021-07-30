@@ -35,6 +35,8 @@ const ReceivedRequestsCards = (props) => {
           requesteduserid={props.requesteduserid}
           post_mong_id={props.post_mong_id}
           mydescription={props.mydescription}
+          status={props.status}
+          deleted={props.deleted}
         ></Modal>
       </div>
     </div>

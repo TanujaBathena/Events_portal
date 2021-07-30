@@ -34,19 +34,9 @@ const MyPosts = (props) => {
     return (
       isLoading && (
         <div className="container">
-          <div
-            style={{
-              marginTop: "8vh",
-              width: "100%",
-              height: "10vh",
-              textAlign: "center",
-              boxSizing: "border-box",
-              display: "flex",
-            }}
-          >
-            <h1 style={{ alignSelf: "center", margin: "auto" }}>
-              <u>My Posts</u>
-            </h1>
+          <div className="heading1">
+              <p className="teamup">My posts</p>
+              <p className="content">You can find your posts which you have posted.. </p>
           </div>
           {cards.map((card) => (
             <MyPostCards

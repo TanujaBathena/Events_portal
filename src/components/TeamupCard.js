@@ -27,7 +27,7 @@ const TeamupCard = (props) => {
         <span className="label danger">Danger</span>
         <span className="label other">Other</span>
       </div>
-      <h5
+      <h4
         style={{
           height: "5%",
           color: "GrayText",
@@ -37,7 +37,7 @@ const TeamupCard = (props) => {
         }}
       >
         {props.name}
-      </h5>
+      </h4>
       <div
         className="card_description"
         style={{ marginTop: "0px", height: "10%" }}

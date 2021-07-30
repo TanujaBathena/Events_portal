@@ -1,35 +1,21 @@
 import React from "react";
 import InternshipCards from "./InternshipCards";
 import "../styles/card.css";
+import "../styles/container.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 const Internships = () => {
   return (
     <div className="container">
-      <div
-        style={{
-          marginTop: "8vh",
-          width: "100%",
-          height: "10vh",
-          textAlign: "center",
-          boxSizing: "border-box",
-          display: "flex",
-        }}
-      >
-        <h1 style={{ alignSelf: "center", margin: "auto" }}>
-          <u>Internships Portal</u>
-        </h1>
-        <button
-          style={{
-            alignSelf: "center",
-            marginRight: "3%",
-            backgroundColor: "rgba(1,1,1,0)",
-            border: "0px solid red",
-          }}
-        >
-          <FontAwesomeIcon icon={faPlusCircle} size="3x" />
-        </button>
-      </div>
+          <div className="heading1">
+            <p className="teamup">Internship Portal</p>
+             <p className="content">You can find valuable internships and many opportunities here! </p>
+            <span style={{marginTop:"5%",fontSize:"20px"}}>Add Your Post Below</span>
+              <button className="bun">
+                <FontAwesomeIcon  icon={faPlus} size="3x" />
+              </button>
+
+          </div>
 
       <InternshipCards />
       <InternshipCards />

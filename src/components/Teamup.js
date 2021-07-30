@@ -4,25 +4,10 @@ import axios from "axios";
 import Auth from "./auth";
 import Loader from "./Loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-const heading1 = {
-  marginTop: "8vh",
-  width: "100%",
-  height: "50vh",
-  textAlign: "center",
-  boxSizing: "border-box",
-  backgroundColor: "teal",
-  display: "flex",
-};
-const bun = {
-  alignSelf: "center",
-  position: "absolute",
-  top: "90vh",
-  left: "95vw",
-  backgroundColor: "rgba(0,0,0,0)",
-  border: "0px solid red",
-};
+import "../styles/container.css";
+
 const Teamup = () => {
   const [cards, setCards] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
@@ -50,13 +35,17 @@ const Teamup = () => {
     return (
       isLoading && (
         <div className="container">
-          <div style={heading1}>
-            <h1 style={{ alignSelf: "left" }}>TeamUp portal</h1>
-            <button style={bun}>
-              <Link to="/Teamup/form">
-                <FontAwesomeIcon icon={faPlusCircle} size="3x" />
-              </Link>
-            </button>
+          <div className="heading1">
+            <p className="teamup">TeamUp Portal</p>
+             <p className="content">You can find your companion who can help you in solving a problem or accompany you in paricipating a hackathon or helping you in a project</p>
+            <span style={{marginTop:"5%",fontSize:"20px"}}>Add Your Post Below</span>
+            <Link to="/Teamup/form" >
+              <button className="bun">
+                <FontAwesomeIcon  icon={faPlus} size="3x" />
+              </button>
+             
+                
+            </Link>
           </div>
 
           {cards.map((card) => (
