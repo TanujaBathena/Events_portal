@@ -8,8 +8,7 @@ nav {
   justify-content: flex-start;
   align-items: center;
   height: 8vh;
-  background-color: #ffffff;
-  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+  background-color: rgba(6,25,29,0.9);
   position: fixed;
   top: 0;
   width: 100%;
@@ -53,6 +52,9 @@ ul li:hover {
   gap: 5%;
   align-items: center;
 }
+ul li{
+  color:white;
+}
 
 .lines {
   display: flex;
@@ -67,7 +69,7 @@ ul li:hover {
   box-sizing: border-box;
 }
 .profilelink:hover {
-  background-color: white;
+  background-color: red;
   border-top: 0px;
   border-bottom: 0px;
   border-left: 1px solid red;
@@ -90,10 +92,11 @@ ul li:hover {
   justify-content: center;
 }
 .profilelinks {
-  background-color: aliceblue;
+  background-color: rgba(6,25,29,0.9);
   box-sizing: border-box;
   position: absolute;
-  width: 20%;
+  left:70%;
+  width: 30%;
   top: 8vh;
   display: flex;
   flex-direction: column;
@@ -107,7 +110,7 @@ ul li:hover {
   display: block;
   text-decoration: none;
   letter-spacing: 1px;
-  color: black;
+  color: white;
   font-size: large;
 }
 .dropbtn {
@@ -158,14 +161,11 @@ ul li:hover {
     flex-direction: column;
     justify-content: flex-start;
     width: 80%;
-      background-color: #ffffff;
-  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+    background-color: rgba(6,25,29,0.9);
     gap: 10%;
     
   }
-  .profile {
-    margin-top: 25px;
-  }
+
 
   .lines {
     display: flex;
@@ -173,7 +173,7 @@ ul li:hover {
   .line {
     width: 15px;
     height: 1px;
-    background-color: black;
+    background-color: white;
   }
   .logo {
     text-align: center;
@@ -194,8 +194,8 @@ ul li:hover {
  
   }
   .profilelinks {
-    display: block;
-    margin-top: 25px;
+    order:2;
+    margin-top: 15px;
     position: static;
     width: 100%;
   }

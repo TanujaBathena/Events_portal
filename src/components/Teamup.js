@@ -6,6 +6,23 @@ import Loader from "./Loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+const heading1 = {
+  marginTop: "8vh",
+  width: "100%",
+  height: "50vh",
+  textAlign: "center",
+  boxSizing: "border-box",
+  backgroundColor: "teal",
+  display: "flex",
+};
+const bun = {
+  alignSelf: "center",
+  position: "absolute",
+  top: "90vh",
+  left: "95vw",
+  backgroundColor: "rgba(0,0,0,0)",
+  border: "0px solid red",
+};
 const Teamup = () => {
   const [cards, setCards] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
@@ -33,32 +50,15 @@ const Teamup = () => {
     return (
       isLoading && (
         <div className="container">
-          <div
-            style={{
-              marginTop: "8vh",
-              width: "100%",
-              height: "10vh",
-              textAlign: "center",
-              boxSizing: "border-box",
-              display: "flex",
-            }}
-          >
-            <h1 style={{ alignSelf: "center", margin: "auto" }}>
-              TeamUp portal
-            </h1>
-            <button
-              style={{
-                alignSelf: "center",
-                marginRight: "3%",
-                backgroundColor: "rgba(1,1,1,0)",
-                border: "0px solid red",
-              }}
-            >
+          <div style={heading1}>
+            <h1 style={{ alignSelf: "left" }}>TeamUp portal</h1>
+            <button style={bun}>
               <Link to="/Teamup/form">
                 <FontAwesomeIcon icon={faPlusCircle} size="3x" />
               </Link>
             </button>
           </div>
+
           {cards.map((card) => (
             <TeamupCard
               key={card._id}

@@ -25,13 +25,10 @@ const Navbar = (props) => {
     if (x[0].style.display === "none") {
       x[0].style.display = "flex";
       y[0].style.transform = "rotate(-135deg)";
-
-    
     } else {
       x[0].style.display = "none";
       x[0].style.animation = "mymove1 0.5s ";
       y[0].style.transform = "rotate(45deg)";
-
     }
   }
 
@@ -67,18 +64,18 @@ const Navbar = (props) => {
               <Link to="/myrequests">My requests</Link>
             </div>
             <div className="profilelink">
-              <Link to="/receivedrequests">received requests</Link>
+              <Link to="/receivedrequests">Received Requests</Link>
             </div>
             <div className="profilelink">
-              <Link to="/myprofile">my profile</Link>
+              <Link to="/myprofile">My Profile</Link>
             </div>
             <div className="profilelink">
-              <Link to="/logout">logout</Link>
+              <Link to="/logout">Logout</Link>
             </div>
           </div>
         </li>
         <Link to="/home">
-          <li>home</li>
+          <li>Home</li>
         </Link>
         <Link to="/Events">
           <li>
@@ -111,13 +108,13 @@ const Navbar = (props) => {
               <Link to="/myrequests">My requests</Link>
             </div>
             <div className="profilelink">
-              <Link to="/receivedrequests">received requests</Link>
+              <Link to="/receivedrequests">Received Requests</Link>
             </div>
             <div className="profilelink">
-              <Link to="/myprofile">my profile</Link>
+              <Link to="/myprofile">My Profile</Link>
             </div>
             <div className="profilelink">
-              <Link to="/logout">logout</Link>
+              <Link to="/logout">Logout</Link>
             </div>
           </div>
         </li>

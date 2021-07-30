@@ -24,40 +24,30 @@
   box-sizing: border-box;
 
   height: fit-content;
-  width: 40%;
+  width: 30%;
   align-self: center;
   background-color: #4285f4;
   box-shadow: 5px 5px 6px 6px #888888;
   display: flex;
   gap:5%;
+
 }
 .image {
   box-sizing: border-box;
   padding: 2px;
   order: 1;
-   /*border: 0.5px solid grey; */
-
 }
-button{
+.lbtn{
+  width:100%;
+  display:block;
   font-size: medium;
-}
-.text {
-  align-self:center;
-  justify-content: center;
-  order: 2;
-  /* border: 0.5px solid grey; */
-  margin: auto;
-}
-
-.text a {
-  text-decoration: none;
-  font-size: small;
-  font-family: italic;
+  border:0px;
+  order:2;
+  text-align: left;
+  background-color: rgba(0,0,0,0);
   color: white;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-
 }
+
 
 .image img {
   width: 100%;
@@ -73,7 +63,7 @@ button{
   box-sizing: border-box;
  
   height: fit-content;
-  width: 75%;
+  width: 60%;
   font-size: small;
   align-self: center;
   background-color: #4285f4;
@@ -83,12 +73,26 @@ button{
   
 }
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 875px) {
   .box{
-    width:50%;
+    width:60%;
   }
+  /* .btn1{
+    width:40%;
+  } */
   button{
   font-size: small;
+}
+
+
+}
+@media only screen and (max-width: 500px) {
+  .box{
+    width:100%;
+  }
+  .btn1{
+  font-size: small;
+  width:75%;
 }
 
 

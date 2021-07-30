@@ -10,19 +10,10 @@ const Login = () => {
     <div className="container1">
       <div className="box">
         <div className="btn1">
-          <div className="text">
-            <button
-              style={{
-                width: "100%",
-                border: "0px",
-                backgroundColor: "rgba(0,0,0,0)",
-                color: "white",
-              }}
-              onClick={handleClick}
-            >
-              Sign in with Google
-            </button>
-          </div>
+          <button className="lbtn" onClick={handleClick}>
+            Sign in with Google
+          </button>
+
           <div className="image">
             <img
               src="https://img.icons8.com/fluent/48/000000/google-logo.png"
