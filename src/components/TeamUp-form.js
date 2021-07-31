@@ -18,7 +18,7 @@ const Dropdown = (props) => {
     { value: "AI", label: "AI" },
     { value: "DL", label: "DL" },
   ];
-
+  //console.log(tag_value);
   const style = {
     control: (base) => ({
       ...base,
@@ -58,24 +58,23 @@ const Teamup_form = () => {
   const [btn_disable, setbtn_disable] = useState(false);
   const [Description, setDescription] = useState("");
   let history = useHistory();
- 
 
   const HandleInputs = async (event) => {
+    setbtn_disable(true);
     event.preventDefault();
     let url = "http://localhost:4444/teamup/submit";
-    if (Tag.length===0) {
+    if (Tag.length === 0) {
       alert("Tag field should not be empty");
     } else {
       var tag_list = [];
 
-        for (let i = 0; i < Tag.length; i++) {
+      for (let i = 0; i < Tag.length; i++) {
         tag_list.push(Tag[i].value);
-        }
-    
+      }
 
-    //   Tag.map((tag) => {
-    //     tag_list.push(tag.value);
-    //   });
+      //   Tag.map((tag) => {
+      //     tag_list.push(tag.value);
+      //   });
       const datatobesent = {
         title: Title,
         skill: skill,
@@ -88,13 +87,13 @@ const Teamup_form = () => {
       });
       console.log(res.status);
       if (res.status === 200) {
-        setbtn_disable(true);
         // return <Redirect to="/myposts"/>
         history.push("/myposts");
+      } else {
+        setbtn_disable(false);
       }
     }
   };
-
   useEffect(() => {
     if (Title.length > 50) {
       alert("Title cannot be more than 50 characters");
@@ -108,7 +107,7 @@ const Teamup_form = () => {
       alert("Description cannot be more than 300 characters");
       setDescription(Description.slice(0, 300));
     }
-  }, [Title,skill,Description]);
+  }, [Title, skill, Description]);
 
   return (
     <div>
@@ -156,11 +155,7 @@ const Teamup_form = () => {
           ></textarea>
         </div>
         <div className="btndiv">
-          <button
-            className="btn"
-            type="submit"
-            disabled={btn_disable}
-          >
+          <button className="btn" type="submit" disabled={btn_disable}>
             Submit
           </button>
         </div>

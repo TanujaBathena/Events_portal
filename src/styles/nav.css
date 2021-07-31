@@ -8,7 +8,7 @@ nav {
   justify-content: flex-start;
   align-items: center;
   height: 8vh;
-  background-color: rgba(6,25,29,0.9);
+  background-color: #1BA098;
   position: fixed;
   top: 0;
   width: 100%;
@@ -26,7 +26,7 @@ ul li {
 ul li:hover {
   border-top: 1px solid white;
   border-bottom: 1px solid white;
-  color: grey;
+  color: #FCE38A;
 }
 .arrow {
   border: solid black;
@@ -69,11 +69,11 @@ ul li{
   box-sizing: border-box;
 }
 .profilelink:hover {
-  background-color: red;
+  background-color: #FCE38A;
   border-top: 0px;
   border-bottom: 0px;
-  border-left: 1px solid red;
-  border-right: 1px solid red;
+  border-left: 1px solid #FCE38A;
+  border-right: 1px solid #FCE38A;
 }
 .line {
   width: 100%;
@@ -84,7 +84,7 @@ ul li{
   margin-left: 5px;
 }
 .profile:hover {
-  border: 0px solid red;
+  border: 0px solid #FCE38A;
 }
 .profile {
   width: 20%;
@@ -92,7 +92,7 @@ ul li{
   justify-content: center;
 }
 .profilelinks {
-  background-color: rgba(6,25,29,0.9);
+  background-color: rgb(27, 160, 152,0.9);
   box-sizing: border-box;
   position: absolute;
   left:70%;
@@ -131,7 +131,7 @@ ul li{
 }
 /* .profile:hover .profilelinks {display: flex;} */
 .profile:hover .dropbtn {
-  color: #3e8e41;
+  color: #FCE38A;
 }
 .dropbtn{
   color: #555;
@@ -161,7 +161,7 @@ ul li{
     flex-direction: column;
     justify-content: flex-start;
     width: 80%;
-    background-color: rgba(6,25,29,0.9);
+    background-color: rgb(27, 160, 152,0.9);
     gap: 10%;
     
   }
@@ -192,12 +192,15 @@ ul li{
   .profilelink{
     display: block;
  
+   
+ 
   }
   .profilelinks {
     order:2;
     margin-top: 15px;
     position: static;
     width: 100%;
+    
   }
   #a {
     display: flex;

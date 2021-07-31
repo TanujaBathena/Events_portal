@@ -32,20 +32,10 @@ const MyRequests = () => {
   if(isLoading){
     return (
     isLoading && <div className="container">
-      <div
-        style={{
-          marginTop: "8vh",
-          width: "100%",
-          height: "10vh",
-          textAlign: "center",
-          boxSizing: "border-box",
-          display: "flex",
-        }}
-      >
-        <h1 style={{ alignSelf: "center", margin: "auto" }}>
-          <u>My Requests</u>
-        </h1>
-      </div>
+          <div className="heading1">
+              <p className="teamup">My Requests</p>
+              <p className="content">You can find your requests which you are interested in.</p>
+          </div>
         {cards.map((card) =>{
           if(card.post!==null ){
             return(<MyRequestCards
@@ -73,6 +63,7 @@ const MyRequests = () => {
               status={card.status}
               meetdescription={card.MeetDescription}
               deleted={true}
+              
             />)
           }
 

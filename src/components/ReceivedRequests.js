@@ -29,20 +29,10 @@ const ReceivedRequests = () => {
   if (isLoading) {
     return (
       <div className="container">
-        <div
-          style={{
-            marginTop: "8vh",
-            width: "100%",
-            height: "10vh",
-            textAlign: "center",
-            boxSizing: "border-box",
-            display: "flex",
-          }}
-        >
-          <h1 style={{ alignSelf: "center", margin: "auto" }}>
-            <u>Received Requests</u>
-          </h1>
-        </div>
+            <div className="heading1">
+              <p className="teamup">Received Requests</p>
+              <p className="content">You can find the users who are interested in your posts. </p>
+          </div>
         {cards.map((card) => {
           if(card.post!==null){
             return(<ReceivedRequestsCards
@@ -57,6 +47,7 @@ const ReceivedRequests = () => {
             requesteduserid={card.requestedUser_id}
             post_mong_id={card.post._id}
             mydescription={card.MyDescription}
+            deleted={false}
           />)
           }else{
             return(<ReceivedRequestsCards
@@ -69,8 +60,9 @@ const ReceivedRequests = () => {
               status={card.status}
               description={card.Description}
               requesteduserid={card.requestedUser_id}
-              post_mong_id={0}
+              post_mong_id={card.Post_id}
               mydescription={card.MyDescription}
+              deleted={true}
             />)
           }
 

@@ -15,10 +15,9 @@ import Teamupform from "./components/TeamUp-form";
 import InternshipForm from "./components/InternshipForm";
 import Login from "./components/login";
 import Home from "./components/Home";
-
 import Protectedroutes from "./components/protectedroutes"; //a component which  protects all the routes routing to the components.
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"; //used for routing
-
+import Teamupformedit from "./components/Teamupformedit";
 function App() {
   return (
     <Router>
@@ -44,8 +43,14 @@ function App() {
             component={InternshipForm}
           />
           <Protectedroutes path="/logout" component={logout} />
+          <Protectedroutes
+            path="/teamupformedit"
+            exact
+            component={Teamupformedit}
+          />
           <Route path="/Login" component={Login} />
         </Switch>
+        <div style={{ width: "100%", height: "15vh" }}></div>
       </div>
     </Router>
   );

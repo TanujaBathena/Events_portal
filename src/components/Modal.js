@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -27,19 +27,22 @@ const body = {
   marginTop: "1%",
   justifyContent: "flex-start",
   width: "100%",
-  height:"50px",
+  height: "50px",
   marginBottom: "auto",
   // overflow: 'ellipsis', textOverflow: 'ellipsis',
-  wordBreak:"break",
-  whiteSpace: 'pre-wrap', overflowWrap: 'break-word'
+  wordBreak: "break",
+  whiteSpace: "pre-wrap",
+  overflowWrap: "break-word",
 };
 const h45 = {
   marginLeft: "3%",
   display: "block",
   width: "80%",
-  height:"20px"
+  height: "20px",
 };
 const Modal = (props) => {
+  const [disable, setDisable] = useState(false);
+
   let history = useHistory();
   if (!props.isOpen) return null;
 
@@ -50,6 +53,7 @@ const Modal = (props) => {
     if (description != null) {
       console.log(description);
       console.log(description, props.ID);
+      setDisable(true);
       axios
         .post(
           "http://localhost:4444/Profile/interested",
@@ -108,6 +112,7 @@ const Modal = (props) => {
         </div>
 
         <button
+          disabled={disable}
           onClick={handleInterested}
           className="btn"
           type="submit"

@@ -29,9 +29,10 @@ const body = {
 
   justifyContent: "flex-start",
   width: "100%",
-  
+
   marginBottom: "auto",
-  whiteSpace: 'pre-wrap', overflowWrap: 'break-word'
+  whiteSpace: "pre-wrap",
+  overflowWrap: "break-word",
 };
 const h45 = {
   marginLeft: "3%",
@@ -41,18 +42,46 @@ const h45 = {
 
 const ModalReceived = (props) => {
   if (!props.isOpen) return null;
-  const submit = (status) => {
+  const submit = (status, deleted) => {
     let description = "";
-    if (status === 2) {
+    if (status === 2 && props.deleted === false) {
+      console.log("inside accepted requests");
       description = prompt("where/How/when contact/meet him");
-    }
-    if (description != null) {
+      if (description != null) {
+        axios
+          .post(
+            "http://localhost:4444/Profile/acceptrequest",
+            {
+              post_mong_id: props.post_mong_id,
+              AlertDescription: description,
+              status: status,
+              requesteduserid: props.requesteduserid,
+            },
+            {
+              withCredentials: true,
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Credentials": true,
+              },
+            }
+          )
+          .then((res) => {
+            if (res.data !== "notloggedin") {
+              Auth.login();
+              window.location.reload();
+            }
+          });
+      } else {
+        alert("please fill the description");
+      }
+    } else if (status === 0) {
+      console.log("inside reject requests");
       axios
         .post(
-          "http://localhost:4444/Profile/confirmrequest",
+          "http://localhost:4444/Profile/rejectedrequest",
           {
             post_mong_id: props.post_mong_id,
-            AlertDescription: description,
             status: status,
             requesteduserid: props.requesteduserid,
           },
@@ -68,13 +97,62 @@ const ModalReceived = (props) => {
         .then((res) => {
           if (res.data !== "notloggedin") {
             Auth.login();
-            //   setCards(res.data);
-            //   setIsLoading(true);
-            console.log(res.data);
+            window.location.reload();
           }
         });
     } else {
-      alert("please fill the description");
+      console.log("inside delete accepted request");
+      if (deleted === true) {
+        axios
+          .post(
+            "http://localhost:4444/Profile/deleteacceptedrequest",
+            {
+              post_mong_id: props.ID,
+              status: status,
+              requesteduserid: props.requesteduserid,
+              deleted: true,
+            },
+            {
+              withCredentials: true,
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Credentials": true,
+              },
+            }
+          )
+          .then((res) => {
+            if (res.data !== "notloggedin") {
+              Auth.login();
+              window.location.reload();
+            }
+          });
+      } else {
+        axios
+          .post(
+            "http://localhost:4444/Profile/deleteacceptedrequest",
+            {
+              post_mong_id: props.post_mong_id,
+              status: status,
+              requesteduserid: props.requesteduserid,
+              deleted: false,
+            },
+            {
+              withCredentials: true,
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Credentials": true,
+              },
+            }
+          )
+          .then((res) => {
+            if (res.data !== "notloggedin") {
+              Auth.login();
+              window.location.reload();
+            }
+          });
+      }
     }
   };
 
@@ -107,19 +185,26 @@ const ModalReceived = (props) => {
           <h4 style={h45}>Skills Required</h4>
           <h5 style={h45}>{props.skills}</h5>
         </div>
-        <div style={{flexDirection:"row",justifyContent:"center"}}>
+        {props.status === 1 && (
+          <div style={{ flexDirection: "row", justifyContent: "center" }}>
+            <button className="btn" type="submit" onClick={() => submit(0)}>
+              reject
+            </button>
+            <button className="btn" type="submit" onClick={() => submit(2)}>
+              accept
+            </button>
+          </div>
+        )}
+
+        {props.status === 2 && (
           <button
             className="btn"
             type="submit"
-            
-            onClick={() => submit(0)}
+            onClick={() => submit(1000, props.deleted)}
           >
-            reject
+            Delete
           </button>
-          <button className="btn" type="submit" onClick={() => submit(2)}>
-            accept
-          </button>
-        </div>
+        )}
       </div>
     </div>
   );

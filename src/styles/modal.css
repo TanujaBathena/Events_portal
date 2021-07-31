@@ -13,6 +13,10 @@
   justify-content: space-between;
   flex-direction: column;
 }
+button:disabled {
+  
+  opacity:0.6;
+}
 h4{
   color: grey;
 }
@@ -25,6 +29,6 @@ h4{
     font-size: x-small;
   }
   h5{
-    font-size: xx-small;
+    font-size: medium;
   }
 }
