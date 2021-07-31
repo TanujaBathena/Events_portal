@@ -12,7 +12,12 @@ const heading1 = {
   height: "50vh",
   textAlign: "center",
   boxSizing: "border-box",
-  backgroundColor: "teal",
+  backgroundColor: "white",
+  backgroundImage:
+    "url(https://img.freepik.com/free-vector/business-partners-handshake_74855-5222.jpg?size=626&ext=jpg)",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "50% 50vh",
+  backgroundPosition: "right",
   display: "flex",
 };
 const bun = {
