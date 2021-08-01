@@ -100,7 +100,7 @@ ul li{
   top: 8vh;
   display: flex;
   flex-direction: column;
-  height: 25vh;
+  height: 200px;
   justify-content: space-evenly;
   display: none;
  

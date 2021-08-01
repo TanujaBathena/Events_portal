@@ -17,7 +17,7 @@ const TeamupCard = (props) => {
           justifyContent: "flex-start",
         }}
       >
-        <h5>{props.title}</h5>
+        <h4 style={{ color: "black" }}>{props.title}</h4>
       </div>
 
       <div className="card_tags" style={{ marginLeft: "3%" }}>
@@ -27,7 +27,7 @@ const TeamupCard = (props) => {
         <span className="label danger">Danger</span>
         <span className="label other">Other</span>
       </div>
-      <h4
+      <h5
         style={{
           height: "5%",
           color: "GrayText",
@@ -37,7 +37,7 @@ const TeamupCard = (props) => {
         }}
       >
         {props.name}
-      </h4>
+      </h5>
       <div
         className="card_description"
         style={{ marginTop: "0px", height: "10%" }}
