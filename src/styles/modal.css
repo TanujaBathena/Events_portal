@@ -13,6 +13,9 @@
   justify-content: space-between;
   flex-direction: column;
 }
+button{
+  cursor: pointer;
+}
 button:disabled {
   
   opacity:0.6;

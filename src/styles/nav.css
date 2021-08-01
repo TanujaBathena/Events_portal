@@ -103,6 +103,7 @@ ul li{
   height: 25vh;
   justify-content: space-evenly;
   display: none;
+ 
 }
 .profilelinks div a {
   width: 100%;
@@ -116,7 +117,7 @@ ul li{
 .dropbtn {
   display: block;
   height: 100%;
-  width: 50%;
+  width: 100%;
   font-size: large;
   color: white;
   background-color: rgba(0, 0, 0, 0);
@@ -128,6 +129,13 @@ ul li{
 }
 #a {
   display: none;
+}
+.profilelink{
+    display: block;
+    box-sizing: border-box;
+    padding-top:10px;
+   height:50px;
+   
 }
 /* .profile:hover .profilelinks {display: flex;} */
 .profile:hover .dropbtn {

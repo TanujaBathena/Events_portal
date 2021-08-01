@@ -86,6 +86,7 @@ const Teamup_form = (props) => {
             console.log(res.data);
             if (res.data !== null) {
               setTitle(res.data.Requirements);
+
               setSkill(res.data.Skill);
               setDescription(res.data.Description);
               const tagarray = [];
@@ -116,7 +117,7 @@ const Teamup_form = (props) => {
     setbtn_disable(true);
 
     event.preventDefault();
-    let url = "http://localhost:4444/teamup/submit";
+    let url = "http://localhost:4444/edit/teamup/update";
     if (Tag.length === 0) {
       alert("Tag field should not be empty");
     } else {
@@ -130,6 +131,8 @@ const Teamup_form = (props) => {
       //     tag_list.push(tag.value);
       //   });
       const datatobesent = {
+        oldTitle: props.location.postid.PostTitle,
+        postid: props.location.postid,
         title: Title,
         skill: skill,
         tag: tag_list,
@@ -138,6 +141,11 @@ const Teamup_form = (props) => {
       console.log(datatobesent);
       const res = await axios.post(url, datatobesent, {
         withCredentials: true,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
       });
       console.log(res.status);
       if (res.status === 200) {

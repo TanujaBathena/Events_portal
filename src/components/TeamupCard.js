@@ -42,7 +42,14 @@ const TeamupCard = (props) => {
         className="card_description"
         style={{ marginTop: "0px", height: "10%" }}
       >
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            whiteSpace: "pre-wrap",
+            overflowWrap: "break-word",
+          }}
+        >
           <p style={{ color: "GrayText" }}>Skills Required</p>
           <p>{props.skills}</p>
         </div>

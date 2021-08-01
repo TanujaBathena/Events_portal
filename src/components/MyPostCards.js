@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const MyPostCards = (props) => {
   // const [deleted,setdeleted]= useState(false);
   let post = props.id;
+
   const handleDelete = () => {
     const confirm = window.confirm(
       "By deleting this post, all the received request for this post will be deleted,except the accepted ones. Are you sure want to delete? "
@@ -69,7 +70,10 @@ const MyPostCards = (props) => {
         style={{ flexDirection: "row", justifyContent: "space-around" }}
       >
         <Link
-          to={{ pathname: "/Teamupformedit", postid: { id: post } }}
+          to={{
+            pathname: "/Teamupformedit",
+            postid: { id: post, PostTitle: props.title },
+          }}
           className="btn"
         >
           <button
