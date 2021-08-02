@@ -3,8 +3,9 @@ import MultiSelect from "react-multi-select-component";
 import uuid from "react-uuid";
 import axios from "axios";
 import Auth from "./auth";
-import "../styles/internshipForm.css";
-
+import "../styles/Teamupform.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const Dropdown = (props) => {
   const options = [
     { label: "CSE", value: "CSE" },
@@ -162,7 +163,7 @@ const FilesUploader = (props) => {
 
   return (
     <div
-      className="attribute"
+      className="forminput"
       style={{ flexDirection: "column", textAlign: "center" }}
     >
       <label htmlFor="files" style={{ width: "100%", fontSize: "x-large" }}>
@@ -193,7 +194,7 @@ const FilesUploader = (props) => {
                     deleteFile(file.id);
                   }}
                 >
-                  <i className="fas fa-times"></i>
+                  <FontAwesomeIcon icon={faTimes} size="1x" />
                 </button>
               </div>
             );
@@ -289,13 +290,16 @@ const InternshipForm = () => {
 
   return (
     <div>
-      <h2 className="mainHead">Internship Form</h2>
-      <form className="form" onSubmit={onSubmitHandler}>
-        <div className="attribute">
+      <form className="Form" onSubmit={onSubmitHandler}>
+        <div className="Title">
+          <p>Internship form</p>
+        </div>
+        <div className="forminput">
           <label htmlFor="intTitle">
             Internship Role <span style={{ color: "red" }}>*</span>{" "}
           </label>
           <input
+            className="input"
             type="text"
             id="intTitle"
             name="intTitle"
@@ -303,17 +307,17 @@ const InternshipForm = () => {
             onChange={(e) => {
               setInternshipRole(e.target.value);
             }}
-            style={{ width: "70%", height: "4vh" }}
             required
             placeholder="SDE"
           />
         </div>
 
-        <div className="attribute">
+        <div className="forminput">
           <label htmlFor="company">
             Company <span style={{ color: "red" }}>*</span>
           </label>
           <input
+            className="input"
             type="text"
             id="company"
             name="company"
@@ -321,15 +325,15 @@ const InternshipForm = () => {
             onChange={(e) => {
               setCompany(e.target.value);
             }}
-            style={{ width: "70%", height: "4vh" }}
             required
             placeholder="Amazon"
           />
         </div>
 
-        <div className="attribute">
+        <div className="forminput">
           <label htmlFor="stipend">Stipend </label>
           <input
+            className="input"
             type="text"
             id="stipend"
             name="stipend"
@@ -337,14 +341,13 @@ const InternshipForm = () => {
             onChange={(e) => {
               setStipend(e.target.value);
             }}
-            style={{ width: "70%", height: "4vh" }}
           />
         </div>
 
-        <div className="attribute" style={{ boxSizing: "border-box" }}>
+        <div className="forminput" style={{ boxSizing: "border-box" }}>
           <label
             htmlFor="branches"
-            style={{ width: "20%", height: "4vh", marginTop: "3%" }}
+      
           >
             Branches <span style={{ color: "red" }}>*</span>
           </label>
@@ -355,7 +358,7 @@ const InternshipForm = () => {
                         </div>
 
                     </div> */}
-          <div style={{ width: "70%", marginTop: "auto" }}>
+          <div style={{ width: "70%", marginTop: "auto", marginRight: "auto" }}>
             <Dropdown
               selected={selected}
               setSelected={setSelected}
@@ -365,23 +368,24 @@ const InternshipForm = () => {
           </div>
         </div>
 
-        <div className="attribute">
+        <div className="forminput">
           <label htmlFor="deadline">
             Deadline <span style={{ color: "red" }}>*</span>{" "}
           </label>
           <input
+            className="input"
             type="datetime-local"
             id="deadline"
             name="deadline"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            style={{ width: "70%", height: "4vh" }}
+            
             required
           />
           {console.log(date)}
         </div>
 
-        <div className="attribute">
+        <div className="forminput">
           <label htmlFor="description">Description </label>
           <textarea
             name="description"
@@ -392,7 +396,12 @@ const InternshipForm = () => {
             onChange={(e) => {
               setDescription(e.target.value);
             }}
-            style={{ width: "70%", height: "4vh", resize: "none" }}
+            style={{
+              width: "70%",
+              height: "4vh",
+              resize: "none",
+              marginRight: "auto",
+            }}
             placeholder="Any additional details and Links here"
           ></textarea>
         </div>
@@ -402,7 +411,11 @@ const InternshipForm = () => {
           updateFileList={updateFileList}
           style={{ display: "flex" }}
         />
-        <button type="submit">Submit</button>
+        <div className="btndiv">
+          <button className="btn" type="submit">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
