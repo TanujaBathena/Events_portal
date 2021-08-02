@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MultiSelect from "react-multi-select-component";
 import uuid from "react-uuid";
 import axios from "axios";
+import Auth from "./auth";
 import "../styles/internshipForm.css";
 
 const Dropdown = (props) => {
@@ -240,7 +241,7 @@ const InternshipForm = () => {
       alert(`Only ${maxLen2} characters allowed`);
       setDescription(description.slice(0, maxLen2));
     }
-  },[internshipRole, company, stipend, description,maxLen1,maxLen2]);
+  }, [internshipRole, company, stipend, description, maxLen1, maxLen2]);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -250,35 +251,52 @@ const InternshipForm = () => {
     for (let i = 0; i < selected.length; i++) {
       branchesSelected.push(selected[i].value);
     }
-    const data = new FormData();
+    let data = new FormData();
     data.append("role", internshipRole);
+    console.log(data);
     data.append("company", company);
+    console.log(data);
     data.append("stipend", stipend);
+    console.log(data);
     data.append("branches", branchesSelected);
+    console.log(data);
     data.append("deadline", date);
+    console.log(data);
     data.append("description", description);
+    console.log(data);
     console.log("No of files :", fileList.length);
+    console.log(data);
     for (let i = 0; i < fileList.length; i++) data.append("files", fileList[i]);
-
-    try {
-      await axios.post("http://localhost:4444/upload", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-    } catch (err) {
-      if (err.response.status === 500) {
-        console.log("There was a problem with the server");
-      } else {
-        console.log(err.response.data.msg);
+    let data1 = {
+      role: internshipRole,
+      company: company,
+      stipend: stipend,
+      description: description,
+      branches: branchesSelected,
+      deadline: date,
+    };
+    console.log(data);
+    axios
+    .post("http://localhost:4444/internships/submit", data ,{
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "multipart/form-data",
+        "Access-Control-Allow-Credentials": true,
+      },
+    })
+    .then((res) => {
+      if (res.data !== "notloggedin") {
+        Auth.login();
+        console.log(res.data);
       }
-    }
-  };
+    });
+   };
 
   return (
     <div>
       <h2 className="mainHead">Internship Form</h2>
-      <form className="form" onSubmit={onSubmitHandler} >
+      <form className="form" onSubmit={onSubmitHandler}>
         <div className="attribute">
           <label htmlFor="intTitle">
             Internship Role <span style={{ color: "red" }}>*</span>{" "}
@@ -395,6 +413,5 @@ const InternshipForm = () => {
     </div>
   );
 };
-
 
 export default InternshipForm;
