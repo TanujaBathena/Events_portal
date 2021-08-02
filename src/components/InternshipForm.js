@@ -59,7 +59,6 @@ const FilesUploader = (props) => {
     const types = [
       "image/png",
       "image/jpeg",
-      "image/gif",
       "application/pdf",
       "application/doc",
       "application/docx",
@@ -253,20 +252,16 @@ const InternshipForm = () => {
     }
     let data = new FormData();
     data.append("role", internshipRole);
-    console.log(data);
     data.append("company", company);
-    console.log(data);
     data.append("stipend", stipend);
-    console.log(data);
     data.append("branches", branchesSelected);
-    console.log(data);
     data.append("deadline", date);
-    console.log(data);
     data.append("description", description);
-    console.log(data);
     console.log("No of files :", fileList.length);
-    console.log(data);
     for (let i = 0; i < fileList.length; i++) data.append("files", fileList[i]);
+    for (var pair of data.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
     let data1 = {
       role: internshipRole,
       company: company,
@@ -275,23 +270,22 @@ const InternshipForm = () => {
       branches: branchesSelected,
       deadline: date,
     };
-    console.log(data);
     axios
-    .post("http://localhost:4444/internships/submit", data ,{
-      withCredentials: true,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "multipart/form-data",
-        "Access-Control-Allow-Credentials": true,
-      },
-    })
-    .then((res) => {
-      if (res.data !== "notloggedin") {
-        Auth.login();
-        console.log(res.data);
-      }
-    });
-   };
+      .post("http://localhost:4444/internships/submit", data, {
+        withCredentials: true,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "multipart/form-data",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+      .then((res) => {
+        if (res.data !== "notloggedin") {
+          Auth.login();
+          console.log(res.data);
+        }
+      });
+  };
 
   return (
     <div>

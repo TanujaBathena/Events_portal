@@ -71,11 +71,12 @@ body{
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 1%;
+    margin-left: 3%;
 
     
 }
 .btn:hover{
-    background-color: greenyellow;
+    background-color: rgba(22, 87, 67, 0.308);
 }
 .label {
   color: white;
