@@ -120,7 +120,6 @@ const FilesUploader = (props) => {
       //let newList=fileList;
       if (fileList.length === 0) {
         updateFileList(filesList);
-        console.log("Inside if ", filesList.length, " ", fileList.length);
       } else {
         let arr = [];
         for (let i = 0; i < fileList.length; i++) {
@@ -143,14 +142,10 @@ const FilesUploader = (props) => {
       }
 
       //updateFileList(newList);
-      console.log("onNewFiles\n");
-      console.log(fileList.length);
     }
   };
 
   const deleteFile = (delId) => {
-    console.log(delId);
-    //let delIDstr=toString(delId);
     let arr = [];
 
     for (let ind = 0; ind < fileList.length; ind++) {
@@ -213,6 +208,7 @@ const InternshipForm = () => {
   const [selected, setSelected] = useState([]); //branches data
   let [date, setDate] = useState();
   let [description, setDescription] = useState("");
+  let [duration, setDuration] = useState("");
 
   const lengthValidation = (strng, maxlen) => {
     if (strng.length > maxlen) return false;
@@ -220,7 +216,7 @@ const InternshipForm = () => {
   };
 
   let maxLen1 = 10;
-  let maxLen2 = 20;
+  let maxLen2 = 200;
   useEffect(() => {
     if (!lengthValidation(internshipRole, maxLen1)) {
       alert(`Only ${maxLen1} characters allowed`);
@@ -237,11 +233,24 @@ const InternshipForm = () => {
       setStipend(stipend.slice(0, maxLen1));
     }
 
+    if (!lengthValidation(duration, maxLen1)) {
+      alert(`Only ${maxLen1} characters allowed`);
+      setDuration(duration.slice(0, maxLen1));
+    }
+
     if (!lengthValidation(description, maxLen2)) {
       alert(`Only ${maxLen2} characters allowed`);
       setDescription(description.slice(0, maxLen2));
     }
-  }, [internshipRole, company, stipend, description, maxLen1, maxLen2]);
+  }, [
+    internshipRole,
+    company,
+    stipend,
+    description,
+    maxLen1,
+    maxLen2,
+    duration,
+  ]);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -254,23 +263,12 @@ const InternshipForm = () => {
     let data = new FormData();
     data.append("role", internshipRole);
     data.append("company", company);
+    data.append("duration", duration);
     data.append("stipend", stipend);
     data.append("branches", branchesSelected);
     data.append("deadline", date);
     data.append("description", description);
-    console.log("No of files :", fileList.length);
     for (let i = 0; i < fileList.length; i++) data.append("files", fileList[i]);
-    for (var pair of data.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
-    let data1 = {
-      role: internshipRole,
-      company: company,
-      stipend: stipend,
-      description: description,
-      branches: branchesSelected,
-      deadline: date,
-    };
     axios
       .post("http://localhost:4444/internships/submit", data, {
         withCredentials: true,
@@ -283,7 +281,6 @@ const InternshipForm = () => {
       .then((res) => {
         if (res.data !== "notloggedin") {
           Auth.login();
-          console.log(res.data);
         }
       });
   };
@@ -292,7 +289,7 @@ const InternshipForm = () => {
     <div>
       <form className="Form" onSubmit={onSubmitHandler}>
         <div className="Title">
-          <p>Internship form</p>
+          <p>Internship Form</p>
         </div>
         <div className="forminput">
           <label htmlFor="intTitle">
@@ -344,11 +341,22 @@ const InternshipForm = () => {
           />
         </div>
 
+        <div className="forminput">
+          <label htmlFor="duration">Duration </label>
+          <input
+            className="input"
+            type="text"
+            id="duration"
+            name="duration"
+            value={duration}
+            onChange={(e) => {
+              setDuration(e.target.value);
+            }}
+          />
+        </div>
+
         <div className="forminput" style={{ boxSizing: "border-box" }}>
-          <label
-            htmlFor="branches"
-      
-          >
+          <label htmlFor="branches">
             Branches <span style={{ color: "red" }}>*</span>
           </label>
           {/* <div>
@@ -364,7 +372,6 @@ const InternshipForm = () => {
               setSelected={setSelected}
               style={{ padding: "0px" }}
             />
-            {console.log(selected)}
           </div>
         </div>
 
@@ -379,10 +386,9 @@ const InternshipForm = () => {
             name="deadline"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            
             required
           />
-          {console.log(date)}
+          {/* {console.log(date)} */}
         </div>
 
         <div className="forminput">
