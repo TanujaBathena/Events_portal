@@ -61,6 +61,7 @@ const Internships = () => {
             duration={card.Duration}
             deadline={card.Deadline}
             description={card.Description}
+            branches={card.Branches}
             files={card.Files}
           />
         ))}

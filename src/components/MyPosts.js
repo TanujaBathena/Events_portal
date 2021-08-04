@@ -3,13 +3,13 @@ import MyPostCards from "./MyPostCards";
 import axios from "axios";
 import Auth from "./auth";
 import Loader from "./Loader";
-
+import Myposticard from "./MypostInternshipcard";
 const MyPosts = (props) => {
   const [cards, setCards] = useState([]);
-  const [deleted,setdeleted]= useState(false);
+  const [deleted, setdeleted] = useState(false);
   let [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-      console.log("inside mypost use effect",deleted)
+    console.log("inside mypost use effect", deleted);
     setIsLoading(false);
     axios
       .get("http://localhost:4444/Profile/myposts", {
@@ -35,21 +35,73 @@ const MyPosts = (props) => {
       isLoading && (
         <div className="container">
           <div className="heading1">
-              <p className="teamup">My posts</p>
-              <p className="content">You can find your posts which you have posted.. </p>
+            <p className="teamup">My posts</p>
+            <p className="content">
+              You can find your posts which you have posted..{" "}
+            </p>
           </div>
-          {cards.map((card) => (
-            <MyPostCards
-              id={card._id}
-              key={card._id}
-              title={card.Requirements}
-              name={card.Name}
-              skills={card.Skill}
-              description={card.Description}
-              deleted={deleted}
-              delfunc={setdeleted}
-            />
-          ))}
+          <div
+            style={{
+              margin: "auto",
+              marginTop: "20px",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            <h1>Team Up Posts</h1>
+          </div>
+          {/* <div style={{ display: "flex", justifyContent: "space-around" }}> */}
+          {cards.map((card) => {
+            if (card.Type === 1) {
+              return (
+                <MyPostCards
+                  id={card._id}
+                  key={card._id}
+                  title={card.Requirements}
+                  name={card.Name}
+                  skills={card.Skill}
+                  description={card.Description}
+                  deleted={deleted}
+                  type={card.Type}
+                  delfunc={setdeleted}
+                />
+              );
+            } else {
+              return <></>;
+            }
+          })}
+          {/* </div> */}
+          <div
+            style={{
+              margin: "auto",
+              marginTop: "100px",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            <h1>Internship Posts</h1>
+          </div>
+          {/* <div style={{ display: "flex", justifyContent: "space-around" }}> */}
+          {cards.map((card) => {
+            if (card.Type === 2) {
+              return (
+                <Myposticard
+                  id={card._id}
+                  key={card._id}
+                  title={card.Company}
+                  name={card.Name}
+                  skills={card.Duration}
+                  description={card.Description}
+                  deleted={deleted}
+                  type={card.Type}
+                  delfunc={setdeleted}
+                />
+              );
+            } else {
+              return <></>;
+            }
+          })}
+          {/* </div> */}
         </div>
       )
     );

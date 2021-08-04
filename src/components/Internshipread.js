@@ -69,6 +69,43 @@ const Internshipread = (props) => {
       });
     //eslint-disable-next-line
   }, []);
+
+  function toArrayBuffer(buf) {
+    var ab = new ArrayBuffer(buf.length);
+    var view = new Uint8Array(ab);
+    for (var i = 0; i < buf.length; ++i) {
+      view[i] = buf[i];
+    }
+    return ab;
+  }
+  function Download(arrayBuffer, type) {
+    var blob = new Blob([arrayBuffer], { type: type });
+    var url = URL.createObjectURL(blob);
+    //var image = new Image();
+    //image.src = url;
+    //w.document.write(image.outerHTML);
+    window.open(url);
+  }
+
+  // function arrayBufferToBase64(buffer) {
+  //   var binary = "";
+  //   var bytes = [].slice.call(new Uint8Array(buffer));
+  //   bytes.forEach((b) => (binary += String.fromCharCode(b)));
+  //   return window.btoa(binary);
+  // }
+
+  let openfile = (buffer, type) => {
+    console.log(buffer, type);
+    let arrbuf = toArrayBuffer(buffer.data);
+    Download(arrbuf, type);
+
+    // var image = new Image();
+    // image.src = "data:image/jpg;base64," + ur;
+    // var w = window.open("", "_blank");
+    // w.document.write(image.outerHTML);
+    // window.open(ur);
+  };
+
   if (isLoading) return <Loader />;
   else {
     return (
@@ -111,17 +148,20 @@ const Internshipread = (props) => {
         </div> */}
         <div className="contentr">
           <p className="heading">Files</p>
-          {files.map((File) => (
-            <p className="matter" key={File._id}>
-              {File.fileName}
-            </p>
-          ))}
+          <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
+            {files.map((File) => (
+              <p
+                className="filel"
+                key={File._id}
+                onClick={() => {
+                  openfile(File.data, File.contentType);
+                }}
+              >
+                {File.fileName}
+              </p>
+            ))}
+          </div>
         </div>
-
-        <div className="contentr"></div>
-        <div className="contentr"></div>
-        <div className="contentr"></div>
-        <div className="contentr"></div>
       </div>
     );
   }

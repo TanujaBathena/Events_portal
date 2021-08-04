@@ -76,16 +76,18 @@
   border-radius: 3px;
   transition: 0.3s ease;
   background-color: white;
+ 
   z-index: 0;
 }
 
 .forminput .input:focus,
 .forminput textarea:focus {
-  border: 2px solid #ffd480;
+  border: 2px solid black;
+
 }
 
 .forminput .select:hover {
-  border: 2px solid #ffd480;
+  border: 2px solid black;
 }
 
 .Form .btn {

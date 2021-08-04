@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import MultiSelect from "react-multi-select-component";
 import uuid from "react-uuid";
 import axios from "axios";
@@ -61,8 +62,8 @@ const FilesUploader = (props) => {
       "image/png",
       "image/jpeg",
       "application/pdf",
-      "application/doc",
-      "application/docx",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     ];
     // loop access array
     for (let x = 0; x < filesList.length; x++) {
@@ -209,13 +210,15 @@ const InternshipForm = () => {
   let [date, setDate] = useState();
   let [description, setDescription] = useState("");
   let [duration, setDuration] = useState("");
+  let history = useHistory();
+  const [btn_disable, setbtn_disable] = useState(false);
 
   const lengthValidation = (strng, maxlen) => {
     if (strng.length > maxlen) return false;
     return true;
   };
 
-  let maxLen1 = 10;
+  let maxLen1 = 50;
   let maxLen2 = 200;
   useEffect(() => {
     if (!lengthValidation(internshipRole, maxLen1)) {
@@ -253,6 +256,7 @@ const InternshipForm = () => {
   ]);
 
   const onSubmitHandler = async (e) => {
+    setbtn_disable(true);
     e.preventDefault();
     // Checking if branches array is empty
     if (selected.length === 0) alert("Atleast 1 Branch need to be selected");
@@ -281,10 +285,12 @@ const InternshipForm = () => {
       .then((res) => {
         if (res.data !== "notloggedin") {
           Auth.login();
+          history.push("/myposts");
+        } else {
+          setbtn_disable(false);
         }
       });
   };
-
   return (
     <div>
       <form className="Form" onSubmit={onSubmitHandler}>
@@ -359,13 +365,6 @@ const InternshipForm = () => {
           <label htmlFor="branches">
             Branches <span style={{ color: "red" }}>*</span>
           </label>
-          {/* <div>
-                        <div>
-                            <input type="checkbox" id="CSE" name="branch1" value="CSE" />
-                            <label htmlFor="branch1">CSE</label>
-                        </div>
-
-                    </div> */}
           <div style={{ width: "70%", marginTop: "auto", marginRight: "auto" }}>
             <Dropdown
               selected={selected}
@@ -418,7 +417,7 @@ const InternshipForm = () => {
           style={{ display: "flex" }}
         />
         <div className="btndiv">
-          <button className="btn" type="submit">
+          <button className="btn" type="submit" disabled={btn_disable}>
             Submit
           </button>
         </div>

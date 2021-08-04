@@ -25,6 +25,7 @@ const Dropdown = (props) => {
       border: 0,
       boxSizing: "border-box",
       boxShadow: "none",
+
       "&:Focus": {
         border: "3px solid #ffd480",
       },

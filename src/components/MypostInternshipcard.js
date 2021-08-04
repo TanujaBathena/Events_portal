@@ -4,7 +4,7 @@ import Auth from "./auth";
 import { Link } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 
-const MyPostCards = (props) => {
+const Myposticard = (props) => {
   // const [deleted,setdeleted]= useState(false);
   let post = props.id;
 
@@ -20,7 +20,7 @@ const MyPostCards = (props) => {
       };
       console.log("deleting");
       axios
-        .post("http://localhost:4444/Profile/myposts/delete", datatobesent, {
+        .post("http://localhost:4444/internships/delete", datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -39,8 +39,8 @@ const MyPostCards = (props) => {
   };
 
   return (
-    <div className="card" style={{ height: "200px" }}>
-      <div className="card_title">{props.title}</div>
+    <div className="card" style={{ height: "300px" }}>
+      <div className="card_title">Internship at {props.title}</div>
 
       <b
         style={{
@@ -64,36 +64,21 @@ const MyPostCards = (props) => {
       >
         {props.description}
       </div>
-      <b
-        style={{
-          marginLeft: "3%",
-          marginTop: "2%",
-          height: "5%",
-          color: "GrayText",
-        }}
-      >
-        Skills Required
-      </b>
-      <div
-        className="card_description"
-        style={{
-          height: "20%",
-          whiteSpace: "nowrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          marginTop: "0px",
-        }}
-      >
-        {props.skills}
-      </div>
 
+      <Link to={`/internships/${props.id}`}>
+        <div style={{ marginTop: "50px" }} className="readmore">
+          <button className="btn" type="submit">
+            Read More
+          </button>
+        </div>
+      </Link>
       <div
         className="card_footer"
         style={{ flexDirection: "row", justifyContent: "space-around" }}
       >
         <Link
           to={{
-            pathname: "/Teamupformedit",
+            pathname: "/internship/form",
             postid: { id: post, PostTitle: props.title },
           }}
           className="btn"
@@ -123,4 +108,4 @@ const MyPostCards = (props) => {
   );
 };
 
-export default MyPostCards;
+export default Myposticard;

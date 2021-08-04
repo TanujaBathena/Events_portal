@@ -26,30 +26,30 @@ function App() {
         <Navbar />
         {/* //initialising all the routes and protecting them using protected routes component. */}
         <Switch>
-          <Protectedroutes path="/home" component={Home} />
-          <Protectedroutes path="/Events" component={Events} />
-          <Protectedroutes path="/Challenges" component={Challenges} />
+          <Protectedroutes path="/home" exact component={Home} />
+          <Protectedroutes path="/Events" exact component={Events} />
+          <Protectedroutes path="/Challenges" exact component={Challenges} />
           <Protectedroutes path="/Internships" exact component={Internships} />
-          <Protectedroutes
-            path="/Internships/:id"
-            exact
-            component={Internshipread}
-          />
-          <Protectedroutes component={Teamup} path="/Teamup" exact />
-          <Protectedroutes path="/Teamup/form" component={Teamupform} />
-          <Protectedroutes path="/myProfile" component={MyProfile} />
-          <Protectedroutes path="/myposts" component={MyPosts} />
-          <Protectedroutes path="/myRequests" component={MyRequests} />
-          <Protectedroutes
-            path="/ReceivedRequests"
-            component={ReceivedRequests}
-          />
           <Protectedroutes
             path="/Internships/form"
             exact
             component={InternshipForm}
           />
-          <Protectedroutes path="/logout" component={logout} />
+          <Protectedroutes
+            path="/Internships/:id"
+            exact
+            component={Internshipread}
+          />
+          <Protectedroutes component={Teamup} exact path="/Teamup" />
+          <Protectedroutes path="/Teamup/form" exact component={Teamupform} />
+          <Protectedroutes path="/myProfile" exact component={MyProfile} />
+          <Protectedroutes path="/myposts" exact component={MyPosts} />
+          <Protectedroutes path="/myRequests" exact component={MyRequests} />
+          <Protectedroutes
+            path="/ReceivedRequests"
+            component={ReceivedRequests}
+          />
+          <Protectedroutes path="/logout" exact component={logout} />
           <Protectedroutes
             path="/teamupformedit"
             exact

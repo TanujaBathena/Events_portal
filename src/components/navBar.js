@@ -3,6 +3,9 @@ import "../styles/nav.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+const colorw = {
+  color: "white",
+};
 const Navbar = (props) => {
   const myFunction = function () {
     var x = document.getElementsByClassName("list");
@@ -48,7 +51,7 @@ const Navbar = (props) => {
       <div className="logo">logo</div>
 
       <ul className="list">
-        <li className="profile" onClick={dropProfile} id="a">
+        <li style={colorw} className="profile" onClick={dropProfile} id="a">
           <button className="dropbtn">
             <p>
               <FontAwesomeIcon icon={faUser} size="2x" />
@@ -75,24 +78,24 @@ const Navbar = (props) => {
           </div>
         </li>
         <Link to="/home">
-          <li>Home</li>
+          <li style={colorw}>Home</li>
         </Link>
         <Link to="/Events">
-          <li>
+          <li style={colorw}>
             <p>Events</p>
           </li>
         </Link>
         <Link to="/Challenges">
-          <li>Challenges</li>
+          <li style={colorw}>Challenges</li>
         </Link>
         <Link to="/Teamup">
-          <li>Teamup</li>
+          <li style={colorw}>Teamup</li>
         </Link>
         <Link to="/Internships">
-          <li>Internships</li>
+          <li style={colorw}>Internships</li>
         </Link>
 
-        <li className="profile" onClick={dropProfile1} id="b">
+        <li style={colorw} className="profile" onClick={dropProfile1} id="b">
           <button className="dropbtn">
             <p>
               <FontAwesomeIcon icon={faUser} size="2x" />

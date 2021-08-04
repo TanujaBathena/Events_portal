@@ -26,19 +26,38 @@ const InternshipCards = (props) => {
       </div>
       <div
         className="card_description"
-        style={{ display: "flex", gap: "5%", flexWrap: "wrap", width: "100%" }}
+        style={{
+          display: "flex",
+          gap: "5%",
+          flexWrap: "wrap",
+          width: "100%",
+        }}
       >
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "100%",
+            width: "40%",
           }}
         >
           <p style={{ color: "GrayText" }}>Role</p>
           <p>{props.role}</p>
         </div>
-        <div style={{ display: "flex", width: "30%", flexDirection: "column" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width: "40%",
+          }}
+        >
+          <p style={{ color: "GrayText" }}>Branches</p>
+          <p>
+            {props.branches.map((branch) => {
+              return <span>{branch} </span>;
+            })}
+          </p>
+        </div>
+        <div style={{ display: "flex", width: "40%", flexDirection: "column" }}>
           <p style={{ color: "GrayText" }}>Stipend</p>
           <p>{props.stipend}</p>
         </div>

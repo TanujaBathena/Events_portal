@@ -27,20 +27,21 @@ const TeamupCard = (props) => {
         <span className="label danger">Danger</span>
         <span className="label other">Other</span>
       </div>
-      <h5
+
+      <p
         style={{
-          height: "5%",
           color: "GrayText",
           marginLeft: "3%",
-          marginTop: "2%",
+          marginTop: "5px",
           alignSelf: "flex-start",
         }}
       >
-        {props.name}
-      </h5>
+        Posted By
+      </p>
+      <p style={{ marginLeft: "3%" }}> {props.name}</p>
       <div
         className="card_description"
-        style={{ marginTop: "0px", height: "10%" }}
+        style={{ marginTop: "10px", height: "10%" }}
       >
         <div
           style={{
