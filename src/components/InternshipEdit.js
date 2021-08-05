@@ -157,7 +157,7 @@ const FilesUploader = (props) => {
     }
     updateFileList(arr);
   };
-  // console.log(date);
+
   return (
     <div
       className="forminput"
@@ -202,7 +202,7 @@ const FilesUploader = (props) => {
   );
 };
 
-const InternshipForm = () => {
+const InternshipForm = (props) => {
   let [fileList, updateFileList] = useState([]);
   let [internshipRole, setInternshipRole] = useState("");
   let [company, setCompany] = useState("");
@@ -213,7 +213,8 @@ const InternshipForm = () => {
   let [duration, setDuration] = useState("");
   let history = useHistory();
   const [btn_disable, setbtn_disable] = useState(false);
-  let [isLoading, setIsLoading] = useState(true);
+  let [isLoading, setIsLoading] = useState(false);
+
   const lengthValidation = (strng, maxlen) => {
     if (strng.length > maxlen) return false;
     return true;
@@ -255,7 +256,58 @@ const InternshipForm = () => {
     maxLen2,
     duration,
   ]);
-  console.log(fileList);
+  useEffect(() => {
+    // setIsLoading(false);
+    // console.log(props.location.postid.id);
+    if (props.location.postid !== undefined) {
+      axios
+        .post(
+          "http://localhost:4444/internships/edit",
+          {
+            postid: props.location.postid || null,
+          },
+          {
+            withCredentials: true,
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Credentials": true,
+            },
+          }
+        )
+        .then((res) => {
+          if (res.data !== "notloggedin") {
+            Auth.login();
+            console.log(res.data);
+            if (res.data != null) {
+              setInternshipRole(res.data.Role);
+              setCompany(res.data.Company);
+              setDuration(res.data.Duration);
+              setDescription(res.data.Description);
+              const tagarray = [];
+              for (let i = 0; i < res.data.Branches.length; i++) {
+                const obj = {
+                  label: res.data.Branches[i],
+                  value: res.data.Branches[i],
+                };
+                tagarray.push(obj);
+              }
+              setSelected(tagarray);
+              setStipend(res.data.Stipend);
+              setDate(res.data.Deadline.slice(0, 16));
+              setIsLoading(true);
+            }
+          }
+        });
+    } else {
+      alert(
+        "you will be redirected to My Posts and the form will not be submitted"
+      );
+      history.push("/myposts");
+    }
+    // eslint-disable-next-line
+  }, []);
+
   const onSubmitHandler = async (e) => {
     setbtn_disable(true);
     setIsLoading(false);
@@ -267,6 +319,7 @@ const InternshipForm = () => {
       branchesSelected.push(selected[i].value);
     }
     let data = new FormData();
+    data.append("postid", props.location.postid.id);
     data.append("role", internshipRole);
     data.append("company", company);
     data.append("duration", duration);
@@ -276,7 +329,7 @@ const InternshipForm = () => {
     data.append("description", description);
     for (let i = 0; i < fileList.length; i++) data.append("files", fileList[i]);
     axios
-      .post("http://localhost:4444/internships/submit", data, {
+      .post("http://localhost:4444/internships/edit/submit", data, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

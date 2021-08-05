@@ -78,7 +78,7 @@ const Myposticard = (props) => {
       >
         <Link
           to={{
-            pathname: "/internship/form",
+            pathname: "/internships/edit",
             postid: { id: post, PostTitle: props.title },
           }}
           className="btn"

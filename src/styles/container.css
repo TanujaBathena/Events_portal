@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital@1&family=Roboto:wght@300;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Andada+Pro:ital@1&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital@1&family=Roboto:wght@300;700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Andada+Pro:ital@1&display=swap'); */
 .heading1{
     margin-top: 8vh;
   width: 100%;
@@ -27,14 +27,14 @@
 .teamup{
     font-size:55px;
     color:black;
-    font-family: 'Mulish', sans-serif;
-font-family: 'Roboto', sans-serif;
+    /* font-family: 'Mulish', sans-serif;
+font-family: 'Roboto', sans-serif; */
 
 }
 .content{
     font-size: large;
-  font-family: 'Mulish', sans-serif;
-font-family: 'Roboto', sans-serif;
+  /* font-family: 'Mulish', sans-serif;
+font-family: 'Roboto', sans-serif; */
 }
 
 @media only screen and (max-width: 768px) {

@@ -110,6 +110,9 @@ const Internshipread = (props) => {
   else {
     return (
       <div className="containerr">
+        <h1 style={{ margin: "auto" }}>
+          <b>Internship at {company}</b>
+        </h1>
         <div className="contentr">
           <p className="heading">Posted By</p>
           <p className="matter">{name}</p>
@@ -140,7 +143,11 @@ const Internshipread = (props) => {
         </div>
         <div className="contentr">
           <p className="heading">Branches</p>
-          <p className="matter">{branches}</p>
+          <p className="matter">
+            {branches.map((branch) => {
+              return <span>{branch} </span>;
+            })}
+          </p>
         </div>
         {/* <div className="contentr">
           <p className="heading">Files</p>

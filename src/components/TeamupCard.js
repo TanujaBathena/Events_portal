@@ -17,7 +17,9 @@ const TeamupCard = (props) => {
           justifyContent: "flex-start",
         }}
       >
-        <h4 style={{ color: "black" }}>{props.title}</h4>
+        <h4 style={{ color: "black" }}>
+          <b>{props.title}</b>
+        </h4>
       </div>
 
       <div className="card_tags" style={{ marginLeft: "3%" }}>

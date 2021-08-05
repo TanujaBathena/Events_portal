@@ -19,6 +19,8 @@ import Protectedroutes from "./components/protectedroutes"; //a component which 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"; //used for routing
 import Teamupformedit from "./components/Teamupformedit";
 import Internshipread from "./components/Internshipread";
+import Internshipedit from "./components/InternshipEdit";
+
 function App() {
   return (
     <Router>
@@ -30,6 +32,11 @@ function App() {
           <Protectedroutes path="/Events" exact component={Events} />
           <Protectedroutes path="/Challenges" exact component={Challenges} />
           <Protectedroutes path="/Internships" exact component={Internships} />
+          <Protectedroutes
+            path="/Internships/edit"
+            exact
+            component={Internshipedit}
+          />
           <Protectedroutes
             path="/Internships/form"
             exact

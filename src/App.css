@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=B612&family=Lato:ital,wght@1,100&family=Mulish:wght@200;400&display=swap');
 *{
   margin: 0px;
   padding:0px;
+  font-family: 'B612', sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Mulish', sans-serif;
 }
 body{
   margin: 0%;

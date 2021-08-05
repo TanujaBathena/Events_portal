@@ -88,7 +88,9 @@ const Modal = (props) => {
     <div style={overlay}>
       <div className="modal">
         <div style={header}>
-          <div style={{ marginLeft: "3%" }}>{props.title}</div>
+          <div style={{ marginLeft: "3%" }}>
+            <b>{props.title}</b>
+          </div>
 
           <FontAwesomeIcon
             icon={faWindowClose}

@@ -22,6 +22,7 @@ button:disabled {
 }
 h4{
   color: grey;
+  font-weight: 100;
 }
 @media only screen and (max-width: 800px) {
   .modal {

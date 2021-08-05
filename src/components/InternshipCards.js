@@ -16,7 +16,9 @@ const InternshipCards = (props) => {
           <FontAwesomeIcon icon={faStar} size="1x" />
         </div>
       </div>
-      <div className="card_title">Internship at {props.company}</div>
+      <div className="card_title">
+        <b>Internship at {props.company}</b>
+      </div>
       <div className="card_tags">
         <span className="label success">Success</span>
         <span className="label info">Info</span>
@@ -67,14 +69,24 @@ const InternshipCards = (props) => {
         </div>
       </div>
 
-      <Link to={`/internships/${props.ID}`}>
-        <div className="readmore">
-          <button className="btn" type="submit">
+      <div className="card_footer">
+        <Link
+          to={`/internships/${props.ID}`}
+          style={{
+            marginLeft: "auto",
+            marginTop: "auto",
+          }}
+        >
+          {/* <div className="readmore"> */}
+          <button
+            className="btn"
+            type="submit"
+            style={{ width: "max-content" }}
+          >
             Read More
           </button>
-        </div>
-      </Link>
-      <div className="card_footer">
+          {/* </div> */}
+        </Link>
         <div className="deadline">DeadLine:{props.deadline}</div>
       </div>
     </div>

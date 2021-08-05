@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=B612&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=B612&display=swap'); */
 .containerr{
     display: flex;
     flex-direction: column;
@@ -21,12 +21,12 @@
     font-size: large;
     font-weight: 600;
     color:grey;
-    font-family: 'B612', sans-serif;
+    /* font-family: 'B612', sans-serif; */
 }
 .matter{
     font-size: medium;
-    font-weight: 200;
-    font-family: 'B612', sans-serif;
+    font-weight: 400;
+    /* font-family: 'B612', sans-serif; */
 }
 .containerr:hover {
   box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
