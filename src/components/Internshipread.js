@@ -33,7 +33,7 @@ const Internshipread = (props) => {
   const [id, setId] = useState("");
   //eslint-disable-next-line
   const [userid, setUserId] = useState("");
-
+  const [error, setError] = useState(false);
   useEffect(() => {
     const datatobesent = {
       postid: props.match.params.id,
@@ -48,7 +48,14 @@ const Internshipread = (props) => {
         },
       })
       .then((res) => {
-        if (res.data !== "notloggedin") {
+        if (res.data === "post deleted") {
+          Auth.login();
+          console.log(res.data);
+          // result = { result: res.data };
+          // result = res.data;
+          setError(true);
+          setIsLoading(false);
+        } else if (res.data !== "notloggedin") {
           Auth.login();
           console.log(res.data);
           // result = { result: res.data };
@@ -108,69 +115,77 @@ const Internshipread = (props) => {
 
   if (isLoading) return <Loader />;
   else {
-    return (
-      <div className="containerr">
-        <h1 style={{ margin: "auto" }}>
-          <b>Internship at {company}</b>
-        </h1>
-        <div className="contentr">
-          <p className="heading">Posted By</p>
-          <p className="matter">{name}</p>
-        </div>
-        <div className="contentr">
-          <p className="heading">Role</p>
-          <p className="matter">{role}</p>
-        </div>
-        <div className="contentr">
-          <p className="heading">Company</p>
-          <p className="matter">{company}</p>
-        </div>
-        <div className="contentr">
-          <p className="heading">Duration</p>
-          <p className="matter">{duration}</p>
-        </div>
-        <div className="contentr">
-          <p className="heading">Stipend</p>
-          <p className="matter">{stipend}</p>
-        </div>
-        <div className="contentr">
-          <p className="heading">Description</p>
-          <p className="matter">{description}</p>
-        </div>
-        <div className="contentr">
-          <p className="heading">Deadline</p>
-          <p className="matter">{deadline}</p>
-        </div>
-        <div className="contentr">
-          <p className="heading">Branches</p>
-          <p className="matter">
-            {branches.map((branch) => {
-              return <span>{branch} </span>;
-            })}
-          </p>
-        </div>
-        {/* <div className="contentr">
+    if (!error) {
+      return (
+        <div className="containerr">
+          <h1 style={{ margin: "auto" }}>
+            <b>Internship at {company}</b>
+          </h1>
+          <div className="contentr">
+            <p className="heading">Posted By</p>
+            <p className="matter">{name}</p>
+          </div>
+          <div className="contentr">
+            <p className="heading">Role</p>
+            <p className="matter">{role}</p>
+          </div>
+          <div className="contentr">
+            <p className="heading">Company</p>
+            <p className="matter">{company}</p>
+          </div>
+          <div className="contentr">
+            <p className="heading">Duration</p>
+            <p className="matter">{duration}</p>
+          </div>
+          <div className="contentr">
+            <p className="heading">Stipend</p>
+            <p className="matter">{stipend}</p>
+          </div>
+          <div className="contentr">
+            <p className="heading">Description</p>
+            <p className="matter">{description}</p>
+          </div>
+          <div className="contentr">
+            <p className="heading">Deadline</p>
+            <p className="matter">{deadline}</p>
+          </div>
+          <div className="contentr">
+            <p className="heading">Branches</p>
+            <p className="matter">
+              {branches.map((branch) => {
+                return <span key={branch}>{branch} </span>;
+              })}
+            </p>
+          </div>
+          {/* <div className="contentr">
           <p className="heading">Files</p>
           <p className="matter">{files}</p>
         </div> */}
-        <div className="contentr">
-          <p className="heading">Files</p>
-          <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
-            {files.map((File) => (
-              <p
-                className="filel"
-                key={File._id}
-                onClick={() => {
-                  openfile(File.data, File.contentType);
-                }}
-              >
-                {File.fileName}
-              </p>
-            ))}
+          <div className="contentr">
+            <p className="heading">Files</p>
+            <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
+              {files.map((File) => (
+                <p
+                  className="filel"
+                  key={File._id}
+                  onClick={() => {
+                    openfile(File.data, File.contentType);
+                  }}
+                >
+                  {File.fileName}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <h1 style={{ marginLeft: "30%", marginTop: "40vh" }}>
+          Post you are trying to read is deleted
+        </h1>
+      );
+    }
   }
 };
 

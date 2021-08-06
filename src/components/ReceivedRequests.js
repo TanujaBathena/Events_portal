@@ -23,49 +23,56 @@ const ReceivedRequests = () => {
           setCards(res.data);
           setIsLoading(true);
           console.log(res.data);
+        } else {
+          window.location.reload();
         }
       });
   }, []);
   if (isLoading) {
     return (
       <div className="container">
-            <div className="heading1">
-              <p className="teamup">Received Requests</p>
-              <p className="content">You can find the users who are interested in your posts. </p>
-          </div>
+        <div className="heading1">
+          <p className="teamup">Received Requests</p>
+          <p className="content">
+            You can find the users who are interested in your posts.{" "}
+          </p>
+        </div>
         {cards.map((card) => {
-          if(card.post!==null){
-            return(<ReceivedRequestsCards
-            key={card._id}
-            ID={card._id}
-            title={card.post.Requirements}
-            name={card.name}
-            skills={card.post.Skill}
-            postdescription={card.post.Description}
-            status={card.status}
-            description={card.Description}
-            requesteduserid={card.requestedUser_id}
-            post_mong_id={card.post._id}
-            mydescription={card.MyDescription}
-            deleted={false}
-          />)
-          }else{
-            return(<ReceivedRequestsCards
-              key={card._id}
-              ID={card._id}
-              title={card.PostTitle}
-              name={card.name}
-              skills={"post is deleted"}
-              postdescription={"this post is deleted"}
-              status={card.status}
-              description={card.Description}
-              requesteduserid={card.requestedUser_id}
-              post_mong_id={card.Post_id}
-              mydescription={card.MyDescription}
-              deleted={true}
-            />)
+          if (card.post !== null) {
+            return (
+              <ReceivedRequestsCards
+                key={card._id}
+                ID={card._id}
+                title={card.post.Requirements}
+                name={card.name}
+                skills={card.post.Skill}
+                postdescription={card.post.Description}
+                status={card.status}
+                description={card.Description}
+                requesteduserid={card.requestedUser_id}
+                post_mong_id={card.post._id}
+                mydescription={card.MyDescription}
+                deleted={false}
+              />
+            );
+          } else {
+            return (
+              <ReceivedRequestsCards
+                key={card._id}
+                ID={card._id}
+                title={card.PostTitle}
+                name={card.name}
+                skills={"post is deleted"}
+                postdescription={"this post is deleted"}
+                status={card.status}
+                description={card.Description}
+                requesteduserid={card.requestedUser_id}
+                post_mong_id={card.Post_id}
+                mydescription={card.MyDescription}
+                deleted={true}
+              />
+            );
           }
-
         })}
       </div>
     );

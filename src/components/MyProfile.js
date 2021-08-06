@@ -28,6 +28,8 @@ const MyProfile = () => {
           setuser_profile(res.data.user_profile);
           setYear(res.data.year);
           setIsLoading(true);
+        } else {
+          window.location.reload();
         }
       });
   }, []);

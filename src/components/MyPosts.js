@@ -26,6 +26,8 @@ const MyPosts = (props) => {
           setCards(res.data);
           setIsLoading(true);
           console.log(res.data);
+        } else {
+          window.location.reload();
         }
       });
   }, [deleted]);

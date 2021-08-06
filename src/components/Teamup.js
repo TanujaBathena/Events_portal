@@ -27,6 +27,8 @@ const Teamup = () => {
           Auth.login();
           setCards(res.data);
           setIsLoading(true);
+        } else {
+          window.location.reload();
         }
       });
   }, []);

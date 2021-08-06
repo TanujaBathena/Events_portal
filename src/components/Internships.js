@@ -28,6 +28,8 @@ const Internships = () => {
           console.log(res.data);
           setCards(res.data);
           setIsLoading(true);
+        } else {
+          window.location.reload();
         }
       });
   }, []);
@@ -53,7 +55,7 @@ const Internships = () => {
           <InternshipCards
             key={card._id}
             ID={card._id}
-            name={cards.Name}
+            name={card.Name}
             user_id={card.User_Id}
             company={card.Company}
             role={card.Role}
@@ -63,6 +65,7 @@ const Internships = () => {
             description={card.Description}
             branches={card.Branches}
             files={card.Files}
+            starred={card.Starred}
           />
         ))}
       </div>
