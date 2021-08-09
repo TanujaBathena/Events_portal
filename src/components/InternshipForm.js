@@ -255,7 +255,7 @@ const InternshipForm = () => {
     maxLen2,
     duration,
   ]);
-  console.log(fileList);
+  console.log(date);
   const onSubmitHandler = async (e) => {
     setbtn_disable(true);
     setIsLoading(false);
@@ -381,7 +381,7 @@ const InternshipForm = () => {
 
           <div className="forminput">
             <label htmlFor="deadline">
-              Deadline <span style={{ color: "red" }}>*</span>{" "}
+              Deadline(IST) <span style={{ color: "red" }}>*</span>{" "}
             </label>
             <input
               className="input"

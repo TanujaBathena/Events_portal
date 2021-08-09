@@ -12,6 +12,9 @@ const InternshipCards = (props) => {
   // console.log(props);
   const [disabled, setdisable] = useState(false);
   const [starloading, setStarloading] = useState(false);
+  let deadline = new Date(props.deadline).toLocaleString("en-US", {
+    timeZone: "Asia/Kolkata",
+  });
   const handlestarred = (e, state) => {
     setdisable(true);
     setStarloading(true);
@@ -60,13 +63,37 @@ const InternshipCards = (props) => {
         });
     }
   };
+
+  const newpage = () => {
+    let text_field = "Internship at " + props.company;
+    let date = props.deadline.replaceAll("-", "");
+    date = date.replaceAll(":", "");
+    date = date.replaceAll(".", "");
+    date = date + "/" + date;
+    console.log(date);
+    let url = `https://calendar.google.com/calendar/u/0/r/eventedit?text=${encodeURIComponent(
+      text_field
+    )}&dates=${encodeURIComponent(date)}`;
+    window.open(url);
+  };
+  console.log(props.deadline);
+
   const [starred, setIsstarred] = useState(props.starred);
   return (
     <div className="card">
       <div className="card_header">
-        <div className="calender">
-          <FontAwesomeIcon icon={faCalendarWeek} size="2x" />
-        </div>
+        <button
+          onClick={() => newpage()}
+          style={{
+            border: "0px",
+            marginLeft: "3%",
+            backgroundColor: "rgba(0,0,0,0)",
+          }}
+        >
+          <div className="calender">
+            <FontAwesomeIcon icon={faCalendarWeek} size="2x" />
+          </div>
+        </button>
 
         {!starloading && (
           <button
@@ -170,7 +197,8 @@ const InternshipCards = (props) => {
           {/* </div> */}
         </Link>
         <div className="deadline">
-          DeadLine:{props.deadline.slice(0, 16).replace("T", "\t ,\t")}
+          {/* DeadLine:{props.deadline.slice(0, 16).replace("T", "\t ,\t")} */}
+          DeadLine:{deadline}
         </div>
       </div>
     </div>

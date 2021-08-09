@@ -55,7 +55,16 @@ const Internshipread = (props) => {
           // result = res.data;
           setError(true);
           setIsLoading(false);
-        } else if (res.data !== "notloggedin") {
+        }
+        else if (res.data === 404) {
+            Auth.login();
+            console.log(res.data);
+            // result = { result: res.data };
+            // result = res.data;
+            setError(true);
+            setIsLoading(false);
+          }
+        else if (res.data !== "notloggedin") {
           Auth.login();
           console.log(res.data);
           // result = { result: res.data };

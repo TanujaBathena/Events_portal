@@ -7,8 +7,8 @@ const ReceivedRequestsCards = (props) => {
   return (
     <div className="card" style={{ height: "150px" }}>
       <div className="card_title" v style={{ border: "0px" }}>
-        {props.name} is interested to team up with you in your post named{" "}
-        {props.title}
+       <h4><b>{props.name}</b></h4>  <h5>is interested to team up with you in your post named{" "}
+        <b>{props.title}</b></h5>
       </div>
 
       <div
