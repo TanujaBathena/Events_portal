@@ -50,7 +50,7 @@ const MyRequestCards = (props) => {
         deleted: props.deleted,
       };
       axios
-        .post("http://localhost:4444/Profile/myrequests/delete", datatobesent, {
+        .post("http://b463a02abd34.ngrok.io/Profile/myrequests/delete", datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -79,7 +79,7 @@ const MyRequestCards = (props) => {
       console.log("deleting");
       axios
         .post(
-          "http://localhost:4444/Profile/myrequests/cancelrequest",
+          "http://b463a02abd34.ngrok.io/Profile/myrequests/cancelrequest",
           datatobesent,
           {
             withCredentials: true,

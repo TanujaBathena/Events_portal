@@ -280,7 +280,7 @@ const InternshipForm = () => {
     data.append("description", description);
     for (let i = 0; i < fileList.length; i++) data.append("files", fileList[i]);
     axios
-      .post("http://localhost:4444/internships/submit", data, {
+      .post("http://b463a02abd34.ngrok.io/internships/submit", data, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

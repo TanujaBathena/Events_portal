@@ -23,7 +23,7 @@ const InternshipCards = (props) => {
     };
     if (state) {
       axios
-        .post("http://localhost:4444/starred/intern/tounstar", datatobesent, {
+        .post("http://b463a02abd34.ngrok.io/starred/intern/tounstar", datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -43,7 +43,7 @@ const InternshipCards = (props) => {
         });
     } else {
       axios
-        .post("http://localhost:4444/starred/intern/tostar", datatobesent, {
+        .post("http://b463a02abd34.ngrok.io/starred/intern/tostar", datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",

@@ -22,7 +22,7 @@ const Myposticard = (props) => {
       };
       console.log("deleting");
       axios
-        .post("http://localhost:4444/internships/delete", datatobesent, {
+        .post("http://b463a02abd34.ngrok.io/internships/delete", datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",

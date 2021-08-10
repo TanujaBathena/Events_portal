@@ -9,7 +9,7 @@ const ReceivedRequests = () => {
   useEffect(() => {
     setIsLoading(false);
     axios
-      .get("http://localhost:4444/Profile/receivedrequests", {
+      .get("http://b463a02abd34.ngrok.io/Profile/receivedrequests", {
         withCredentials: true,
         headers: {
           Accept: "application/json",

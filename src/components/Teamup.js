@@ -14,7 +14,7 @@ const Teamup = () => {
   useEffect(() => {
     setIsLoading(false);
     axios
-      .get("http://localhost:4444/teamup", {
+      .get("http://b463a02abd34.ngrok.io/teamup", {
         withCredentials: true,
         headers: {
           Accept: "application/json",

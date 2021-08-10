@@ -11,7 +11,7 @@ const Home = () => {
     console.log("In home page");
     setIsLoading(true);
     axios
-      .get("http://localhost:4444/home", {
+      .get("http://b463a02abd34.ngrok.io/home", {
         withCredentials: true,
         headers: {
           Accept: "application/json",

@@ -50,7 +50,7 @@ const ModalReceived = (props) => {
       if (description != null) {
         axios
           .post(
-            "http://localhost:4444/Profile/acceptrequest",
+            "http://b463a02abd34.ngrok.io/Profile/acceptrequest",
             {
               post_mong_id: props.post_mong_id,
               AlertDescription: description,
@@ -79,7 +79,7 @@ const ModalReceived = (props) => {
       console.log("inside reject requests");
       axios
         .post(
-          "http://localhost:4444/Profile/rejectedrequest",
+          "http://b463a02abd34.ngrok.io/Profile/rejectedrequest",
           {
             post_mong_id: props.post_mong_id,
             status: status,
@@ -105,7 +105,7 @@ const ModalReceived = (props) => {
       if (deleted === true) {
         axios
           .post(
-            "http://localhost:4444/Profile/deleteacceptedrequest",
+            "http://b463a02abd34.ngrok.io/Profile/deleteacceptedrequest",
             {
               post_mong_id: props.ID,
               status: status,
@@ -130,7 +130,7 @@ const ModalReceived = (props) => {
       } else {
         axios
           .post(
-            "http://localhost:4444/Profile/deleteacceptedrequest",
+            "http://b463a02abd34.ngrok.io/Profile/deleteacceptedrequest",
             {
               post_mong_id: props.post_mong_id,
               status: status,

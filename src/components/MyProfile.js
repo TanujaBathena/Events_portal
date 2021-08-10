@@ -12,7 +12,7 @@ const MyProfile = () => {
   useEffect(() => {
     setIsLoading(false);
     axios
-      .get("http://localhost:4444/Profile/", {
+      .get("http://b463a02abd34.ngrok.io/Profile/", {
         withCredentials: true,
         headers: {
           Accept: "application/json",

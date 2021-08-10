@@ -14,7 +14,7 @@ const Internships = () => {
   useEffect(() => {
     setIsLoading(false);
     axios
-      .get("http://localhost:4444/internships", {
+      .get("http://b463a02abd34.ngrok.io/internships", {
         withCredentials: true,
         headers: {
           Accept: "application/json",
