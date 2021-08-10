@@ -27,6 +27,7 @@ const Teamup = () => {
           Auth.login();
           setCards(res.data);
           setIsLoading(true);
+          console.log(res.data);
         } else {
           window.location.reload();
         }
@@ -61,6 +62,7 @@ const Teamup = () => {
               title={card.Requirements}
               name={card.Name}
               skills={card.Skill}
+              tag={card.Tag}
               description={card.Description}
             />
           ))}

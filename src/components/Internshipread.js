@@ -3,6 +3,7 @@ import "../styles/readmore.css";
 import axios from "axios";
 import Auth from "./auth";
 import Loader from "./Loader";
+import Notfound from "./Notfound";
 
 const Internshipread = (props) => {
   // let [result, setResult] = useState({
@@ -34,6 +35,7 @@ const Internshipread = (props) => {
   //eslint-disable-next-line
   const [userid, setUserId] = useState("");
   const [error, setError] = useState(false);
+  const [notfound, setnotfound] = useState(false);
   useEffect(() => {
     const datatobesent = {
       postid: props.match.params.id,
@@ -48,6 +50,7 @@ const Internshipread = (props) => {
         },
       })
       .then((res) => {
+        console.log(res);
         if (res.data === "post deleted") {
           Auth.login();
           console.log(res.data);
@@ -55,16 +58,7 @@ const Internshipread = (props) => {
           // result = res.data;
           setError(true);
           setIsLoading(false);
-        }
-        else if (res.data === 404) {
-            Auth.login();
-            console.log(res.data);
-            // result = { result: res.data };
-            // result = res.data;
-            setError(true);
-            setIsLoading(false);
-          }
-        else if (res.data !== "notloggedin") {
+        } else if (res.data !== "notloggedin") {
           Auth.login();
           console.log(res.data);
           // result = { result: res.data };
@@ -82,6 +76,13 @@ const Internshipread = (props) => {
           setUserId(res.data.User_Id);
           setIsLoading(false);
         }
+      })
+      .catch((res) => {
+        Auth.login();
+        console.log(res);
+        setnotfound(true);
+        setError(true);
+        setIsLoading(false);
       });
     //eslint-disable-next-line
   }, []);
@@ -189,6 +190,7 @@ const Internshipread = (props) => {
         </div>
       );
     } else {
+      if (notfound) return <Notfound />;
       return (
         <h1 style={{ marginLeft: "30%", marginTop: "40vh" }}>
           Post you are trying to read is deleted

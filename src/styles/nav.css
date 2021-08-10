@@ -166,7 +166,7 @@ ul li:hover {
     top: 8vh;
     flex-direction: column;
     justify-content: flex-start;
-    width: 80%;
+    width: 50%;
     background-color: rgb(27, 160, 152,0.9);
     gap: 5%;
     

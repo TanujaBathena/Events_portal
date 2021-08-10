@@ -22,6 +22,7 @@ const Home = () => {
       .then((res) => {
         if (res.data !== "notloggedin") {
           Auth.login();
+          //   console.log(res.data);
           setCards(res.data);
           setIsLoading(false);
         } else {
