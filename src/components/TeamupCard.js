@@ -4,6 +4,7 @@ import Modal from "./Modal";
 
 const TeamupCard = (props) => {
   const [open, setOpen] = useState(false);
+  const array = ["success", "info", "warning", "danger"];
   return (
     <div className="card" style={{ height: "250px" }}>
       <div
@@ -23,11 +24,16 @@ const TeamupCard = (props) => {
       </div>
 
       <div className="card_tags" style={{ marginLeft: "3%" }}>
-        <span className="label success">Success</span>
+        {props.tag.map((tag, index) => (
+          <span key={tag} className={`label ${array[index % 4]}`}>
+            {tag}
+          </span>
+        ))}
+        {/* <span className="label success">Success</span>
         <span className="label info">Info</span>
         <span className="label warning">Warning</span>
         <span className="label danger">Danger</span>
-        <span className="label other">Other</span>
+        <span className="label other">Other</span> */}
       </div>
 
       <p

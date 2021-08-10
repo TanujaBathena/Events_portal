@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import "../styles/card.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarWeek } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -36,7 +36,7 @@ const InternshipCards = (props) => {
             Auth.login();
             console.log(res.data);
             setIsstarred(!state);
-            e.target.style.color = "grey";
+            e.target.style.color = "red";
             setdisable(false);
             setStarloading(false);
           }
@@ -91,7 +91,7 @@ const InternshipCards = (props) => {
           }}
         >
           <div className="calender">
-            <FontAwesomeIcon icon={faCalendarWeek} size="2x" />
+            <FontAwesomeIcon icon={faCalendarPlus} size="2x" />
           </div>
         </button>
 
@@ -128,13 +128,7 @@ const InternshipCards = (props) => {
       <div className="card_title">
         <b>Internship at {props.company}</b>
       </div>
-      <div className="card_tags">
-        <span className="label success">Success</span>
-        <span className="label info">Info</span>
-        <span className="label warning">Warning</span>
-        <span className="label danger">Danger</span>
-        <span className="label other">Other</span>
-      </div>
+
       <div
         className="card_description"
         style={{
@@ -206,3 +200,11 @@ const InternshipCards = (props) => {
 };
 
 export default InternshipCards;
+
+// <div className="card_tags">
+//   <span className="label success">Success</span>
+//   <span className="label info">Info</span>
+//   <span className="label warning">Warning</span>
+//   <span className="label danger">Danger</span>
+//   <span className="label other">Other</span>
+// </div>

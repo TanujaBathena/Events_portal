@@ -255,8 +255,12 @@ const InternshipForm = () => {
     maxLen2,
     duration,
   ]);
-  console.log(date);
+  console.log("input date", Date.parse(date), typeof Date.parse(date));
+  console.log("present data time", new Date(), typeof Date());
   const onSubmitHandler = async (e) => {
+    if (Date.parse(date).getDate() < new Date().getDate())
+      alert("The Deadline is incorrect");
+
     setbtn_disable(true);
     setIsLoading(false);
     e.preventDefault();

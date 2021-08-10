@@ -58,7 +58,7 @@ function App() {
           />
           <Protectedroutes path="/logout" exact component={logout} />
           <Protectedroutes
-            path="/teamupformedit"
+            path="/teamupformedit/:id"
             exact
             component={Teamupformedit}
           />

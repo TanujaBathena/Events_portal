@@ -3,7 +3,9 @@ import axios from "axios";
 import Auth from "./auth";
 import { Link } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-regular-svg-icons";
+import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 const Myposticard = (props) => {
   // const [deleted,setdeleted]= useState(false);
   let post = props.id;
@@ -88,20 +90,23 @@ const Myposticard = (props) => {
               backgroundColor: "rgba(0,0,0,0)",
               border: "0px",
               color: "white",
+              gap: "5px",
+              display: "flex",
             }}
             type="submit"
           >
-            <i className="far fa-edit fa-1x">Edit</i>
+            <FontAwesomeIcon icon={faEdit} size="1x" />
+            Edit
           </button>
         </Link>
-        <button className="btn" type="submit">
-          <i
-            className="fas fa-trash-alt fa-1x"
-            style={{ fontWeight: "normal", letterSpacing: "1.5px" }}
-            onClick={() => handleDelete()}
-          >
-            Delete
-          </i>
+        <button
+          className="btn"
+          type="submit"
+          onClick={() => handleDelete()}
+          style={{ display: "flex", width: "max-content", gap: "5px" }}
+        >
+          <FontAwesomeIcon icon={faTrashAlt} size="1x" />
+          <p>Delete</p>
         </button>
       </div>
     </div>

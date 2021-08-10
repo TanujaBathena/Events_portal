@@ -4,6 +4,7 @@ import axios from "axios";
 import Auth from "./auth";
 import Loader from "./Loader";
 import Myposticard from "./MypostInternshipcard";
+
 const MyPosts = (props) => {
   const [cards, setCards] = useState([]);
   const [deleted, setdeleted] = useState(false);

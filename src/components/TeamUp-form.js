@@ -13,6 +13,7 @@ const Dropdown = (props) => {
   let settag = props.func;
   const options = [
     { value: "Web", label: "Web" },
+    { value: "InfoSec", label: "InfoSec" },
     { value: "Android", label: "Android" },
     { value: "ML", label: "ML" },
     { value: "AI", label: "AI" },
