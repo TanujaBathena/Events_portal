@@ -50,14 +50,18 @@ const MyRequestCards = (props) => {
         deleted: props.deleted,
       };
       axios
-        .post("http://b463a02abd34.ngrok.io/Profile/myrequests/delete", datatobesent, {
-          withCredentials: true,
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Credentials": true,
-          },
-        })
+        .post(
+          "https://b463a02abd34.ngrok.io/Profile/myrequests/delete",
+          datatobesent,
+          {
+            withCredentials: true,
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Credentials": true,
+            },
+          }
+        )
         .then((res) => {
           if (res.data !== "notloggedin") {
             Auth.login();
@@ -79,7 +83,7 @@ const MyRequestCards = (props) => {
       console.log("deleting");
       axios
         .post(
-          "http://b463a02abd34.ngrok.io/Profile/myrequests/cancelrequest",
+          "https://b463a02abd34.ngrok.io/Profile/myrequests/cancelrequest",
           datatobesent,
           {
             withCredentials: true,

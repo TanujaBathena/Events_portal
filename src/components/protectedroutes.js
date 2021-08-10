@@ -11,7 +11,7 @@ const Protectedroutes = ({ component: Component, ...rest }) => {
   useEffect(() => {
     setloading(false); //while calling api setting loading state to false.
     axios
-      .get("http://b463a02abd34.ngrok.io/checkauth", {
+      .get("https://b463a02abd34.ngrok.io/checkauth", {
         withCredentials: true,
         headers: {
           Accept: "application/json",

@@ -23,7 +23,7 @@ const MyPostCards = (props) => {
       console.log("deleting");
       axios
         .post(
-          "http://b463a02abd34.ngrok.io/Profile/myposts/delete",
+          "https://b463a02abd34.ngrok.io/Profile/myposts/delete",
           datatobesent,
           {
             withCredentials: true,

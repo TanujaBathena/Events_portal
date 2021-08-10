@@ -262,7 +262,7 @@ const InternshipForm = (props) => {
     if (props.location.postid !== undefined) {
       axios
         .post(
-          "http://b463a02abd34.ngrok.io/internships/edit",
+          "https://b463a02abd34.ngrok.io/internships/edit",
           {
             postid: props.location.postid || null,
           },
@@ -358,7 +358,7 @@ const InternshipForm = (props) => {
     data.append("description", description);
     for (let i = 0; i < fileList.length; i++) data.append("files", fileList[i]);
     axios
-      .post("http://b463a02abd34.ngrok.io/internships/edit/submit", data, {
+      .post("https://b463a02abd34.ngrok.io/internships/edit/submit", data, {
         withCredentials: true,
         headers: {
           Accept: "application/json",
