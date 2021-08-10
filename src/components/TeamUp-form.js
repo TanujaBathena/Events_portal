@@ -64,7 +64,7 @@ const Teamup_form = () => {
   const HandleInputs = async (event) => {
     setbtn_disable(true);
     event.preventDefault();
-    let url = "https://b463a02abd34.ngrok.io/teamup/submit";
+    let url = "http://localhost:4444/teamup/submit";
     if (Tag.length === 0) {
       alert("Tag field should not be empty");
     } else {

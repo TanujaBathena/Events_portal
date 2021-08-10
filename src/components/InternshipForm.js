@@ -258,9 +258,7 @@ const InternshipForm = () => {
   console.log("input date", Date.parse(date), typeof Date.parse(date));
   console.log("present data time", new Date(), typeof Date());
   const onSubmitHandler = async (e) => {
-    if (Date.parse(date).getDate() < new Date().getDate())
-      alert("The Deadline is incorrect");
-
+    console.log("inside sumbit");
     setbtn_disable(true);
     setIsLoading(false);
     e.preventDefault();
@@ -280,7 +278,7 @@ const InternshipForm = () => {
     data.append("description", description);
     for (let i = 0; i < fileList.length; i++) data.append("files", fileList[i]);
     axios
-      .post("https://b463a02abd34.ngrok.io/internships/submit", data, {
+      .post("http://localhost:4444/internships/submit", data, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

@@ -13,7 +13,7 @@ const MyPosts = (props) => {
     console.log("inside mypost use effect", deleted);
     setIsLoading(false);
     axios
-      .get("https://b463a02abd34.ngrok.io/Profile/myposts", {
+      .get("http://localhost:4444/Profile/myposts", {
         withCredentials: true,
         headers: {
           Accept: "application/json",

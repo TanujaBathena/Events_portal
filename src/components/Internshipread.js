@@ -41,7 +41,7 @@ const Internshipread = (props) => {
       postid: props.match.params.id,
     };
     axios
-      .post("https://b463a02abd34.ngrok.io/internships/readmore", datatobesent, {
+      .post("http://localhost:4444/internships/readmore", datatobesent, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

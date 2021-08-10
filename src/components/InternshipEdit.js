@@ -262,7 +262,7 @@ const InternshipForm = (props) => {
     if (props.location.postid !== undefined) {
       axios
         .post(
-          "https://b463a02abd34.ngrok.io/internships/edit",
+          "http://localhost:4444/internships/edit",
           {
             postid: props.location.postid || null,
           },
@@ -295,35 +295,35 @@ const InternshipForm = (props) => {
               setSelected(tagarray);
               setStipend(res.data.Stipend);
               let d = new Date(res.data.Deadline).toLocaleString("en-US", {
-                timeZone: "Asia/Kolkata", hour12: false ,
+                timeZone: "Asia/Kolkata",
+                hour12: false,
               });
               console.log(d);
-              let date=""
-              let month=""
-              let year=""
-              let time=""
-              for(let i=0;i<d.length;i++){
-                  if (d[i]==='/'){
-                    break;
-                  }
-                  date+=d[i];
-              }
-              for(let i=date.length+1;i<d.length;i++){
-                if (d[i]==='/'){
-                  year=d.slice(i+1,i+1+4);
-                  time = d.slice(i+7,i+12);
+              let date = "";
+              let month = "";
+              let year = "";
+              let time = "";
+              for (let i = 0; i < d.length; i++) {
+                if (d[i] === "/") {
                   break;
-               
                 }
-                month+=d[i];
-            }
-            console.log(date,month,year,time);
-            if (month.length===1) month="0"+month
-            if (date.length===1) date="0"+date
-            //yyyy-mm-ddThh:mm
-            //   setDate(res.data.Deadline.slice(0,16));
-            console.log(year+"-"+date+"-"+month+"T"+time);
-            setDate(year+"-"+date+"-"+month+"T"+time)
+                date += d[i];
+              }
+              for (let i = date.length + 1; i < d.length; i++) {
+                if (d[i] === "/") {
+                  year = d.slice(i + 1, i + 1 + 4);
+                  time = d.slice(i + 7, i + 12);
+                  break;
+                }
+                month += d[i];
+              }
+              console.log(date, month, year, time);
+              if (month.length === 1) month = "0" + month;
+              if (date.length === 1) date = "0" + date;
+              //yyyy-mm-ddThh:mm
+              //   setDate(res.data.Deadline.slice(0,16));
+              console.log(year + "-" + date + "-" + month + "T" + time);
+              setDate(year + "-" + date + "-" + month + "T" + time);
               setIsLoading(true);
             }
           }
@@ -358,7 +358,7 @@ const InternshipForm = (props) => {
     data.append("description", description);
     for (let i = 0; i < fileList.length; i++) data.append("files", fileList[i]);
     axios
-      .post("https://b463a02abd34.ngrok.io/internships/edit/submit", data, {
+      .post("http://localhost:4444/internships/edit/submit", data, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

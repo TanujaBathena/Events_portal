@@ -56,7 +56,7 @@ const Modal = (props) => {
       setDisable(true);
       axios
         .post(
-          "https://b463a02abd34.ngrok.io/Profile/interested",
+          "http://localhost:4444/Profile/interested",
           {
             post_mong_id: props.ID,
             AlertDescription: description,

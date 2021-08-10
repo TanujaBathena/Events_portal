@@ -11,7 +11,7 @@ const Home = () => {
     console.log("In home page");
     setIsLoading(true);
     axios
-      .get("https://b463a02abd34.ngrok.io/home", {
+      .get("http://localhost:4444/home", {
         withCredentials: true,
         headers: {
           Accept: "application/json",
@@ -22,6 +22,7 @@ const Home = () => {
       .then((res) => {
         if (res.data !== "notloggedin") {
           Auth.login();
+          //   console.log(res.data);
           setCards(res.data);
           setIsLoading(false);
         } else {

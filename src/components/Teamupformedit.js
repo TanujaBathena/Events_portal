@@ -67,7 +67,7 @@ const Teamup_form = (props) => {
     if (props.location.postid !== undefined) {
       axios
         .post(
-          "https://b463a02abd34.ngrok.io/edit/teamup/getpost",
+          "http://localhost:4444/edit/teamup/getpost",
           {
             postid: props.location.postid || null,
           },
@@ -117,7 +117,7 @@ const Teamup_form = (props) => {
     setbtn_disable(true);
 
     event.preventDefault();
-    let url = "https://b463a02abd34.ngrok.io/edit/teamup/update";
+    let url = "http://localhost:4444/edit/teamup/update";
     if (Tag.length === 0) {
       alert("Tag field should not be empty");
     } else {

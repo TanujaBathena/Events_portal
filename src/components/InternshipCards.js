@@ -23,18 +23,14 @@ const InternshipCards = (props) => {
     };
     if (state) {
       axios
-        .post(
-          "https://b463a02abd34.ngrok.io/starred/intern/tounstar",
-          datatobesent,
-          {
-            withCredentials: true,
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Credentials": true,
-            },
-          }
-        )
+        .post("http://localhost:4444/starred/intern/tounstar", datatobesent, {
+          withCredentials: true,
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Credentials": true,
+          },
+        })
         .then((res) => {
           if (res.data !== "notloggedin") {
             Auth.login();
@@ -47,18 +43,14 @@ const InternshipCards = (props) => {
         });
     } else {
       axios
-        .post(
-          "https://b463a02abd34.ngrok.io/starred/intern/tostar",
-          datatobesent,
-          {
-            withCredentials: true,
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Credentials": true,
-            },
-          }
-        )
+        .post("http://localhost:4444/starred/intern/tostar", datatobesent, {
+          withCredentials: true,
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Credentials": true,
+          },
+        })
         .then((res) => {
           if (res.data !== "notloggedin") {
             Auth.login();

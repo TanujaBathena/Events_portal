@@ -7,7 +7,7 @@ const Logout = () => {
   let history = useHistory();
   useEffect(() => {
     axios
-      .get("https://b463a02abd34.ngrok.io/logout", {
+      .get("http://localhost:4444/logout", {
         //sending a get request to the server to destroy the cookies.
         withCredentials: true, //sends the request by adding cookies to html header .
         headers: {

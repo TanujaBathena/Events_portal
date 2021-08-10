@@ -3,7 +3,7 @@ import "../styles/login.css";
 
 const Login = () => {
   const handleClick = (event) => {
-    window.open("https://b463a02abd34.ngrok.io/login/google", "_self"); //opens  a new window where you can select your mail accounts.
+    window.open("http://localhost:4444/login/google", "_self"); //opens  a new window where you can select your mail accounts.
   };
 
   return (
@@ -16,7 +16,7 @@ const Login = () => {
 
           <div className="image">
             <img
-              src="httpss://img.icons8.com/fluent/48/000000/google-logo.png"
+              src="https://img.icons8.com/fluent/48/000000/google-logo.png"
               alt="google"
             />
           </div>
