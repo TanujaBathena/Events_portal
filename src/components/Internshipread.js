@@ -69,7 +69,10 @@ const Internshipread = (props) => {
           setDuration(res.data.Duration);
           setDescription(res.data.Description);
           setStipend(res.data.Stipend);
-          setDeadline(res.data.Deadline);
+          let Deadline = new Date(res.data.Deadline).toLocaleString("en-US", {
+            timeZone: "Asia/Kolkata",
+          });
+          setDeadline(Deadline);
           setFiles(res.data.Files);
           setBranches(res.data.Branches);
           setId(res.data._id);

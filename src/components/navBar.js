@@ -46,6 +46,17 @@ const Navbar = (props) => {
       y[1].style.transform = "rotate(45deg)";
     }
   }
+
+
+  window.addEventListener("resize", function (event) {
+    if (window.innerWidth >= 800) {
+      var x = document.getElementsByClassName("list");
+      if (x[0].style.display !== "flex") {
+        x[0].style.display = "flex";
+      }
+    }
+  });
+
   return (
     <nav>
       <div className="logo">logo</div>
