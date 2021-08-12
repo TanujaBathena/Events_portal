@@ -54,6 +54,7 @@ const Navbar = (props) => {
       if (x[0].style.display !== "flex") {
         x[0].style.display = "flex";
       }
+   
     }
   });
 

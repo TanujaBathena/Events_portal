@@ -255,8 +255,8 @@ const InternshipForm = () => {
     maxLen2,
     duration,
   ]);
-  console.log("input date", Date.parse(date), typeof Date.parse(date));
-  console.log("present data time", new Date(), typeof Date());
+  // console.log("input date", Date.parse(date), typeof Date.parse(date));
+  // console.log("present data time", new Date(), typeof Date());
   const onSubmitHandler = async (e) => {
     console.log("inside sumbit");
     setbtn_disable(true);

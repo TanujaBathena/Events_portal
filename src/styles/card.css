@@ -31,8 +31,8 @@ body{
 }
 
 .card{
-    width: 450px;
-    height: 400px;
+    width: 500px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     background-color: white;
