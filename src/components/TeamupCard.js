@@ -4,7 +4,7 @@ import Modal from "./Modal";
 
 const TeamupCard = (props) => {
   const [open, setOpen] = useState(false);
-  const array = ["success", "info", "warning", "danger"];
+  const array = ["danger", "info", "warning", "success"];
   return (
     <div className="card" style={{ height: "250px" }}>
       <div

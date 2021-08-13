@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 const colorw = {
-  color: "white",
+  color: "black",
 };
 const Navbar = (props) => {
   const myFunction = function () {
@@ -22,6 +22,14 @@ const Navbar = (props) => {
       y[0].style.backgroundColor = "";
     }
   };
+  window.addEventListener("resize", function (event) {
+    if (window.innerWidth >= 800) {
+      var x = document.getElementsByClassName("list");
+      if (x[0].style.display !== "flex") {
+        x[0].style.display = "flex";
+      }
+    }
+  });
   function dropProfile() {
     var x = document.getElementsByClassName("profilelinks");
     var y = document.getElementsByClassName("down");

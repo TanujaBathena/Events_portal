@@ -13,6 +13,7 @@
   justify-content: space-between;
   flex-direction: column;
 }
+
 button{
   cursor: pointer;
 }
@@ -34,5 +35,17 @@ h4{
   }
   h5{
     font-size: small;
+  }
+}
+@media only screen and (max-width: 280px) {
+  .modal {
+    width:90%;
+    height:50vh;
+  }
+  h4{
+    font-size: smaller;
+  }
+  h5{
+    font-size: x-small;
   }
 }

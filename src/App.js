@@ -64,7 +64,14 @@ function App() {
           />
           <Route path="/Login" component={Login} />
         </Switch>
-        <div style={{ width: "100%", height: "15vh" }}></div>
+        <div
+          style={{
+            marginTop: "10vh",
+            width: "100%",
+            height: "400px",
+            backgroundColor: "#fce181",
+          }}
+        ></div>
       </div>
     </Router>
   );

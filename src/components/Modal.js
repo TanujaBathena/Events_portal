@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
+import { faWindowClose } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
 import Auth from "./auth";
 import "../styles/modal.css";
@@ -94,7 +94,7 @@ const Modal = (props) => {
 
           <FontAwesomeIcon
             icon={faWindowClose}
-            size="2x"
+            size="1x"
             onClick={props.onClose}
             style={{ marginLeft: "auto" }}
           />
@@ -118,7 +118,7 @@ const Modal = (props) => {
           onClick={handleInterested}
           className="btn"
           type="submit"
-          style={{ marginTop: "auto", marginRight: "50%" }}
+          style={{ marginTop: "auto", margin: "auto" }}
         >
           Interested
         </button>

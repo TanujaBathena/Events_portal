@@ -53,6 +53,7 @@ const Teamup = () => {
                 <FontAwesomeIcon icon={faPlus} size="3x" />
               </button>
             </Link>
+            <div className="teamupimage"></div>
           </div>
 
           {cards.map((card) => (
