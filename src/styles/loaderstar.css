@@ -8,8 +8,21 @@
   margin-right: 3%;
   margin-left: auto;
 }
-
+.mob{
+  display: none;
+  margin-top: 5px;
+}
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+  @media only screen and (max-width: 450px) {
+      .comp{
+          display: none;
+      }
+      .mob{
+        display: flex;
+        margin-bottom: auto;
+        margin-top: 5px;
+      }
+  }

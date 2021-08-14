@@ -7,7 +7,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container1">
+    <div className="container1" style={{display:"flex",flexDirection:"column" , gap:"1%"}}>
       <div className="box">
         <div className="btn1">
           <button className="lbtn" onClick={handleClick}>
@@ -22,7 +22,9 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <div style={{color:"red"}}>* Please use your IIT Goa Mail ID</div>
     </div>
+    
   );
 };
 

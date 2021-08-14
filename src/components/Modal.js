@@ -50,8 +50,8 @@ const Modal = (props) => {
     const description = await prompt(
       "Why do you want to collaborate with person"
     );
-    if (description != null) {
-      console.log(description);
+    console.log("Desccription ", description);
+    if (description != null && description !== "") {
       console.log(description, props.ID);
       setDisable(true);
       axios
@@ -79,8 +79,9 @@ const Modal = (props) => {
             history.push("/myrequests");
           }
         });
-    } else {
-      alert("please fill the description");
+    } else if (description != null && description.length <= 10) {
+      alert("please fill the desription");
+      setDisable(false);
     }
   };
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import MultiSelect from "react-multi-select-component";
+// import MultiSelect from "react-multi-select-component";
+import Select from "react-select";
 import uuid from "react-uuid";
 import axios from "axios";
 import Auth from "./auth";
@@ -10,14 +11,18 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Loader from "./Loader";
 const Dropdown = (props) => {
   const options = [
-    { label: "CSE", value: "CSE" },
-    { label: "EE", value: "EE" },
-    { label: "MNC", value: "MNC" },
-    { label: "MECH", value: "MECH" },
+    { label: "InfoSec", value: "InfoSec" },
+    { label: "ML", value: "ML" },
+    { label: "Alpha", value: "Alpha" },
+    { label: "Architect", value: "Architect" },
+    { label: "E&R", value: "E&R" },
+    { label: "Go Myno", value: "Go Myno" },
+    { label: "Arts", value: "Arts" },
+    { label: "None", value: "None" },
   ];
-  const selected = props.selected;
-  const setSelected = props.setSelected;
-
+  const club = props.club;
+  const setclub = props.setclub;
+  console.log(club);
   const style = {
     control: (base) => ({
       ...base,
@@ -28,13 +33,11 @@ const Dropdown = (props) => {
 
   return (
     <span>
-      <MultiSelect
+      <Select
         className="select"
         options={options}
-        value={selected}
-        onChange={setSelected}
-        labelledBy={"Select"}
-        disableSearch={true}
+        value={club}
+        onChange={setclub}
         styles={style}
       />
     </span>
@@ -164,7 +167,7 @@ const FilesUploader = (props) => {
       style={{ flexDirection: "column", textAlign: "center" }}
     >
       <label htmlFor="files" style={{ width: "100%", fontSize: "x-large" }}>
-        Add files related to the internship :
+        Add files related to the Event :
       </label>
       <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
         <input
@@ -204,17 +207,19 @@ const FilesUploader = (props) => {
 
 const InternshipForm = () => {
   let [fileList, updateFileList] = useState([]);
-  let [internshipRole, setInternshipRole] = useState("");
-  let [company, setCompany] = useState("");
-  let [stipend, setStipend] = useState("");
-  const [selected, setSelected] = useState([]); //branches data
-  let [date, setDate] = useState();
+  let [EventTitle, setEventTitle] = useState("");
+  let [venue, setvenue] = useState("");
+  //   let [stipend, setStipend] = useState("");
+  const [club, setclub] = useState(""); //branches data
+  let [deadline, setDeadline] = useState();
   let [description, setDescription] = useState("");
-  let [duration, setDuration] = useState("");
+  // let [duration, setDuration] = useState("");
   let history = useHistory();
   const [btn_disable, setbtn_disable] = useState(false);
   let [isLoading, setIsLoading] = useState(true);
-  const lengthValidation = (strng, maxlen) => {
+  const [fromDate, setFromDate] = useState();
+  let [toDate, setToDate] = useState();
+  let lengthValidation = (strng, maxlen) => {
     if (strng.length > maxlen) return false;
     return true;
   };
@@ -222,39 +227,20 @@ const InternshipForm = () => {
   let maxLen1 = 50;
   let maxLen2 = 200;
   useEffect(() => {
-    if (!lengthValidation(internshipRole, maxLen1)) {
+    if (!lengthValidation(EventTitle, maxLen1)) {
       alert(`Only ${maxLen1} characters allowed`);
-      setInternshipRole(internshipRole.slice(0, maxLen1));
+      setEventTitle(EventTitle.slice(0, maxLen1));
     }
 
-    if (!lengthValidation(company, maxLen1)) {
+    if (!lengthValidation(venue, maxLen1)) {
       alert(`Only ${maxLen1} characters allowed`);
-      setCompany(company.slice(0, maxLen1));
+      setvenue(venue.slice(0, maxLen1));
     }
-
-    if (!lengthValidation(stipend, maxLen1)) {
-      alert(`Only ${maxLen1} characters allowed`);
-      setStipend(stipend.slice(0, maxLen1));
-    }
-
-    if (!lengthValidation(duration, maxLen1)) {
-      alert(`Only ${maxLen1} characters allowed`);
-      setDuration(duration.slice(0, maxLen1));
-    }
-
     if (!lengthValidation(description, maxLen2)) {
       alert(`Only ${maxLen2} characters allowed`);
       setDescription(description.slice(0, maxLen2));
     }
-  }, [
-    internshipRole,
-    company,
-    stipend,
-    description,
-    maxLen1,
-    maxLen2,
-    duration,
-  ]);
+  }, [EventTitle, venue, description, maxLen1, maxLen2]);
   // console.log("input date", Date.parse(date), typeof Date.parse(date));
   // console.log("present data time", new Date(), typeof Date());
   const onSubmitHandler = async (e) => {
@@ -262,23 +248,24 @@ const InternshipForm = () => {
     setbtn_disable(true);
     setIsLoading(false);
     e.preventDefault();
-    // Checking if branches array is empty
-    if (selected.length === 0) alert("Atleast 1 Branch need to be selected");
-    let branchesSelected = [];
-    for (let i = 0; i < selected.length; i++) {
-      branchesSelected.push(selected[i].value);
-    }
+    //Checking if branches array is empty
+    // if (club.length === "") alert("Atleast 1 Branch need to be club");
+    // let branchesclub = [];
+    // for (let i = 0; i < club.length; i++) {
+    //   branchesclub.push(club[i].value);
+    // }
     let data = new FormData();
-    data.append("role", internshipRole);
-    data.append("company", company);
-    data.append("duration", duration);
-    data.append("stipend", stipend);
-    data.append("branches", branchesSelected);
-    data.append("deadline", date);
+    data.append("eventtitle", EventTitle);
+    data.append("venue", venue);
+    data.append("fromdate", fromDate);
+    data.append("todate", toDate);
+    data.append("club", club.value);
+    data.append("deadline", deadline);
     data.append("description", description);
     for (let i = 0; i < fileList.length; i++) data.append("files", fileList[i]);
+    console.log("sending event");
     axios
-      .post("http://localhost:4444/internships/submit", data, {
+      .post("http://localhost:4444/events/submit", data, {
         withCredentials: true,
         headers: {
           Accept: "application/json",
@@ -300,61 +287,63 @@ const InternshipForm = () => {
       <div>
         <form className="Form" onSubmit={onSubmitHandler}>
           <div className="Title">
-            <p>Internship Form</p>
+            <p>Event Form</p>
           </div>
           <div className="forminput">
             <label htmlFor="intTitle">
-              Internship Role <span style={{ color: "red" }}>*</span>{" "}
+              Event Title <span style={{ color: "red" }}>*</span>{" "}
             </label>
             <input
               className="input"
               type="text"
               id="intTitle"
               name="intTitle"
-              value={internshipRole}
+              value={EventTitle}
               onChange={(e) => {
-                setInternshipRole(e.target.value);
+                setEventTitle(e.target.value);
               }}
               required
-              placeholder="SDE"
+              placeholder="Coding challenge"
             />
           </div>
 
           <div className="forminput">
-            <label htmlFor="company">
-              Company <span style={{ color: "red" }}>*</span>
+            <label htmlFor="venue">
+              Venue <span style={{ color: "red" }}>*</span>
             </label>
             <input
               className="input"
               type="text"
-              id="company"
-              name="company"
-              value={company}
+              id="venue"
+              name="venue"
+              value={venue}
               onChange={(e) => {
-                setCompany(e.target.value);
+                setvenue(e.target.value);
               }}
               required
-              placeholder="Amazon"
+              placeholder="LH1"
             />
           </div>
 
-          <div className="forminput">
-            <label htmlFor="stipend">Stipend </label>
-            <input
-              className="input"
-              type="text"
-              id="stipend"
-              name="stipend"
-              value={stipend}
-              onChange={(e) => {
-                setStipend(e.target.value);
-              }}
-            />
+          <div className="forminput" style={{ boxSizing: "border-box" }}>
+            <label htmlFor="branches">Club</label>
+            <div
+              style={{ width: "70%", marginTop: "auto", marginRight: "auto" }}
+            >
+              <Dropdown
+                club={club}
+                setclub={setclub}
+                style={{ padding: "0px" }}
+              />
+            </div>
           </div>
 
           <div className="forminput">
-            <label htmlFor="duration">Duration </label>
-            <input
+            <label htmlFor="duration">
+              {" "}
+              <u>Event Duration </u>
+            </label>
+            {/* <input
               className="input"
               type="text"
               id="duration"
@@ -363,41 +352,51 @@ const InternshipForm = () => {
               onChange={(e) => {
                 setDuration(e.target.value);
               }}
+            /> */}
+            {/* </div> */}
+
+            {/* <div className="forminput"> */}
+            <label htmlFor="fromDate">
+              From: <span style={{ color: "red" }}>*</span>{" "}
+            </label>
+            <input
+              className="input"
+              type="datetime-local"
+              id="fromDate"
+              name="fromDate"
+              value={fromDate}
+              onChange={(e) => setFromDate(e.target.value)}
+              required
+            />
+            {/* {console.log(date)} */}
+            {/* </div> */}
+            {/* <div className="forminput"> */}
+            <label htmlFor="toDate">
+              To: <span style={{ color: "red" }}>*</span>{" "}
+            </label>
+            <input
+              className="input"
+              type="datetime-local"
+              id="toDate"
+              name="toDate"
+              value={toDate}
+              onChange={(e) => setToDate(e.target.value)}
+              required
             />
           </div>
-
-          <div className="forminput" style={{ boxSizing: "border-box" }}>
-            <label htmlFor="branches">
-              Branches <span style={{ color: "red" }}>*</span>
-            </label>
-            <div
-              style={{ width: "70%", marginTop: "auto", marginRight: "auto" }}
-            >
-              <Dropdown
-                selected={selected}
-                setSelected={setSelected}
-                style={{ padding: "0px" }}
-              />
-            </div>
-          </div>
-
           <div className="forminput">
-            <label htmlFor="deadline">
-              Deadline(IST) <span style={{ color: "red" }}>*</span>{" "}
-            </label>
+            <label htmlFor="deadline">Deadline:</label>
             <input
               className="input"
               type="datetime-local"
               id="deadline"
               name="deadline"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              required
+              value={deadline}
+              onChange={(e) => setDeadline(e.target.value)}
             />
           </div>
-
           <div className="forminput">
-            <label htmlFor="description">Description </label>
+            <label htmlFor="description">Event Description </label>
             <textarea
               name="description"
               id="description"

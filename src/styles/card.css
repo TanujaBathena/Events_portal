@@ -7,16 +7,18 @@
       
 }
 body{
-    background-color: #ffffff;
+    background-color: #feffff;
     margin: 0px;
     padding: 0px;
 }
 .container{
+    /* margin-top: 60px; */
     width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 3%;
+    
 
 }
 .card {
@@ -32,8 +34,8 @@ body{
 }
 
 .card{
-    width: 450px;
-    height: 400px;
+    width: 500px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
@@ -215,4 +217,12 @@ body{
 }
 .card_tags{
     margin-right: 5%;
+}
+.eventcontainer{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap:50px;
+    flex-wrap: wrap;
 }

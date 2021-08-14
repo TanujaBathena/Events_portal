@@ -20,6 +20,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"; //use
 import Teamupformedit from "./components/Teamupformedit";
 import Internshipread from "./components/Internshipread";
 import Internshipedit from "./components/InternshipEdit";
+import EventForm from "./components/Eventform";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Switch>
           <Protectedroutes path="/home" exact component={Home} />
           <Protectedroutes path="/Events" exact component={Events} />
+          <Protectedroutes path="/Events/form" exact component={EventForm} />
           <Protectedroutes path="/Challenges" exact component={Challenges} />
           <Protectedroutes path="/Internships" exact component={Internships} />
           <Protectedroutes
@@ -69,7 +71,6 @@ function App() {
             marginTop: "10vh",
             width: "100%",
             height: "400px",
-            backgroundColor: "#fce181",
           }}
         ></div>
       </div>
