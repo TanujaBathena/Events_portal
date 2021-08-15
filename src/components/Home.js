@@ -4,8 +4,10 @@ import Auth from "./auth";
 import axios from "axios";
 import InternshipCards from "./InternshipCards";
 import Loader from "./Loader";
+import Eventcard from "./Eventcard.js";
 const Home = () => {
   const [cards, setCards] = useState([]);
+  const [cards_e, setcards_e] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     console.log("In home page");
@@ -22,8 +24,9 @@ const Home = () => {
       .then((res) => {
         if (res.data !== "notloggedin") {
           Auth.login();
-          //   console.log(res.data);
-          setCards(res.data);
+          console.log(res.data);
+          setCards(res.data[0]);
+          setcards_e(res.data[1]);
           setIsLoading(false);
         } else {
           window.location.reload();
@@ -36,6 +39,9 @@ const Home = () => {
         <div className="heading1">
           <p className="teamup">Home</p>
           <p className="content">You can find your starred messages here! </p>
+        </div>
+        <div style={{ width: "100%", textAlign: "center" }}>
+          <h1>Internships </h1>
         </div>
         {cards.map((card) => (
           <InternshipCards
@@ -54,6 +60,24 @@ const Home = () => {
             starred={true}
           />
         ))}
+        <div className="eventcontainer">
+          <div style={{ width: "100%", textAlign: "center" }}>
+            <h1>Events </h1>
+          </div>
+
+          {cards_e.map((card) => (
+            <Eventcard
+              key={card._id}
+              ID={card._id}
+              title={card.Title}
+              clubname={card.Club}
+              omdate={card.FromDate}
+              todate={card.ToDate}
+              nue={card.Venue}
+              starred={true}
+            />
+          ))}
+        </div>
       </div>
     );
   } else {

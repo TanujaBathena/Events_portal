@@ -21,7 +21,8 @@ import Teamupformedit from "./components/Teamupformedit";
 import Internshipread from "./components/Internshipread";
 import Internshipedit from "./components/InternshipEdit";
 import EventForm from "./components/Eventform";
-
+import Eventsread from "./components/Eventread";
+import Eventedit from "./components/Eventedit.js";
 function App() {
   return (
     <Router>
@@ -64,6 +65,9 @@ function App() {
             exact
             component={Teamupformedit}
           />
+          <Protectedroutes path="/events/edit" exact component={Eventedit} />
+          <Protectedroutes path="/events/:id" exact component={Eventsread} />
+
           <Route path="/Login" component={Login} />
         </Switch>
         <div

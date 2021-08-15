@@ -5,6 +5,7 @@ import Auth from "./auth";
 import Loader from "./Loader";
 import Myposticard from "./MypostInternshipcard";
 
+import Mypostecard from "./MyPostecard";
 const MyPosts = (props) => {
   const [cards, setCards] = useState([]);
   const [deleted, setdeleted] = useState(false);
@@ -105,6 +106,36 @@ const MyPosts = (props) => {
             }
           })}
           {/* </div> */}
+          <div
+            style={{
+              margin: "auto",
+              marginTop: "20px",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            <h1>Events Posts</h1>
+          </div>
+          {/* <div style={{ display: "flex", justifyContent: "space-around" }}> */}
+          {cards.map((card) => {
+            if (card.Type === 3) {
+              return (
+                <Mypostecard
+                  id={card._id}
+                  ID={card._id}
+                  title={card.Title}
+                  fromdate={card.Fromdate}
+                  todate={card.Todate}
+                  venue={card.Venue}
+                  deleted={deleted}
+                  type={card.Type}
+                  delfunc={setdeleted}
+                />
+              );
+            } else {
+              return <></>;
+            }
+          })}
         </div>
       )
     );

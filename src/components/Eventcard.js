@@ -6,7 +6,7 @@ import { faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Auth from "./auth";
 import axios from "axios";
-// import Loaderstar from "./Loaderstar";
+import { Link } from "react-router-dom";
 import "../styles/loaderstar.css";
 const Eventcard = (props) => {
   const [disabled, setdisable] = useState(false);
@@ -20,7 +20,7 @@ const Eventcard = (props) => {
     };
     if (state) {
       axios
-        .post("http://localhost:4444/starred/intern/tounstar", datatobesent, {
+        .post("http://localhost:4444/starred/events/tounstar", datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -39,8 +39,9 @@ const Eventcard = (props) => {
           }
         });
     } else {
+      //   console.log("unnnnnnnnstar");
       axios
-        .post("http://localhost:4444/starred/intern/tostar", datatobesent, {
+        .post("http://localhost:4444/starred/events/tostar", datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -69,19 +70,22 @@ const Eventcard = (props) => {
           alt="p"
           className="responsivem"
         ></img>
-        <p className="clubname">Club Name Club Name</p>
+        <p className="clubname">{props.clubname}</p>
         <img
           src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
           alt="p"
           className="responsive"
         ></img>
-        <button
-          className="btnevent"
-          type="submit"
-          style={{ width: "max-content" }}
-        >
-          Read More
-        </button>
+        <Link to={`Events/${props.ID}`}>
+          <button
+            className="btnevent"
+            type="submit"
+            style={{ width: "max-content" }}
+          >
+            Read More
+          </button>
+        </Link>
+
         {!starloading && (
           <button
             className="starem"
@@ -142,7 +146,7 @@ const Eventcard = (props) => {
           </button>
         )}
         {starloading && <div className="loaderstar comp"></div>}
-        <p className="headinge">Event Name</p>
+        <p className="headinge">{props.title}</p>
         <button
           style={{
             border: "0px",
@@ -159,10 +163,33 @@ const Eventcard = (props) => {
           </p>
           {/* </div> */}
         </button>
-        <h4 className="tv">Timings</h4>
-        <h5 className="tv">xx-xx to xx-xx</h5>
-        <h4 className="tv">Venue</h4>
-        <h5 className="tv">xx-xx to xx-xx</h5>
+        <h4 className="tv">
+          {" "}
+          <b>Timings</b>
+        </h4>
+        <h5 className="tv">
+          {new Date(props.fromdate).toLocaleString("en-US", {
+            timeZone: "Asia/Kolkata",
+          })}
+          {"  "}
+          {"  "}
+          {"  "}
+          <span>
+            &nbsp; <b> to</b>
+            &nbsp;
+          </span>
+          {"  "}
+          {"  "}
+          {"  "}
+          {new Date(props.todate).toLocaleString("en-US", {
+            timeZone: "Asia/Kolkata",
+          })}
+        </h5>
+        <h4 className="tv">
+          {" "}
+          <b>Venue</b>
+        </h4>
+        <h5 className="tv">{props.venue}</h5>
         <button
           className="btneventm"
           type="submit"
