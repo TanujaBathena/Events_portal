@@ -12,12 +12,13 @@ import Loader from "./Loader";
 const Dropdown = (props) => {
   const options = [
     { label: "InfoSec", value: "InfoSec" },
-    { label: "ML", value: "ML" },
+    { label: "DSC", value: "DSC" },
     { label: "Alpha", value: "Alpha" },
-    { label: "Architect", value: "Architect" },
+    { label: "ArchiTech", value: "ArchiTech" },
     { label: "E&R", value: "E&R" },
     { label: "Go Myno", value: "Go Myno" },
-    { label: "Arts", value: "Arts" },
+    { label: "Team Steel-X", value: "Team Steel-X" },
+    { label: "M-Dash", value: "M-Dash" },
     { label: "None", value: "None" },
   ];
   const club = props.club;

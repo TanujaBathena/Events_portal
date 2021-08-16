@@ -11,9 +11,7 @@ const Myposticard = (props) => {
   let post = props.id;
 
   const handleDelete = () => {
-    const confirm = window.confirm(
-      "By deleting this post, all the received request for this post will be deleted,except the accepted ones. Are you sure want to delete? "
-    );
+    const confirm = window.confirm("Are you sure want to delete this post? ");
     console.log("confirm consolelog", confirm);
     if (confirm) {
       console.log(props.id);

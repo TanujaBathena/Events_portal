@@ -67,6 +67,8 @@ const Teamup_form = () => {
     let url = "http://localhost:4444/teamup/submit";
     if (Tag.length === 0) {
       alert("Tag field should not be empty");
+      setbtn_disable(false);
+      console.log(btn_disable);
     } else {
       var tag_list = [];
 

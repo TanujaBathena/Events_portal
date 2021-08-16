@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import ReactTextFormat from 'react-text-format';
+import ReactTextFormat from "react-text-format";
 import "../styles/readmore.css";
 import axios from "axios";
 import Auth from "./auth";
@@ -7,7 +7,6 @@ import Loader from "./Loader";
 import Notfound from "./Notfound";
 
 const Internshipread = (props) => {
- 
   // let [result, setResult] = useState({
   //   _id: "",
   //   Name: "",
@@ -158,14 +157,13 @@ const Internshipread = (props) => {
           </div>
           <div className="contentr">
             <p className="heading">Description</p>
-            
-                <ReactTextFormat className="matter" linkTarget="_blank">
-                  {description}
-              </ReactTextFormat>
-             
+
+            <ReactTextFormat className="matter" linkTarget="_blank">
+              {description}
+            </ReactTextFormat>
           </div>
           <div className="contentr">
-            <p className="heading">Deadline</p>
+            <p className="heading">Deadline(mm/dd/yyyy)</p>
             <p className="matter">{deadline}</p>
           </div>
           <div className="contentr">

@@ -58,7 +58,7 @@ const Teamup_form = (props) => {
   const [Tag, settag] = useState([]);
   const [btn_disable, setbtn_disable] = useState(false);
   const [Description, setDescription] = useState("");
-  const [IsLoading, setIsLoading] = useState(false);
+  const [IsLoading, setIsLoading] = useState(true);
   let history = useHistory();
 
   useEffect(() => {
@@ -84,7 +84,7 @@ const Teamup_form = (props) => {
           if (res.data !== "notloggedin") {
             Auth.login();
             console.log(res.data);
-            if (res.data !== null) {
+            if (res.data !== null && res.data !== "null") {
               setTitle(res.data.Requirements);
 
               setSkill(res.data.Skill);
@@ -101,6 +101,7 @@ const Teamup_form = (props) => {
               console.log(Tag);
               setIsLoading(true);
             } else {
+              history.push("/404notfound");
             }
           }
         });
@@ -120,6 +121,7 @@ const Teamup_form = (props) => {
     let url = "http://localhost:4444/edit/teamup/update";
     if (Tag.length === 0) {
       alert("Tag field should not be empty");
+      setbtn_disable(false);
     } else {
       var tag_list = [];
 

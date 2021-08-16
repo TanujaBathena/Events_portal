@@ -25,7 +25,7 @@ const Teamup = () => {
       .then((res) => {
         if (res.data !== "notloggedin") {
           Auth.login();
-          setCards(res.data);
+          setCards(res.data.reverse());
           setIsLoading(true);
           console.log(res.data);
         } else {

@@ -25,8 +25,8 @@ const Home = () => {
         if (res.data !== "notloggedin") {
           Auth.login();
           console.log(res.data);
-          setCards(res.data[0]);
-          setcards_e(res.data[1]);
+          setCards(res.data[0].reverse());
+          setcards_e(res.data[1].reverse());
           setIsLoading(false);
         } else {
           window.location.reload();
@@ -40,9 +40,33 @@ const Home = () => {
           <p className="teamup">Home</p>
           <p className="content">You can find your starred messages here! </p>
         </div>
-        <div style={{ width: "100%", textAlign: "center" }}>
-          <h1>Internships </h1>
-        </div>
+        {(() => {
+          if (cards_e.length === 0 && cards.length === 0) {
+            return (
+              <div
+                style={{
+                  width: "100%",
+                  marginTop: "20vh",
+                  textAlign: "center",
+                }}
+              >
+                <h1>No starred messages </h1>
+              </div>
+            );
+          }
+          return null;
+        })()}
+        {(() => {
+          if (cards.length > 0) {
+            return (
+              <div style={{ width: "100%", textAlign: "center" }}>
+                <h1>Internships </h1>
+              </div>
+            );
+          }
+          return null;
+        })()}
+
         {cards.map((card) => (
           <InternshipCards
             key={card._id}
@@ -61,9 +85,16 @@ const Home = () => {
           />
         ))}
         <div className="eventcontainer">
-          <div style={{ width: "100%", textAlign: "center" }}>
-            <h1>Events </h1>
-          </div>
+          {(() => {
+            if (cards_e.length > 0) {
+              return (
+                <div style={{ width: "100%", textAlign: "center" }}>
+                  <h1>Events </h1>
+                </div>
+              );
+            }
+            return null;
+          })()}
 
           {cards_e.map((card) => (
             <Eventcard
@@ -71,9 +102,9 @@ const Home = () => {
               ID={card._id}
               title={card.Title}
               clubname={card.Club}
-              omdate={card.FromDate}
-              todate={card.ToDate}
-              nue={card.Venue}
+              fromdate={card.Fromdate}
+              todate={card.Todate}
+              venue={card.Venue}
               starred={true}
             />
           ))}
