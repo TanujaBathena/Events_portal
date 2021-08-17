@@ -68,8 +68,9 @@ function App() {
           />
           <Protectedroutes path="/events/edit" exact component={Eventedit} />
           <Protectedroutes path="/events/:id" exact component={Eventsread} />
-          <Route path="/404notfound" component={Notfound} />
+          <Route path="/404notfound" exact  component={Notfound} />
           <Route path="/Login" component={Login} />
+          <Route path="/" exact component={Login} />
           <Route path="*" component={Notfound} />
         </Switch>
         <div

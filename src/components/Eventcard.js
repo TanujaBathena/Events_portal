@@ -61,6 +61,22 @@ const Eventcard = (props) => {
         });
     }
   };
+  const newpage = () => {
+    let text_field = props.title;
+    let date = props.fromdate.replaceAll("-", "");
+    date = date.replaceAll(":", "");
+    date = date.replaceAll(".", "");
+    // date = date + "/" + date;
+    let date1 = props.todate.replaceAll("-", "");
+    date1 = date1.replaceAll(":", "");
+    date1 = date1.replaceAll(".", "");
+    // date1 = date1 + "/" + date1;
+    console.log(date, date1);
+    let url = `https://calendar.google.com/calendar/u/0/r/eventedit?text=${encodeURIComponent(
+      text_field
+    )}&dates=${encodeURIComponent(date)}/${encodeURIComponent(date1)}&location=${encodeURIComponent(props.venue)}`;
+    window.open(url);
+  };
 
   return (
     <div className="eventcard">
@@ -148,6 +164,7 @@ const Eventcard = (props) => {
         {starloading && <div className="loaderstar comp"></div>}
         <p className="headinge">{props.title}</p>
         <button
+          onClick={() => newpage()}
           style={{
             border: "0px",
             marginLeft: "25px",
@@ -165,7 +182,7 @@ const Eventcard = (props) => {
         </button>
         <h4 className="tv">
           {" "}
-          <b>Timings</b>
+          <b>Timings(mm/dd/yyyy)</b>
         </h4>
         <h5 className="tv">
           {new Date(props.fromdate).toLocaleString("en-US", {
@@ -198,7 +215,7 @@ const Eventcard = (props) => {
           Read More
         </button>
       </div>
-    </div>
+    </div >
   );
 };
 

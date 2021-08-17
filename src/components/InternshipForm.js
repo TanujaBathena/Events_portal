@@ -208,7 +208,7 @@ const InternshipForm = () => {
   let [company, setCompany] = useState("");
   let [stipend, setStipend] = useState("");
   const [selected, setSelected] = useState([]); //branches data
-  let [date, setDate] = useState();
+  let [date, setDate] = useState("");
   let [description, setDescription] = useState("");
   let [duration, setDuration] = useState("");
   let history = useHistory();
@@ -246,6 +246,9 @@ const InternshipForm = () => {
       alert(`Only ${maxLen2} characters allowed`);
       setDescription(description.slice(0, maxLen2));
     }
+    if (date.length > 1) {
+      if (new Date(date) < new Date()) { alert("From date and time must be greater than current date and time"); setDate("") };
+    }
   }, [
     internshipRole,
     company,
@@ -254,6 +257,7 @@ const InternshipForm = () => {
     maxLen1,
     maxLen2,
     duration,
+    date
   ]);
   // console.log("input date", Date.parse(date), typeof Date.parse(date));
   // console.log("present data time", new Date(), typeof Date());
@@ -416,8 +420,8 @@ const InternshipForm = () => {
                 setDescription(e.target.value);
               }}
               style={{
-                width: "70%",
-                height: "4vh",
+                width: "100%",
+                height: "250px",
                 resize: "none",
                 marginRight: "auto",
               }}

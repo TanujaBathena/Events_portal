@@ -12,6 +12,9 @@
   padding: 30px;
   box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.125);
 }
+.css-2b097c-container{
+  z-index: -1;
+}
 .Form .Title {
   font-size: 24px;
   font-weight: 700;
