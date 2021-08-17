@@ -25,7 +25,7 @@ const Teamup = () => {
       .then((res) => {
         if (res.data !== "notloggedin") {
           Auth.login();
-          setCards(res.data);
+          setCards(res.data.reverse());
           setIsLoading(true);
           console.log(res.data);
         } else {
@@ -53,6 +53,7 @@ const Teamup = () => {
                 <FontAwesomeIcon icon={faPlus} size="3x" />
               </button>
             </Link>
+            <div className="teamupimage"></div>
           </div>
 
           {cards.map((card) => (

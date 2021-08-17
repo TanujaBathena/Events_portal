@@ -20,7 +20,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"; //use
 import Teamupformedit from "./components/Teamupformedit";
 import Internshipread from "./components/Internshipread";
 import Internshipedit from "./components/InternshipEdit";
-
+import EventForm from "./components/Eventform";
+import Eventsread from "./components/Eventread";
+import Eventedit from "./components/Eventedit.js";
+import Notfound from "./components/Notfound";
 function App() {
   return (
     <Router>
@@ -30,6 +33,7 @@ function App() {
         <Switch>
           <Protectedroutes path="/home" exact component={Home} />
           <Protectedroutes path="/Events" exact component={Events} />
+          <Protectedroutes path="/Events/form" exact component={EventForm} />
           <Protectedroutes path="/Challenges" exact component={Challenges} />
           <Protectedroutes path="/Internships" exact component={Internships} />
           <Protectedroutes
@@ -62,9 +66,19 @@ function App() {
             exact
             component={Teamupformedit}
           />
+          <Protectedroutes path="/events/edit" exact component={Eventedit} />
+          <Protectedroutes path="/events/:id" exact component={Eventsread} />
+          <Route path="/404notfound" component={Notfound} />
           <Route path="/Login" component={Login} />
+          <Route path="*" component={Notfound} />
         </Switch>
-        <div style={{ width: "100%", height: "15vh" }}></div>
+        <div
+          style={{
+            marginTop: "10vh",
+            width: "100%",
+            height: "400px",
+          }}
+        ></div>
       </div>
     </Router>
   );

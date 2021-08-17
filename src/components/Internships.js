@@ -26,7 +26,7 @@ const Internships = () => {
         if (res.data !== "notloggedin") {
           Auth.login();
           console.log(res.data);
-          setCards(res.data);
+          setCards(res.data.reverse());
           setIsLoading(true);
         } else {
           window.location.reload();

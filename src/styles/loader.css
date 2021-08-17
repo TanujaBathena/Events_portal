@@ -4,12 +4,18 @@
   border-radius: 50%;
   width: 120px;
   height: 120px;
-  animation: spin 2s linear infinite;
-  margin:auto;
-  margin-top: 50vh;
+  animation: spin 1s linear infinite;
+  margin-top: 40vh;
+  margin-left: 45%;
+  z-index: -1;
+  position: fixed;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -80,7 +80,7 @@ const InternshipCards = (props) => {
 
   const [starred, setIsstarred] = useState(props.starred);
   return (
-    <div className="card">
+    <div className="card" >
       <div className="card_header">
         <button
           onClick={() => newpage()}

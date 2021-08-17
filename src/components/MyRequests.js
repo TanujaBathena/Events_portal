@@ -20,7 +20,7 @@ const MyRequests = () => {
       .then((res) => {
         if (res.data !== "notloggedin") {
           Auth.login();
-          setCards(res.data);
+          setCards(res.data.reverse());
           console.log(res.data);
           setIsLoading(true);
         } else {

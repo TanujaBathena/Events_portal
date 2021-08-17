@@ -28,6 +28,19 @@
     font-weight: 400;
     /* font-family: 'B612', sans-serif; */
 }
+a.rtfLink{
+    color:blue;
+    text-decoration:underline;
+}
+a.rtfPhone{
+    color:blue;
+    text-decoration:underline;
+}
+a.rtfEmail{
+    color:blue;
+    text-decoration:underline;
+}
+
 .containerr:hover {
   box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
 }

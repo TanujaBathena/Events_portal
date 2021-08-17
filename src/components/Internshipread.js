@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import ReactTextFormat from "react-text-format";
 import "../styles/readmore.css";
 import axios from "axios";
 import Auth from "./auth";
@@ -69,7 +70,10 @@ const Internshipread = (props) => {
           setDuration(res.data.Duration);
           setDescription(res.data.Description);
           setStipend(res.data.Stipend);
-          setDeadline(res.data.Deadline);
+          let Deadline = new Date(res.data.Deadline).toLocaleString("en-US", {
+            timeZone: "Asia/Kolkata",
+          });
+          setDeadline(Deadline);
           setFiles(res.data.Files);
           setBranches(res.data.Branches);
           setId(res.data._id);
@@ -153,10 +157,13 @@ const Internshipread = (props) => {
           </div>
           <div className="contentr">
             <p className="heading">Description</p>
-            <p className="matter">{description}</p>
+
+            <ReactTextFormat className="matter" linkTarget="_blank">
+              {description}
+            </ReactTextFormat>
           </div>
           <div className="contentr">
-            <p className="heading">Deadline</p>
+            <p className="heading">Deadline(mm/dd/yyyy)</p>
             <p className="matter">{deadline}</p>
           </div>
           <div className="contentr">

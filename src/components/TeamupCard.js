@@ -4,11 +4,10 @@ import Modal from "./Modal";
 
 const TeamupCard = (props) => {
   const [open, setOpen] = useState(false);
-<<<<<<< HEAD
+
   const array = ["danger", "success", "info", "warning"];
-=======
-  const array = ["success", "info", "warning", "danger"];
->>>>>>> faf28adc1faeee4fd2e2863238aeecf01c536490
+
+
   return (
     <div className="card" style={{ height: "250px" }}>
       <div

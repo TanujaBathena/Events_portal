@@ -4,11 +4,34 @@ import axios from "axios";
 import Auth from "./auth";
 import Loader from "./Loader";
 import Myposticard from "./MypostInternshipcard";
-
+import Mypostecard from "./MyPostecard";
 const MyPosts = (props) => {
   const [cards, setCards] = useState([]);
   const [deleted, setdeleted] = useState(false);
   let [isLoading, setIsLoading] = useState(false);
+  const [cardnumber, setCardnumber] = useState([0, 0, 0]);
+  const checkcards = (cards) => {
+    //eslint-disable-next-line
+    {
+      //eslint-disable-next-line
+      var teamupcards = 0;
+      var internshipcards = 0;
+      var eventcards = 0;
+      //eslint-disable-next-line
+      cards.map((card) => {
+        //eslint-disable-next-line
+        if (card.Type === 1) {
+          teamupcards = teamupcards + 1;
+        } else if (card.Type === 2) {
+          internshipcards = internshipcards + 1;
+        } else if (card.Type === 3) {
+          eventcards = eventcards + 1;
+        }
+        //eslint-disable-next-line
+      });
+      return [teamupcards, internshipcards, eventcards];
+    }
+  };
   useEffect(() => {
     console.log("inside mypost use effect", deleted);
     setIsLoading(false);
@@ -24,13 +47,16 @@ const MyPosts = (props) => {
       .then((res) => {
         if (res.data !== "notloggedin") {
           Auth.login();
-          setCards(res.data);
-          setIsLoading(true);
           console.log(res.data);
+          setCards(res.data.reverse());
+          let x = checkcards(res.data);
+          setCardnumber(x);
+          setIsLoading(true);
         } else {
           window.location.reload();
         }
       });
+    //eslint-disable-next-line
   }, [deleted]);
 
   if (isLoading) {
@@ -43,23 +69,43 @@ const MyPosts = (props) => {
               You can find your posts which you have posted..{" "}
             </p>
           </div>
-          <div
-            style={{
-              margin: "auto",
-              marginTop: "20px",
-              width: "100%",
-              textAlign: "center",
-            }}
-          >
-            <h1>Team Up Posts</h1>
-          </div>
+          {((cardnumber) => {
+            if (
+              cardnumber[0] === 0 &&
+              cardnumber[1] === 0 &&
+              cardnumber[2] === 0
+            ) {
+              return (
+                <div
+                  style={{
+                    width: "100%",
+                    marginTop: "20vh",
+                    textAlign: "center",
+                  }}
+                >
+                  <h1>You haven't posted yet </h1>
+                </div>
+              );
+            }
+            return null;
+          })(cardnumber)}
+          {((cardnumber) => {
+            if (cardnumber[0] > 0) {
+              return (
+                <div style={{ width: "100%", textAlign: "center" }}>
+                  <h1>Teamup Posts </h1>
+                </div>
+              );
+            }
+            return null;
+          })(cardnumber)}
           {/* <div style={{ display: "flex", justifyContent: "space-around" }}> */}
           {cards.map((card) => {
             if (card.Type === 1) {
               return (
                 <MyPostCards
-                  id={card._id}
                   key={card._id}
+                  id={card._id}
                   title={card.Requirements}
                   name={card.Name}
                   skills={card.Skill}
@@ -73,18 +119,17 @@ const MyPosts = (props) => {
               return <></>;
             }
           })}
-          {/* </div> */}
-          <div
-            style={{
-              margin: "auto",
-              marginTop: "100px",
-              width: "100%",
-              textAlign: "center",
-            }}
-          >
-            <h1>Internship Posts</h1>
-          </div>
-          {/* <div style={{ display: "flex", justifyContent: "space-around" }}> */}
+          {((cardnumber) => {
+            if (cardnumber[1] > 0) {
+              return (
+                <div style={{ width: "100%", textAlign: "center" }}>
+                  <h1>Internship Posts </h1>
+                </div>
+              );
+            }
+            return null;
+          })(cardnumber)}
+          {/* // eslint-disable-next-line */}
           {cards.map((card) => {
             if (card.Type === 2) {
               return (
@@ -104,7 +149,37 @@ const MyPosts = (props) => {
               return <></>;
             }
           })}
-          {/* </div> */}
+          {((cardnumber) => {
+            if (cardnumber[2] > 0) {
+              return (
+                <div style={{ width: "100%", textAlign: "center" }}>
+                  <h1>Event Posts </h1>
+                </div>
+              );
+            }
+            return null;
+          })(cardnumber)}
+          {/* // eslint-disable-next-line */}
+          {cards.map((card) => {
+            if (card.Type === 3) {
+              return (
+                <Mypostecard
+                  id={card._id}
+                  ID={card._id}
+                  key={card._id}
+                  title={card.Title}
+                  fromdate={card.Fromdate}
+                  todate={card.Todate}
+                  venue={card.Venue}
+                  deleted={deleted}
+                  type={card.Type}
+                  delfunc={setdeleted}
+                />
+              );
+            } else {
+              return <></>;
+            }
+          })}
         </div>
       )
     );

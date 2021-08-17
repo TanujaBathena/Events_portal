@@ -255,45 +255,53 @@ const InternshipForm = () => {
     maxLen2,
     duration,
   ]);
-  console.log("input date", Date.parse(date), typeof Date.parse(date));
-  console.log("present data time", new Date(), typeof Date());
+  // console.log("input date", Date.parse(date), typeof Date.parse(date));
+  // console.log("present data time", new Date(), typeof Date());
   const onSubmitHandler = async (e) => {
     console.log("inside sumbit");
     setbtn_disable(true);
     setIsLoading(false);
     e.preventDefault();
     // Checking if branches array is empty
-    if (selected.length === 0) alert("Atleast 1 Branch need to be selected");
-    let branchesSelected = [];
-    for (let i = 0; i < selected.length; i++) {
-      branchesSelected.push(selected[i].value);
+    if (selected.length === 0) {
+      alert("Atleast 1 Branch need to be selected");
+      console.log("if condition");
+      setIsLoading(true);
+      setbtn_disable(false);
+      return;
+    } else {
+      let branchesSelected = [];
+      for (let i = 0; i < selected.length; i++) {
+        branchesSelected.push(selected[i].value);
+      }
+      let data = new FormData();
+      data.append("role", internshipRole);
+      data.append("company", company);
+      data.append("duration", duration);
+      data.append("stipend", stipend);
+      data.append("branches", branchesSelected);
+      data.append("deadline", date);
+      data.append("description", description);
+      for (let i = 0; i < fileList.length; i++)
+        data.append("files", fileList[i]);
+      axios
+        .post("http://localhost:4444/internships/submit", data, {
+          withCredentials: true,
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "multipart/form-data",
+            "Access-Control-Allow-Credentials": true,
+          },
+        })
+        .then((res) => {
+          if (res.data !== "notloggedin") {
+            Auth.login();
+            history.push("/myposts");
+          } else {
+            setbtn_disable(false);
+          }
+        });
     }
-    let data = new FormData();
-    data.append("role", internshipRole);
-    data.append("company", company);
-    data.append("duration", duration);
-    data.append("stipend", stipend);
-    data.append("branches", branchesSelected);
-    data.append("deadline", date);
-    data.append("description", description);
-    for (let i = 0; i < fileList.length; i++) data.append("files", fileList[i]);
-    axios
-      .post("http://localhost:4444/internships/submit", data, {
-        withCredentials: true,
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "multipart/form-data",
-          "Access-Control-Allow-Credentials": true,
-        },
-      })
-      .then((res) => {
-        if (res.data !== "notloggedin") {
-          Auth.login();
-          history.push("/myposts");
-        } else {
-          setbtn_disable(false);
-        }
-      });
   };
   if (isLoading) {
     return (
@@ -394,7 +402,6 @@ const InternshipForm = () => {
               onChange={(e) => setDate(e.target.value)}
               required
             />
-            {/* {console.log(date)} */}
           </div>
 
           <div className="forminput">

@@ -7,13 +7,12 @@ nav {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 8vh;
-  background-color: #1BA098;
+  height: 70px;
+  background-color: #1ba098;
   position: fixed;
   top: 0;
   width: 100%;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-
 }
 a:-webkit-any-link {
   text-decoration: none;
@@ -23,10 +22,13 @@ ul li {
   text-decoration: none;
   list-style: none;
 }
+.colorw {
+  color: aliceblue;
+}
 ul li:hover {
   border-top: 1px solid white;
   border-bottom: 1px solid white;
-  color: #FCE38A;
+  color: #fce38a;
 }
 .arrow {
   border: solid black;
@@ -53,7 +55,6 @@ ul li:hover {
   align-items: center;
 }
 
-
 .lines {
   display: flex;
   flex-direction: column;
@@ -67,11 +68,11 @@ ul li:hover {
   box-sizing: border-box;
 }
 .profilelink:hover {
-  background-color: #FCE38A;
+  background-color: #fce38a;
   border-top: 0px;
   border-bottom: 0px;
-  border-left: 1px solid #FCE38A;
-  border-right: 1px solid #FCE38A;
+  border-left: 1px solid #fce38a;
+  border-right: 1px solid #fce38a;
 }
 .line {
   width: 100%;
@@ -82,7 +83,7 @@ ul li:hover {
   margin-left: 5px;
 }
 .profile:hover {
-  border: 0px solid #FCE38A;
+  border: 0px solid #fce38a;
 }
 .profile {
   width: 20%;
@@ -90,10 +91,10 @@ ul li:hover {
   justify-content: center;
 }
 .profilelinks {
-  background-color: rgb(27, 160, 152,0.9);
+  background-color: rgb(27, 160, 152, 0.9);
   box-sizing: border-box;
   position: absolute;
-  left:70%;
+  left: 70%;
   width: 30%;
   top: 8vh;
   display: flex;
@@ -101,7 +102,6 @@ ul li:hover {
   height: 200px;
   justify-content: space-evenly;
   display: none;
- 
 }
 .profilelinks div a {
   width: 100%;
@@ -128,18 +128,22 @@ ul li:hover {
 #a {
   display: none;
 }
-.profilelink{
-    display: block;
-    box-sizing: border-box;
-    padding-top:10px;
-   height:50px;
-   
+.profilelink {
+  display: block;
+  box-sizing: border-box;
+  padding-top: 10px;
+  height: 50px;
 }
-/* .profile:hover .profilelinks {display: flex;} */
+.profilelink:hover {
+  color: #fce38a;
+}
+/* .profile:hover .profilelinks {
+  display: flex;
+} */
 .profile:hover .dropbtn {
-  color: #FCE38A;
+  color: #fce38a;
 }
-.dropbtn{
+.dropbtn {
   color: #555;
 }
 @keyframes mymove {
@@ -160,18 +164,18 @@ ul li:hover {
 }
 @media only screen and (max-width: 768px) {
   .list {
+    display: none;
     position: absolute;
     right: 0px;
-    height: 92vh;
-    top: 8vh;
+    height: 100vh;
+    top: 70px;
     flex-direction: column;
     justify-content: flex-start;
     width: 50%;
-    background-color: rgb(27, 160, 152,0.9);
-    gap: 5%;
-    
+    background-color: rgb(27, 160, 152, 0.9);
+    overflow-y: scroll;
+    gap: 100vh/6;
   }
-
 
   .lines {
     display: flex;
@@ -193,20 +197,17 @@ ul li:hover {
   }
   .dropbtn {
     text-align: center;
-    height: 3vh;
+    margin-left: 20px;
+    height: 30px;
   }
-  .profilelink{
+  .profilelink {
     display: block;
- 
-   
- 
   }
   .profilelinks {
-    order:2;
+    order: 2;
     margin-top: 15px;
     position: static;
     width: 100%;
-    
   }
   #a {
     display: flex;
@@ -216,8 +217,7 @@ ul li:hover {
   }
   /* .profile:hover .profilelinks {display: flex;} */
 }
-width
-::-webkit-scrollbar {
+width ::-webkit-scrollbar {
   width: 15px;
   background-color: transparent;
 }

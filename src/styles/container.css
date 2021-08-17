@@ -4,16 +4,19 @@
 .heading1{
     margin-top: 8vh;
   width: 100%;
-  height: 50vh;
+  height: 500px;
   text-align: center;
   box-sizing: border-box;
+ 
   background-color: #def2f1;
   display: flex;
-    flex-direction: column;
-    justify-content: center;
- gap:5%;
+  flex-direction: column;
+  justify-content: center;
+  gap:5%;
  align-items: center;
+ text-align: left;
   
+  background-repeat: no-repeat;
 }
 .bun{
   box-shadow: 1px 1px 1px 1px #888888;
@@ -24,6 +27,7 @@
   border: 1px ;
  
 }
+
 .teamup{
     font-size:55px;
     color:black;

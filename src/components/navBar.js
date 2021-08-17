@@ -3,9 +3,7 @@ import "../styles/nav.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-const colorw = {
-  color: "white",
-};
+
 const Navbar = (props) => {
   const myFunction = function () {
     var x = document.getElementsByClassName("list");
@@ -22,6 +20,22 @@ const Navbar = (props) => {
       y[0].style.backgroundColor = "";
     }
   };
+  window.addEventListener("resize", function (event) {
+    if (window.innerWidth >= 800) {
+      var x = document.getElementsByClassName("list");
+      if (x[0].style.display !== "flex") {
+        x[0].style.display = "flex";
+      }
+    }
+  });
+  window.addEventListener("resize", function (event) {
+    if (window.innerWidth <= 768) {
+      var x = document.getElementsByClassName("list");
+      if (x[0].style.display === "flex") {
+        x[0].style.display = "none";
+      }
+    }
+  });
   function dropProfile() {
     var x = document.getElementsByClassName("profilelinks");
     var y = document.getElementsByClassName("down");
@@ -46,12 +60,13 @@ const Navbar = (props) => {
       y[1].style.transform = "rotate(45deg)";
     }
   }
+
   return (
     <nav>
       <div className="logo">logo</div>
 
       <ul className="list">
-        <li style={colorw} className="profile" onClick={dropProfile} id="a">
+        <li className="profile colorw" onClick={dropProfile} id="a">
           <button className="dropbtn">
             <p>
               <FontAwesomeIcon icon={faUser} size="2x" />
@@ -78,24 +93,24 @@ const Navbar = (props) => {
           </div>
         </li>
         <Link to="/home">
-          <li style={colorw}>Home</li>
+          <li className="colorw">Home</li>
         </Link>
         <Link to="/Events">
-          <li style={colorw}>
-            <p>Events</p>
+          <li className="colorw">
+            <p>Events/Challenges</p>
           </li>
         </Link>
-        <Link to="/Challenges">
-          <li style={colorw}>Challenges</li>
-        </Link>
+        {/* <Link to="/Challenges">
+          <li className="colorw">Challenges</li>
+        </Link> */}
         <Link to="/Teamup">
-          <li style={colorw}>Teamup</li>
+          <li className="colorw">Teamup</li>
         </Link>
         <Link to="/Internships">
-          <li style={colorw}>Internships</li>
+          <li className="colorw">Internships</li>
         </Link>
 
-        <li style={colorw} className="profile" onClick={dropProfile1} id="b">
+        <li className="profile colorw" onClick={dropProfile1} id="b">
           <button className="dropbtn">
             <p>
               <FontAwesomeIcon icon={faUser} size="2x" />
