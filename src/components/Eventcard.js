@@ -8,6 +8,8 @@ import Auth from "./auth";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles/loaderstar.css";
+import address from "./address";
+
 const Eventcard = (props) => {
   const [disabled, setdisable] = useState(false);
   const [starloading, setStarloading] = useState(false);
@@ -20,7 +22,7 @@ const Eventcard = (props) => {
     };
     if (state) {
       axios
-        .post("http://localhost:4444/starred/events/tounstar", datatobesent, {
+        .post(`http://${address.ip}:4444/starred/events/tounstar`, datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -41,7 +43,7 @@ const Eventcard = (props) => {
     } else {
       //   console.log("unnnnnnnnstar");
       axios
-        .post("http://localhost:4444/starred/events/tostar", datatobesent, {
+        .post(`http://${address.ip}:4444/starred/events/tostar`, datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",

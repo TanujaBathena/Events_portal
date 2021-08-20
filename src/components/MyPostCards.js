@@ -2,6 +2,7 @@ import { React } from "react";
 import axios from "axios";
 import Auth from "./auth";
 import { Link } from "react-router-dom";
+import address from "./address";
 // import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
@@ -22,7 +23,7 @@ const MyPostCards = (props) => {
       };
       console.log("deleting");
       axios
-        .post("http://localhost:4444/Profile/myposts/delete", datatobesent, {
+        .post(`http://${address.ip}:4444/Profile/myposts/delete`, datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",

@@ -5,6 +5,8 @@ import Auth from "./auth";
 import Loader from "./Loader";
 import Myposticard from "./MypostInternshipcard";
 import Mypostecard from "./MyPostecard";
+import address from "./address";
+
 const MyPosts = (props) => {
   const [cards, setCards] = useState([]);
   const [deleted, setdeleted] = useState(false);
@@ -36,7 +38,7 @@ const MyPosts = (props) => {
     console.log("inside mypost use effect", deleted);
     setIsLoading(false);
     axios
-      .get("http://localhost:4444/Profile/myposts", {
+      .get(`http://${address.ip}:4444/Profile/myposts`, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

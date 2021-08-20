@@ -8,6 +8,8 @@ import "../styles/Teamupform.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Loader from "./Loader";
+import address from "./address";
+
 const Dropdown = (props) => {
   const options = [
     { label: "CSE", value: "CSE" },
@@ -289,7 +291,7 @@ const InternshipForm = () => {
       for (let i = 0; i < fileList.length; i++)
         data.append("files", fileList[i]);
       axios
-        .post("http://localhost:4444/internships/submit", data, {
+        .post(`http://${address.ip}:4444/internships/submit`, data, {
           withCredentials: true,
           headers: {
             Accept: "application/json",

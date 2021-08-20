@@ -6,6 +6,8 @@ import "../styles/profile.css";
 import Loader from "./Loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
+import address from "./address";
+
 const MyProfile = () => {
   const options = [
     { label: "CSE", value: "CSE" },
@@ -24,7 +26,7 @@ const MyProfile = () => {
   useEffect(() => {
     setIsLoading(false);
     axios
-      .get("http://localhost:4444/Profile/", {
+      .get(`http://${address.ip}:4444/Profile/`, {
         withCredentials: true,
         headers: {
           Accept: "application/json",
@@ -35,6 +37,7 @@ const MyProfile = () => {
       .then((res) => {
         if (res.data !== "notloggedin") {
           Auth.login();
+          console.log(res.data);
           setName(res.data.Name);
           setMailid(res.data.Mail_Id);
           setuser_profile(res.data.user_profile);
@@ -54,7 +57,7 @@ const MyProfile = () => {
       branch: branch
     };
     axios
-      .post("http://localhost:4444/profile/editprofile", datatobesent, {
+      .post(`http://${address.ip}:4444/profile/editprofile`, datatobesent, {
         withCredentials: true,
         headers: {
           Accept: "application/json",
@@ -68,7 +71,7 @@ const MyProfile = () => {
         }
       });
   }, [branch]);
-  
+  console.log(showSelect);
   if (!isLoading) return <Loader />;
   else {
     return (

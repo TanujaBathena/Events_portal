@@ -5,6 +5,8 @@ import axios from "axios";
 import InternshipCards from "./InternshipCards";
 import Loader from "./Loader";
 import Eventcard from "./Eventcard.js";
+import address from "./address";
+
 const Home = () => {
   const [cards, setCards] = useState([]);
   const [cards_e, setcards_e] = useState([]);
@@ -13,7 +15,7 @@ const Home = () => {
     console.log("In home page");
     setIsLoading(true);
     axios
-      .get("http://localhost:4444/home", {
+      .get(`http://${address.ip}:4444/home`, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

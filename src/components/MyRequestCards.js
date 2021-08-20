@@ -3,6 +3,7 @@ import "../styles/card.css";
 import Modal from "./ModalMyRequests";
 import axios from "axios";
 import Auth from "./auth";
+import address from "./address";
 
 const post_deleted = {
   marginRight: "auto",
@@ -50,7 +51,7 @@ const MyRequestCards = (props) => {
         deleted: props.deleted,
       };
       axios
-        .post("http://localhost:4444/Profile/myrequests/delete", datatobesent, {
+        .post(`http://${address.ip}:4444/Profile/myrequests/delete`, datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -79,7 +80,7 @@ const MyRequestCards = (props) => {
       console.log("deleting");
       axios
         .post(
-          "http://localhost:4444/Profile/myrequests/cancelrequest",
+          `http://${address.ip}:4444/Profile/myrequests/cancelrequest`,
           datatobesent,
           {
             withCredentials: true,

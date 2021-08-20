@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "../styles/container.css";
+import address from "./address"
 
 const Teamup = () => {
   const [cards, setCards] = useState([]);
@@ -14,7 +15,7 @@ const Teamup = () => {
   useEffect(() => {
     setIsLoading(false);
     axios
-      .get("http://localhost:4444/teamup", {
+      .get(`http://${address.ip}:4444/teamup`, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

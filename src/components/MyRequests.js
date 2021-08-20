@@ -3,13 +3,15 @@ import MyRequestCards from "./MyRequestCards";
 import axios from "axios";
 import Auth from "./auth";
 import Loader from "./Loader";
+import address from "./address";
+
 const MyRequests = () => {
   const [cards, setCards] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setIsLoading(false);
     axios
-      .get("http://localhost:4444/Profile/myrequests", {
+      .get(`http://${address.ip}:4444/Profile/myrequests`, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

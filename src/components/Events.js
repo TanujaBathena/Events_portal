@@ -8,13 +8,15 @@ import { Link } from "react-router-dom";
 import Auth from "./auth";
 import Loader from "./Loader.js";
 import axios from "axios";
+import address from "./address.js";
+
 const Events = () => {
   const [cards, setCards] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setIsLoading(false);
     axios
-      .get("http://localhost:4444/events/", {
+      .get(`http://${address.ip}:4444/events/`, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

@@ -4,6 +4,7 @@ import { faWindowClose } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
 import Auth from "./auth";
 import "../styles/modal.css";
+import address from "./address";
 import { useHistory } from "react-router";
 const overlay = {
   position: "fixed",
@@ -56,7 +57,7 @@ const Modal = (props) => {
       setDisable(true);
       axios
         .post(
-          "http://localhost:4444/Profile/interested",
+          `http://${address.ip}:4444/Profile/interested`,
           {
             post_mong_id: props.ID,
             AlertDescription: description,

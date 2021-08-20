@@ -1,9 +1,10 @@
 import React from "react";
 import "../styles/login.css";
+import address from "./address";
 
 const Login = () => {
   const handleClick = (event) => {
-    window.open("http://localhost:4444/login/google", "_self"); //opens  a new window where you can select your mail accounts.
+    window.open(`http://${address.ip}:4444/login/google`, "_self"); //opens  a new window where you can select your mail accounts.
   };
 
   return (

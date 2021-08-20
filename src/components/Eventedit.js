@@ -8,6 +8,8 @@ import "../styles/Teamupform.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Loader from "./Loader";
+import address from "./address";
+
 const Dropdown = (props) => {
   const options = [
     { label: "InfoSec", value: "InfoSec" },
@@ -259,7 +261,7 @@ const Eventedit = (props) => {
     if (props.location.postid !== undefined) {
       axios
         .post(
-          "http://localhost:4444/edit/events/getpost",
+          `http://${address.ip}:4444/edit/events/getpost`,
           {
             postid: props.location.postid || null,
           },
@@ -413,7 +415,7 @@ const Eventedit = (props) => {
     data.append("description", description);
     for (let i = 0; i < fileList.length; i++) data.append("files", fileList[i]);
     axios
-      .post("http://localhost:4444/edit/events/submit", data, {
+      .post(`http://${address.ip}:4444/edit/events/submit`, data, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

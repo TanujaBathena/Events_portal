@@ -8,13 +8,14 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Auth from "./auth";
 import Loader from "./Loader";
+import address from "./address";
 const Internships = () => {
   const [cards, setCards] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setIsLoading(false);
     axios
-      .get("http://localhost:4444/internships", {
+      .get(`http://${address.ip}:4444/internships`, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

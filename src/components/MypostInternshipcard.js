@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+import address from "./address";
+
+
 const Myposticard = (props) => {
   // const [deleted,setdeleted]= useState(false);
   let post = props.id;
@@ -20,7 +23,7 @@ const Myposticard = (props) => {
       };
       console.log("deleting");
       axios
-        .post("http://localhost:4444/internships/delete", datatobesent, {
+        .post(`http://${address.ip}:4444/internships/delete`, datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
