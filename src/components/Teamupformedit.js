@@ -12,16 +12,17 @@ import address from "./address";
 //multiselecect
 //teamup submit redirect and disable
 const Dropdown = (props) => {
-  let tag_value = props.tag;
-  let settag = props.func;
+  const tag_value = props.tag;
+  const settag = props.func;
   const options = [
     { value: "Web", label: "Web" },
     { value: "Android", label: "Android" },
     { value: "ML", label: "ML" },
     { value: "AI", label: "AI" },
     { value: "DL", label: "DL" },
+    {value:"InfoSec",label:"InfoSec"}
   ];
-
+  console.log("in dropdown component ",tag_value)
   const style = {
     control: (base) => ({
       ...base,
@@ -134,6 +135,7 @@ const Teamup_form = (props) => {
       //   Tag.map((tag) => {
       //     tag_list.push(tag.value);
       //   });
+      console.log("sending",tag_list)
       const datatobesent = {
         oldTitle: props.location.postid.PostTitle,
         postid: props.location.postid,
@@ -160,7 +162,7 @@ const Teamup_form = (props) => {
       }
     }
   };
-
+  console.log("in main component ",Tag)
   useEffect(() => {
     if (Title.length > 50) {
       alert("Title cannot be more than 50 characters");
