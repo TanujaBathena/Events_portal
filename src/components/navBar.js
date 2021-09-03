@@ -11,9 +11,9 @@ const Navbar = (props) => {
     if (x[0].style.display === "none") {
       x[0].style.display = "flex";
       y[0].style.backgroundColor = "rgba(1,1,1,0.5)";
-      x[0].style.animation = "mymove 1s ";
+      x[0].style.animation = "mymove 0.3s ";
     } else {
-      x[0].style.animation = "mymove1 0.5s ";
+      x[0].style.animation = "mymove1 0.3s ";
       setTimeout(function () {
         x[0].style.display = "none";
       }, 200);
@@ -68,10 +68,8 @@ const Navbar = (props) => {
       <ul className="list">
         <li className="profile colorw" onClick={dropProfile} id="a">
           <button className="dropbtn">
-            <p>
-              <FontAwesomeIcon icon={faUser} size="2x" />
-              <i className="arrow down"></i>
-            </p>
+            <FontAwesomeIcon icon={faUser} size="2x" />
+            <i className="arrow down"></i>
           </button>
 
           <div className="profilelinks">
@@ -107,15 +105,13 @@ const Navbar = (props) => {
           <li className="colorw">Teamup</li>
         </Link>
         <Link to="/Internships">
-          <li className="colorw">Internships</li>
+          <li className="colorw int">Internships</li>
         </Link>
 
         <li className="profile colorw" onClick={dropProfile1} id="b">
           <button className="dropbtn">
-            <p>
-              <FontAwesomeIcon icon={faUser} size="2x" />
-              <i className="arrow down"></i>
-            </p>
+            <FontAwesomeIcon icon={faUser} size="2x" />
+            <i className="arrow down"></i>
           </button>
 
           <div className="profilelinks">

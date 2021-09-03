@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "../styles/container.css";
+import address from "./address";
+// import laptop from "../laptop.png";
 
 const Teamup = () => {
   const [cards, setCards] = useState([]);
@@ -14,7 +16,7 @@ const Teamup = () => {
   useEffect(() => {
     setIsLoading(false);
     axios
-      .get("http://localhost:4444/teamup", {
+      .get(`http://${address.ip}:4444/teamup`, {
         withCredentials: true,
         headers: {
           Accept: "application/json",
@@ -38,14 +40,20 @@ const Teamup = () => {
     return (
       isLoading && (
         <div className="container">
+          {/* <div className="banner"> */}
           <div className="heading1">
-            <p className="teamup">TeamUp Portal</p>
-            <p className="content">
+            <span className="teamup">TeamUp Portal</span>
+            <span className="content">
               You can find your companion who can help you in solving a problem
               or accompany you in paricipating a hackathon or helping you in a
               project
-            </p>
-            <span style={{ marginTop: "5%", fontSize: "20px" }}>
+            </span>
+            <span
+              style={{
+                marginTop: "5%",
+                fontSize: "20px",
+              }}
+            >
               Add Your Post Below
             </span>
             <Link to="/Teamup/form">
@@ -53,8 +61,16 @@ const Teamup = () => {
                 <FontAwesomeIcon icon={faPlus} size="3x" />
               </button>
             </Link>
-            <div className="teamupimage"></div>
           </div>
+          {/* <div className="teamupimage">
+            <img
+              className="imaget"
+              // src="https://static.rfstat.com/media-test/007504c1-ac24-48ef-bc6c-7f2363357c2e.jpg"
+              src={laptop}
+              alt=""
+            ></img>
+          </div> */}
+          {/* </div> */}
 
           {cards.map((card) => (
             <TeamupCard

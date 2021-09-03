@@ -8,6 +8,8 @@ import "../styles/Teamupform.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Loader from "./Loader";
+import address from "./address";
+
 const Dropdown = (props) => {
   const options = [
     { label: "InfoSec", value: "InfoSec" },
@@ -182,18 +184,19 @@ const FilesUploader = (props) => {
           }}
           style={{ height: "25px", margin: "auto", width: "25%" }}
         />
-        <div style={{ display: "flex" }}>
+        <div className="filediv">
           {fileList.map((file) => {
             return (
-              <div key={file.id} style={{ width: "20%" }}>
-                <p>{file.name}</p>
+              <div key={file.id} className="filebox">
+                <p className="filename">{file.name}</p>
                 <button
                   type="button"
+                  className="cancel"
                   onClick={() => {
                     deleteFile(file.id);
                   }}
                 >
-                  <FontAwesomeIcon icon={faTimes} size="1x" />
+                  <FontAwesomeIcon icon={faTimes} size="2x" />
                 </button>
               </div>
             );
@@ -245,12 +248,22 @@ const Eventedit = (props) => {
     console.log(new Date());
     if (fromDate.length === toDate.length && fromDate.length > 1) {
       console.log("khsvbdzj");
-      if (d1 >= d2) { alert("To date must be after from date"); setFromDate(""); setToDate("") }
+      if (d1 >= d2) {
+        alert("To date must be after from date");
+        setFromDate("");
+        setToDate("");
+      }
     }
     // if (fromDate.length !== toDate.length) {
     //   console.log("2nd if");
-    if (d1 < new Date()) { alert("From date and time must be greater than current date and time"); setFromDate("") };
-    if (d2 < new Date()) { alert("To date and time must be greater than current date and time"); setToDate("") }
+    if (d1 < new Date()) {
+      alert("From date and time must be greater than current date and time");
+      setFromDate("");
+    }
+    if (d2 < new Date()) {
+      alert("To date and time must be greater than current date and time");
+      setToDate("");
+    }
     // }
   }, [EventTitle, venue, description, maxLen1, maxLen2, fromDate, toDate]);
   useEffect(() => {
@@ -259,7 +272,7 @@ const Eventedit = (props) => {
     if (props.location.postid !== undefined) {
       axios
         .post(
-          "http://localhost:4444/edit/events/getpost",
+          `http://${address.ip}:4444/edit/events/getpost`,
           {
             postid: props.location.postid || null,
           },
@@ -413,7 +426,7 @@ const Eventedit = (props) => {
     data.append("description", description);
     for (let i = 0; i < fileList.length; i++) data.append("files", fileList[i]);
     axios
-      .post("http://localhost:4444/edit/events/submit", data, {
+      .post(`http://${address.ip}:4444/edit/events/submit`, data, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

@@ -2,6 +2,7 @@ import { React } from "react";
 import axios from "axios";
 import Auth from "./auth";
 import { Link } from "react-router-dom";
+import address from "./address";
 // import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
@@ -22,14 +23,18 @@ const MyPostCards = (props) => {
       };
       console.log("deleting");
       axios
-        .post("http://localhost:4444/Profile/myposts/delete", datatobesent, {
-          withCredentials: true,
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Credentials": true,
-          },
-        })
+        .post(
+          `http://${address.ip}:4444/Profile/myposts/delete`,
+          datatobesent,
+          {
+            withCredentials: true,
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Credentials": true,
+            },
+          }
+        )
         .then((res) => {
           if (res.data !== "notloggedin") {
             Auth.login();
@@ -41,7 +46,7 @@ const MyPostCards = (props) => {
   };
 
   return (
-    <div className="card" style={{ height: "200px" }}>
+    <div className="card" style={{ height: "250px" }}>
       <div className="card_title">{props.title}</div>
 
       <b

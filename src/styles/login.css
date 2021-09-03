@@ -2,33 +2,26 @@
   margin: 0%;
   padding: 0%;
 }
-.container1 {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-}
-.box {
-  box-sizing: border-box;
-  border: 0.5px solid grey;
-  width: 40%;
+
+.boxe {
   margin: auto;
-  height: 50vh;
+  margin-top: 20vh;
+  width:40%;
+  height:50vh;
+  box-shadow: 10px 10px 10px 10px #888888;
   display: flex;
+  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  box-shadow: 2px 2px 2px 2px #888888;
-    gap:10%;
- 
-  align-self: center;
+  gap:20px;
 }
 .btn1 {
+  display: flex;
   box-sizing: border-box;
-
-  height: fit-content;
-  width: 30%;
+  width: 35%;
   align-self: center;
   background-color: #4285f4;
   box-shadow: 5px 5px 6px 6px #888888;
-  display: flex;
   gap:5%;
 
 }
@@ -39,7 +32,7 @@
 }
 .lbtn{
   width:100%;
-  display:block;
+  /* display:block; */
   font-size: medium;
   border:0px;
   order:2;
@@ -74,7 +67,7 @@
 }
 }
 @media only screen and (max-width: 875px) {
-  .box{
+  .boxe{
     width:60%;
   }
   /* .btn1{
@@ -87,8 +80,8 @@
 
 }
 @media only screen and (max-width: 500px) {
-  .box{
-    width:100%;
+  .boxe{
+    width:90%;
   }
   .btn1{
   font-size: small;

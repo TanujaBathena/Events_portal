@@ -5,6 +5,8 @@ import axios from "axios";
 import Auth from "./auth";
 import Loader from "./Loader";
 import Notfound from "./Notfound";
+import address from "./address";
+
 const Eventsread = (props) => {
   // let [result, setResult] = useState({
   //   _id: "",
@@ -42,7 +44,7 @@ const Eventsread = (props) => {
       postid: props.match.params.id,
     };
     axios
-      .post("http://localhost:4444/events/readmore", datatobesent, {
+      .post(`http://${address.ip}:4444/events/readmore`, datatobesent, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

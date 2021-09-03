@@ -6,6 +6,8 @@ import "../styles/modal.css";
 import axios from "axios";
 import Auth from "./auth";
 
+import address from "./address";
+
 const overlay = {
   position: "fixed",
   top: 0,
@@ -52,7 +54,7 @@ const ModalReceived = (props) => {
       if (description != null && description !== "" && description.length <= 100) {
         axios
           .post(
-            "http://localhost:4444/Profile/acceptrequest",
+            `http://${address.ip}:4444/Profile/acceptrequest`,
             {
               post_mong_id: props.post_mong_id,
               AlertDescription: description,
@@ -86,7 +88,7 @@ const ModalReceived = (props) => {
       console.log("inside reject requests");
       axios
         .post(
-          "http://localhost:4444/Profile/rejectedrequest",
+          `http://${address.ip}:4444/Profile/rejectedrequest`,
           {
             post_mong_id: props.post_mong_id,
             status: status,
@@ -112,7 +114,7 @@ const ModalReceived = (props) => {
       if (deleted === true) {
         axios
           .post(
-            "http://localhost:4444/Profile/deleteacceptedrequest",
+            `http://${address.ip}:4444/Profile/deleteacceptedrequest`,
             {
               post_mong_id: props.ID,
               status: status,
@@ -137,7 +139,7 @@ const ModalReceived = (props) => {
       } else {
         axios
           .post(
-            "http://localhost:4444/Profile/deleteacceptedrequest",
+            `http://${address.ip}:4444/Profile/deleteacceptedrequest`,
             {
               post_mong_id: props.post_mong_id,
               status: status,

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+import address from "./address";
 const Mypostecard = (props) => {
   // const [deleted,setdeleted]= useState(false);
   let post = props.id;
@@ -25,7 +26,7 @@ const Mypostecard = (props) => {
       };
       console.log("deleting");
       axios
-        .post("http://localhost:4444/events/delete", datatobesent, {
+        .post(`http://${address.ip}:4444/events/delete`, datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -93,12 +94,13 @@ const Mypostecard = (props) => {
         {props.venue}
       </div>
 
-      <Link to={`/events/${props.ID}`}>
-        <div style={{ marginTop: "50px", margin: "auto" }} className="readmore">
-          <button className="btn" type="submit">
-            Read More
-          </button>
-        </div>
+      <Link
+        to={`/events/${props.ID}`}
+        style={{ margin: "auto", width: "105px" }}
+      >
+        <button className="btn" type="submit">
+          Read More
+        </button>
       </Link>
       <div
         className="card_footer"

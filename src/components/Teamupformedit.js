@@ -7,6 +7,8 @@ import "../styles/Teamupform.css";
 import axios from "axios";
 import Auth from "./auth";
 import Loader from "./Loader";
+import address from "./address";
+
 //multiselecect
 //teamup submit redirect and disable
 const Dropdown = (props) => {
@@ -67,7 +69,7 @@ const Teamup_form = (props) => {
     if (props.location.postid !== undefined) {
       axios
         .post(
-          "http://localhost:4444/edit/teamup/getpost",
+          `http://${address.ip}:4444/edit/teamup/getpost`,
           {
             postid: props.location.postid || null,
           },
@@ -118,7 +120,7 @@ const Teamup_form = (props) => {
     setbtn_disable(true);
 
     event.preventDefault();
-    let url = "http://localhost:4444/edit/teamup/update";
+    let url = `http://${address.ip}:4444/edit/teamup/update`;
     if (Tag.length === 0) {
       alert("Tag field should not be empty");
       setbtn_disable(false);

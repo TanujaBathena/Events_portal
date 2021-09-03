@@ -4,6 +4,7 @@ import Auth from "./auth";
 import Login from "./login";
 import axios from "axios";
 import auth from "./auth";
+import address from "./address";
 
 const Protectedroutes = ({ component: Component, ...rest }) => {
   let [loading, setloading] = useState(false);
@@ -11,7 +12,7 @@ const Protectedroutes = ({ component: Component, ...rest }) => {
   useEffect(() => {
     setloading(false); //while calling api setting loading state to false.
     axios
-      .get("http://localhost:4444/checkauth", {
+      .get(`http://${address.ip}:4444/checkauth`, {
         withCredentials: true,
         headers: {
           Accept: "application/json",
