@@ -50,8 +50,10 @@
 @media only screen and (max-width: 1000px) {
     .slideshow{
       width:90%;
-      height:50%;
+      height:350px;
       background-color: red;
+      margin-right: 0px;
+      
       
     }
 }
