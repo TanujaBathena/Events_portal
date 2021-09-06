@@ -13,6 +13,8 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
+  margin-left:20%;
+
 }
 .react-slideshow-wrapper.slide{
     z-index: -1;
@@ -21,7 +23,7 @@
     z-index: -1;
     
 }
-.each-fade p {
+/* .each-fade p {
   width: 25%;
   height: 100%;
   font-size: 1em;
@@ -31,7 +33,7 @@
   align-items: center;
   margin: 0;
   background: #adceed;
-}
+} */
 .slideshow{
   width:60%;
   height:80%;
@@ -39,7 +41,7 @@
   /* margin-top: 70px; */
   /* border:1px solid red; */
   align-self: center;
-  box-shadow:2px 2px 2px 2px #888888;
+  /* box-shadow:2px 2px 2px 2px #888888; */
   margin-right: 25px;
 }
 .slidepic{
@@ -50,10 +52,10 @@
 @media only screen and (max-width: 1000px) {
     .slideshow{
       width:90%;
-      height:350px;
-      background-color: red;
+      height:40%;
+      background-color: #def2f1;
       margin-right: 0px;
-      
+      box-shadow:2px 2px 2px 2px #888888;
       
     }
 }
