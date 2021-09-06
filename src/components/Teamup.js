@@ -6,10 +6,10 @@ import Loader from "./Loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import "../styles/container.css";
+import "../styles/teamup.css";
 import address from "./address";
 // import laptop from "../laptop.png";
-
+import Slideshow from "./Slideshow";
 const Teamup = () => {
   const [cards, setCards] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
@@ -41,36 +41,30 @@ const Teamup = () => {
       isLoading && (
         <div className="container">
           {/* <div className="banner"> */}
-          <div className="heading1">
-            <span className="teamup">TeamUp Portal</span>
-            <span className="content">
-              You can find your companion who can help you in solving a problem
-              or accompany you in paricipating a hackathon or helping you in a
-              project
-            </span>
-            <span
-              style={{
-                marginTop: "5%",
-                fontSize: "20px",
-              }}
-            >
-              Add Your Post Below
-            </span>
-            <Link to="/Teamup/form">
-              <button className="bun">
-                <FontAwesomeIcon icon={faPlus} size="3x" />
-              </button>
-            </Link>
+          <div className="banner">
+            <div className="type">
+              <span className="teamup">TeamUp Portal</span>
+              {/* <span className="content">
+                You can find your companion who can help you in solving a
+                problem or accompany you in paricipating a hackathon or helping
+                you in a project
+              </span> */}
+              <span
+                style={{
+                  marginTop: "5%",
+                  fontSize: "20px",
+                }}
+              >
+                Add Your Post Below
+              </span>
+              <Link to="/Teamup/form">
+                <button className="bun">
+                  <FontAwesomeIcon icon={faPlus} size="3x" />
+                </button>
+              </Link>
+            </div>
+            <Slideshow />
           </div>
-          {/* <div className="teamupimage">
-            <img
-              className="imaget"
-              // src="https://static.rfstat.com/media-test/007504c1-ac24-48ef-bc6c-7f2363357c2e.jpg"
-              src={laptop}
-              alt=""
-            ></img>
-          </div> */}
-          {/* </div> */}
 
           {cards.map((card) => (
             <TeamupCard

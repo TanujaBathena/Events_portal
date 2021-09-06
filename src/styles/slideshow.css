@@ -23,6 +23,7 @@
 }
 .each-fade p {
   width: 25%;
+  height: 100%;
   font-size: 1em;
   display: flex;
   text-align: center;
@@ -30,4 +31,27 @@
   align-items: center;
   margin: 0;
   background: #adceed;
+}
+.slideshow{
+  width:60%;
+  height:80%;
+  z-index: -1;
+  /* margin-top: 70px; */
+  /* border:1px solid red; */
+  align-self: center;
+  box-shadow:2px 2px 2px 2px #888888;
+  margin-right: 25px;
+}
+.slidepic{
+  width:100%;
+  height:60%;
+  /* border: 1px solid red; */
+}
+@media only screen and (max-width: 1000px) {
+    .slideshow{
+      width:90%;
+      height:50%;
+      background-color: red;
+      
+    }
 }

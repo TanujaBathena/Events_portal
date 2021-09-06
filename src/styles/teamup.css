@@ -1,0 +1,36 @@
+.banner{
+    margin-top: 70px;
+    width:100%;
+    height:500px;
+    display: flex;
+    /* border:1px solid red; */
+    justify-content: center;
+     /* background-color: #def2f1; */
+     z-index: -1;
+     box-sizing: border-box;
+}
+.type{
+    width:40%;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@media only screen and (max-width: 1000px) {
+    .banner{
+        flex-direction: column;
+        height:500px;
+        /* background-color: rgba(0,0,0,0);
+         */
+         
+        
+    }
+    .type{
+        width:100%;
+        height: 80%;
+        background-color: #def2f1;
+        
+
+    }
+}
