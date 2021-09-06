@@ -153,9 +153,11 @@ const Eventsread = (props) => {
     if (!error) {
       return (
         <div className="containerr">
-          <h1 style={{ margin: "auto" }}>
-            <b> {Title}</b>
-          </h1>
+          <div className="contentr" style={{ backgroundColor: "#F5f5f5" }}>
+            <h1 style={{ margin: "auto", textAlign: "center" }}>
+              <b>{Title}</b>
+            </h1>
+          </div>
           <div className="contentr">
             <p className="heading">Posted By</p>
             <p className="matter">{name}</p>

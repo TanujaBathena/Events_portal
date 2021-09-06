@@ -23,10 +23,10 @@ button:disabled {
 }
 h4{
   color: grey;
-  font-weight: 300;
+  font-weight: 400;
 }
 h5{
-  font-weight: 300;
+  font-weight: 600;
 }
 @media only screen and (max-width: 800px) {
   .modal {

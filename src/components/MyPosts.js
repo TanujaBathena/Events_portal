@@ -94,7 +94,13 @@ const MyPosts = (props) => {
           {((cardnumber) => {
             if (cardnumber[0] > 0) {
               return (
-                <div style={{ width: "100%", textAlign: "center" }}>
+                <div
+                  style={{
+                    marginTop: "20px",
+                    width: "100%",
+                    textAlign: "center",
+                  }}
+                >
                   <h1>Teamup Posts </h1>
                 </div>
               );
@@ -124,7 +130,13 @@ const MyPosts = (props) => {
           {((cardnumber) => {
             if (cardnumber[1] > 0) {
               return (
-                <div style={{ width: "100%", textAlign: "center" }}>
+                <div
+                  style={{
+                    marginTop: "20px",
+                    width: "100%",
+                    textAlign: "center",
+                  }}
+                >
                   <h1>Internship Posts </h1>
                 </div>
               );
@@ -154,7 +166,13 @@ const MyPosts = (props) => {
           {((cardnumber) => {
             if (cardnumber[2] > 0) {
               return (
-                <div style={{ width: "100%", textAlign: "center" }}>
+                <div
+                  style={{
+                    marginTop: "20px",
+                    width: "100%",
+                    textAlign: "center",
+                  }}
+                >
                   <h1>Event Posts </h1>
                 </div>
               );

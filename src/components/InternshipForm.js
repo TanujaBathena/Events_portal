@@ -20,13 +20,19 @@ const Dropdown = (props) => {
   const selected = props.selected;
   const setSelected = props.setSelected;
 
-  const style = {
-    control: (base) => ({
-      ...base,
-      border: 0,
-      boxShadow: "none",
-    }),
-  };
+//   const style = {
+//     control: (base) => ({
+//       ...base,
+//       border: 0,
+//       boxShadow: "none",
+//     }),
+//   };
+const customStyles = {
+    ///.....
+    menuPortal: provided => ({ ...provided, zIndex: 9999 }),
+    menu: provided => ({ ...provided, zIndex: 9999 })
+    ///.....
+  }
 
   return (
     <span>
@@ -37,7 +43,7 @@ const Dropdown = (props) => {
         onChange={setSelected}
         labelledBy={"Select"}
         disableSearch={true}
-        styles={style}
+        styles={customStyles}
       />
     </span>
   );
@@ -182,18 +188,19 @@ const FilesUploader = (props) => {
           }}
           style={{ height: "25px", margin: "auto", width: "25%" }}
         />
-        <div style={{ display: "flex" }}>
+        <div className="filediv">
           {fileList.map((file) => {
             return (
-              <div key={file.id} style={{ width: "20%" }}>
-                <p>{file.name}</p>
+              <div key={file.id} className="filebox">
+                <p className="filename">{file.name}</p>
                 <button
                   type="button"
+                  className="cancel"
                   onClick={() => {
                     deleteFile(file.id);
                   }}
                 >
-                  <FontAwesomeIcon icon={faTimes} size="1x" />
+                  <FontAwesomeIcon icon={faTimes} size="2x" />
                 </button>
               </div>
             );
@@ -249,7 +256,10 @@ const InternshipForm = () => {
       setDescription(description.slice(0, maxLen2));
     }
     if (date.length > 1) {
-      if (new Date(date) < new Date()) { alert("From date and time must be greater than current date and time"); setDate("") };
+      if (new Date(date) < new Date()) {
+        alert("From date and time must be greater than current date and time");
+        setDate("");
+      }
     }
   }, [
     internshipRole,
@@ -259,7 +269,7 @@ const InternshipForm = () => {
     maxLen1,
     maxLen2,
     duration,
-    date
+    date,
   ]);
   // console.log("input date", Date.parse(date), typeof Date.parse(date));
   // console.log("present data time", new Date(), typeof Date());

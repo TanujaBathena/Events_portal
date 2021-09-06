@@ -54,7 +54,7 @@ const MyProfile = () => {
     setSelect(false);
     setBranchToDisplay(branch.value);
     const datatobesent = {
-      branch: branch
+      branch: branch,
     };
     axios
       .post(`http://${address.ip}:4444/profile/editprofile`, datatobesent, {
@@ -102,30 +102,35 @@ const MyProfile = () => {
           </h5>
         </div>
         <div className="part">
-          <h4>Branch</h4>
+          <div style={{ display: "flex" }}>
+            <h4>Branch</h4>
+            <button
+              className="btn"
+              style={{
+                marginLeft: "auto",
+                alignSelf: "flex-end",
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faEdit}
+                size="1x"
+                onClick={() => setSelect(true)}
+                style={{ zIndex: -2 }}
+              />
+            </button>
+          </div>
+
           <h5>{branchToDisplay}</h5>
-          <button
-            className="btn"
-            style={{
-              position: "absolute",
-              left: "60%",
-              marginAuto: "auto",
-              alignSelf: "flex-end",
-            }}
-          >
-            <FontAwesomeIcon
-              icon={faEdit}
-              size="1x"
-              onClick={()=> setSelect(true)}
-            />
-          </button>
+
           {showSelect && (
-            <Select
-              className="select"
-              options={options}
-              value={branch}
-              onChange={setbranch}
-            />
+            <div style={{ marginTop: "20px", width: "100%" }}>
+              <Select
+                options={options}
+                value={branch}
+                onChange={setbranch}
+                // styles={style}
+              />
+            </div>
           )}
         </div>
       </div>

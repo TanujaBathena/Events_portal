@@ -182,18 +182,19 @@ const FilesUploader = (props) => {
           }}
           style={{ height: "25px", margin: "auto", width: "25%" }}
         />
-        <div style={{ display: "flex" }}>
+        <div className="filediv">
           {fileList.map((file) => {
             return (
-              <div key={file.id} style={{ width: "20%" }}>
-                <p>{file.name}</p>
+              <div key={file.id} className="filebox">
+                <p className="filename">{file.name}</p>
                 <button
                   type="button"
+                  className="cancel"
                   onClick={() => {
                     deleteFile(file.id);
                   }}
                 >
-                  <FontAwesomeIcon icon={faTimes} size="1x" />
+                  <FontAwesomeIcon icon={faTimes} size="2x" />
                 </button>
               </div>
             );
@@ -250,7 +251,10 @@ const InternshipForm = (props) => {
       setDescription(description.slice(0, maxLen2));
     }
     if (date.length > 1) {
-      if (new Date(date) < new Date()) { alert("From date and time must be greater than current date and time"); setDate("") };
+      if (new Date(date) < new Date()) {
+        alert("From date and time must be greater than current date and time");
+        setDate("");
+      }
     }
   }, [
     internshipRole,
@@ -260,7 +264,7 @@ const InternshipForm = (props) => {
     maxLen1,
     maxLen2,
     duration,
-    date
+    date,
   ]);
   useEffect(() => {
     // setIsLoading(false);

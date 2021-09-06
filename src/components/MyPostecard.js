@@ -94,12 +94,13 @@ const Mypostecard = (props) => {
         {props.venue}
       </div>
 
-      <Link to={`/events/${props.ID}`}>
-        <div style={{ marginTop: "50px", margin: "auto" }} className="readmore">
-          <button className="btn" type="submit">
-            Read More
-          </button>
-        </div>
+      <Link
+        to={`/events/${props.ID}`}
+        style={{ margin: "auto", width: "105px" }}
+      >
+        <button className="btn" type="submit">
+          Read More
+        </button>
       </Link>
       <div
         className="card_footer"

@@ -6,21 +6,25 @@
     margin-top: 15vh;
     width: 75%;
     box-shadow: 8px  8px 16px 0 rgba(0,0,0,0.2);
+    background-color: #FFFAFA;
+    gap:20px;
  
 }
 .contentr{
     display: flex;
     flex-direction: column;
     width:100%;
-    border-bottom:1px solid rgba(0,0,0,0.2);
+    /* border-bottom:1px solid rgba(0,0,0,0.2); */
     padding:10px;
     gap:10px;
+     word-break: break-word;
     
 }
 .heading{
     font-size: large;
     font-weight: 600;
     color:grey;
+
     /* font-family: 'B612', sans-serif; */
 }
 .matter{
@@ -55,4 +59,9 @@ a.rtfEmail{
 .filel:hover{
     cursor: pointer;
     box-shadow: 8px  8px 8px 0 rgba(0,0,0,0.2);
+}
+@media only screen and (max-width: 800px) {
+    .containerr{
+        width: 90%;
+    }
 }

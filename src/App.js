@@ -24,6 +24,7 @@ import EventForm from "./components/Eventform";
 import Eventsread from "./components/Eventread";
 import Eventedit from "./components/Eventedit.js";
 import Notfound from "./components/Notfound";
+import Footer from "./components/Footer.js"
 function App() {
   return (
     <Router>
@@ -73,13 +74,7 @@ function App() {
           <Route path="/" exact component={Login} />
           <Route path="*" component={Notfound} />
         </Switch>
-        <div
-          style={{
-            marginTop: "10vh",
-            width: "100%",
-            height: "400px",
-          }}
-        ></div>
+        <Footer/>
       </div>
     </Router>
   );

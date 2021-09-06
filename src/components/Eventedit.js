@@ -184,18 +184,19 @@ const FilesUploader = (props) => {
           }}
           style={{ height: "25px", margin: "auto", width: "25%" }}
         />
-        <div style={{ display: "flex" }}>
+        <div className="filediv">
           {fileList.map((file) => {
             return (
-              <div key={file.id} style={{ width: "20%" }}>
-                <p>{file.name}</p>
+              <div key={file.id} className="filebox">
+                <p className="filename">{file.name}</p>
                 <button
                   type="button"
+                  className="cancel"
                   onClick={() => {
                     deleteFile(file.id);
                   }}
                 >
-                  <FontAwesomeIcon icon={faTimes} size="1x" />
+                  <FontAwesomeIcon icon={faTimes} size="2x" />
                 </button>
               </div>
             );
@@ -247,12 +248,22 @@ const Eventedit = (props) => {
     console.log(new Date());
     if (fromDate.length === toDate.length && fromDate.length > 1) {
       console.log("khsvbdzj");
-      if (d1 >= d2) { alert("To date must be after from date"); setFromDate(""); setToDate("") }
+      if (d1 >= d2) {
+        alert("To date must be after from date");
+        setFromDate("");
+        setToDate("");
+      }
     }
     // if (fromDate.length !== toDate.length) {
     //   console.log("2nd if");
-    if (d1 < new Date()) { alert("From date and time must be greater than current date and time"); setFromDate("") };
-    if (d2 < new Date()) { alert("To date and time must be greater than current date and time"); setToDate("") }
+    if (d1 < new Date()) {
+      alert("From date and time must be greater than current date and time");
+      setFromDate("");
+    }
+    if (d2 < new Date()) {
+      alert("To date and time must be greater than current date and time");
+      setToDate("");
+    }
     // }
   }, [EventTitle, venue, description, maxLen1, maxLen2, fromDate, toDate]);
   useEffect(() => {
