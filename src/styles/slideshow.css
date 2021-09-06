@@ -21,7 +21,7 @@
     z-index: -1;
     
 }
-.each-fade p {
+/* .each-fade p {
   width: 25%;
   height: 100%;
   font-size: 1em;
@@ -31,7 +31,7 @@
   align-items: center;
   margin: 0;
   background: #adceed;
-}
+} */
 .slideshow{
   width:60%;
   height:80%;
