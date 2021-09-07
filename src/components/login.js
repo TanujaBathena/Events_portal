@@ -10,9 +10,10 @@ const Login = () => {
   return (
     <div className="boxe">
       <img
-        src="https://img.icons8.com/fluent/48/000000/google-logo.png"
+        // src="https://img.icons8.com/fluent/48/000000/google-logo.png"
+        src="https://www.iitgoa.ac.in/img/iit-goa-logo.svg"
         alt="google"
-        style={{ width: "100px", height: "100px", borderRadius: "50%" }}
+        style={{ width: "110px", height: "110px", borderRadius: "50%" }}
       />
       <span style={{ color: "red" }}>Please use your IIT Goa mail address</span>
       <div className="btn1">
