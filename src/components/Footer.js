@@ -48,11 +48,9 @@ const Footer = () => {
                 </div>
             <div className="doneby">
                 <span className="heads">Guided By</span>
-                <span >Dr Neha ma'am</span>
-                <span className="heads">created By</span>
-                    <span>Tanuja,Vishnu,Pranav,Noel</span>
-
-                    
+                <span >Dr.Neha Karanjkar</span>
+                <span className="heads">Created By</span>
+                    <span>Noel,Pranav,Vishnu,Tanuja</span>
             </div>
           
             </div>

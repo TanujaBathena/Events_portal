@@ -68,7 +68,7 @@ const MyPosts = (props) => {
           <div className="heading1">
             <p className="teamup">My posts</p>
             <p className="content">
-              You can find your posts which you have posted..{" "}
+              You can find the posts which you have posted here..{" "}
             </p>
           </div>
           {((cardnumber) => {

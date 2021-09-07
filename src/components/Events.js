@@ -39,7 +39,7 @@ const Events = () => {
     return (
       <div className="container">
         <div className="heading1">
-          <p className="teamup">Events</p>
+          <p className="teamup">Events/Challenges</p>
           <p className="content">Events </p>
           <span style={{ marginTop: "5%", fontSize: "20px" }}>
             Add Your Post Below

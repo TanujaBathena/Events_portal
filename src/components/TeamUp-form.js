@@ -105,7 +105,7 @@ const Teamup_form = () => {
       setTitle(Title.slice(0, 50));
     }
     if (skill.length > 50) {
-      alert("skill cannot be more than 50 characters");
+      alert("Skill cannot be more than 50 characters");
       setSkill(skill.slice(0, 50));
     }
     if (Description.length > 300) {
