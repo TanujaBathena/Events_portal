@@ -10,6 +10,7 @@ import "../styles/teamup.css";
 import address from "./address";
 // import laptop from "../laptop.png";
 // import Sliden from "./Slide";
+import Slides from "./Carousel";
 const Teamup = () => {
   const [cards, setCards] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
@@ -64,6 +65,9 @@ const Teamup = () => {
               </Link>
             </div>
             {/* <Sliden /> */}
+            <div className="slide">
+              <Slides />
+            </div>
           </div>
 
           {cards.map((card) => (
