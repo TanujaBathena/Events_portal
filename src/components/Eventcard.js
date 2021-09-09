@@ -170,7 +170,7 @@ const Eventcard = (props) => {
           </button>
         )}
         {starloading && <div className="loaderstar comp"></div>}
-        <p className="headinge">{props.title}</p>
+        <p className="headinge"><b>{props.title}</b></p>
         <button
           onClick={() => newpage()}
           style={{

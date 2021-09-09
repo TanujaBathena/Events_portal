@@ -45,7 +45,8 @@
 
 }
 .clubname{
-    font-size: small;
+    font-size: medium;
+    color: white;
     margin-top: 20px;
     box-sizing: border-box;
     padding: 5px;
@@ -60,6 +61,7 @@
 .headinge{
     margin-top: 20px;
     font-size: x-large;
+    color:teal;
 }
 .tv{
     align-self: flex-start;

@@ -193,8 +193,8 @@ const InternshipCards = (props) => {
           {/* </div> */}
         </Link>
         <div className="deadline">
-          {/* DeadLine:{props.deadline.slice(0, 16).replace("T", "\t ,\t")} */}
-          Deadline(mm/dd/yyyy):{deadline}
+        <b>{/* DeadLine:{props.deadline.slice(0, 16).replace("T", "\t ,\t")} */}
+          Deadline(mm/dd/yyyy):{deadline}</b>
         </div>
       </div>
     </div>

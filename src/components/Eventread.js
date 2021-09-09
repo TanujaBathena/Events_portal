@@ -153,18 +153,21 @@ const Eventsread = (props) => {
     if (!error) {
       return (
         <div className="containerr">
-          <div className="contentr" style={{ backgroundColor: "#F5f5f5" }}>
+          <div className="contentr" style={{background: "#23eca433" }}>
             <h1 style={{ margin: "auto", textAlign: "center" }}>
               <b>{Title}</b>
             </h1>
           </div>
           <div className="contentr">
-            <p className="heading">Posted By</p>
-            <p className="matter">{name}</p>
-          </div>
-          <div className="contentr">
             <p className="heading">Club</p>
             <p className="matter">{Club}</p>
+          </div>
+          <div className="contentr">
+            <p className="heading">Description</p>
+
+            <ReactTextFormat className="matter" linkTarget="_blank">
+              {description}
+            </ReactTextFormat>
           </div>
           <div className="contentr">
             <p className="heading">Venue</p>
@@ -175,13 +178,6 @@ const Eventsread = (props) => {
             <p className="matter">
               {Fromdate} <b>to</b> {Todate}
             </p>
-          </div>
-          <div className="contentr">
-            <p className="heading">Description</p>
-
-            <ReactTextFormat className="matter" linkTarget="_blank">
-              {description}
-            </ReactTextFormat>
           </div>
           <div className="contentr">
             <p className="heading">Event Registration Deadline(mm/dd/yyyy)</p>
@@ -207,6 +203,10 @@ const Eventsread = (props) => {
                 </p>
               ))}
             </div>
+          </div>
+          <div className="contentr">
+            <p className="heading">Posted By</p>
+            <p className="matter">{name}</p>
           </div>
         </div>
       );

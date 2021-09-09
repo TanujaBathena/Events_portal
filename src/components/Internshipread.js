@@ -134,7 +134,7 @@ const Internshipread = (props) => {
     if (!error) {
       return (
         <div className="containerr">
-          <div className="contentr" style={{ backgroundColor: "#F5f5f5" }}>
+          <div className="contentr" style={{ background: "#23eca433" }}>
             <h1
               style={{
                 margin: "auto",

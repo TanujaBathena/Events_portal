@@ -152,8 +152,10 @@ body{
     padding: 3%;
     font-size: small;
     margin-top: auto;
-    background-color: yellowgreen;
-    
+    color: #30715a;
+    /* background-color: yellowgreen; */
+    background: #23eca433;
+    border-radius: 0px 0px 10px 10px;
 }
 .readmore{
     width: 30%;
