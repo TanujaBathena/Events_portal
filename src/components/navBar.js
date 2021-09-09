@@ -63,7 +63,10 @@ const Navbar = (props) => {
 
   return (
     <nav>
-      <div className="logo">logo</div>
+      <div className="logo">
+        <img src="https://www.iitgoa.ac.in/img/iit-goa-logo.svg" alt="" style={{marginLeft:"0px",width:"60px",height:"60px",borderRadius:"50%"}}/>
+        <span style={{textAlign:"center"}}>IIT GOA</span>
+      </div>
 
       <ul className="list">
         <li className="profile colorw" onClick={dropProfile} id="a">

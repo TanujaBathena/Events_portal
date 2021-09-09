@@ -90,13 +90,13 @@ const Eventcard = (props) => {
     <div className="eventcard">
       <div className="clubinfo">
         <img
-          src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+          src="https://t3.ftcdn.net/jpg/01/14/49/40/240_F_114494079_iAK28mmYCxfUETORbJhWi0BNRLZah93F.jpg"
           alt="p"
           className="responsivem"
         ></img>
         <p className="clubname">{props.clubname}</p>
         <img
-          src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+          src="https://t3.ftcdn.net/jpg/01/14/49/40/240_F_114494079_iAK28mmYCxfUETORbJhWi0BNRLZah93F.jpg"
           alt="p"
           className="responsive"
         ></img>

@@ -550,7 +550,7 @@ const Eventedit = (props) => {
             />
           </div>
           <div className="forminput">
-            <label htmlFor="deadline">Deadline:</label>
+            <label htmlFor="deadline">Event Registration Deadline:</label>
             <input
               className="input"
               type="datetime-local"

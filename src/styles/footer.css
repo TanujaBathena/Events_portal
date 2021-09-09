@@ -61,10 +61,10 @@
 .copy{
     width:100%;
     height:50px;
-    background-color: yellow;
+    background:  #057260;;
     margin-top: auto;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 780px) {
     .boxf{
         flex-direction: column;
     }

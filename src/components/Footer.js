@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="footbox">
             <div className="boxf">
                 <div className="aboutIIT">
-                    <img src="https://www.iitgoa.ac.in/img/iit-goa-logo.svg" style={{marginLeft:"20px",width:"200px",height:"200px",borderRadius:"50%"}}/>
+                    <img src="https://www.iitgoa.ac.in/img/iit-goa-logo.svg" alt="" style={{marginLeft:"20px",width:"200px",height:"200px",borderRadius:"50%"}}/>
                     <div className="linki">
                         <button className="bun">
                             <FontAwesomeIcon icon={faFacebook} size="2x" />
@@ -50,7 +50,7 @@ const Footer = () => {
                 <span className="heads">Guided By</span>
                 <span >Dr.Neha Karanjkar</span>
                 <span className="heads">Created By</span>
-                    <span>Noel,Pranav,Vishnu,Tanuja</span>
+                    <span>Names,Names,Names,Names</span>
             </div>
           
             </div>

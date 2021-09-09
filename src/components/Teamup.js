@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 import "../styles/teamup.css";
 import address from "./address";
 // import laptop from "../laptop.png";
-import Slideshow from "./Slideshow";
+// import Sliden from "./Slide";
+import Slides from "./Carousel";
 const Teamup = () => {
   const [cards, setCards] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
@@ -63,7 +64,10 @@ const Teamup = () => {
                 </button>
               </Link>
             </div>
-            <Slideshow />
+            {/* <Sliden /> */}
+            <div className="slide">
+              <Slides />
+            </div>
           </div>
 
           {cards.map((card) => (
