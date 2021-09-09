@@ -1,30 +1,34 @@
 import React from "react";
 import "../styles/login.css";
+import address from "./address";
 
 const Login = () => {
   const handleClick = (event) => {
-    window.open("http://localhost:4444/login/google", "_self"); //opens  a new window where you can select your mail accounts.
+    window.open(`http://${address.ip}:4444/login/google`, "_self"); //opens  a new window where you can select your mail accounts.
   };
 
   return (
-    <div className="container1" style={{display:"flex",flexDirection:"column" , gap:"1%"}}>
-      <div className="box">
-        <div className="btn1">
-          <button className="lbtn" onClick={handleClick}>
-            Sign in with Google
-          </button>
+    <div className="boxe">
+      <img
+        // src="https://img.icons8.com/fluent/48/000000/google-logo.png"
+        src="https://www.iitgoa.ac.in/img/iit-goa-logo.svg"
+        alt="google"
+        style={{ width: "110px", height: "110px", borderRadius: "50%" }}
+      />
+      <span style={{ color: "red" }}>Please use your IIT Goa mail address</span>
+      <div className="btn1">
+        <button className="lbtn" onClick={handleClick}>
+          <span>Sign in with Google</span>
+        </button>
 
-          <div className="image">
-            <img
-              src="https://img.icons8.com/fluent/48/000000/google-logo.png"
-              alt="google"
-            />
-          </div>
+        <div className="image">
+          <img
+            src="https://img.icons8.com/fluent/48/000000/google-logo.png"
+            alt="google"
+          />
         </div>
       </div>
-      <div style={{color:"red"}}>* Please use your IIT Goa Mail ID</div>
     </div>
-    
   );
 };
 

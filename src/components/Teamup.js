@@ -6,15 +6,18 @@ import Loader from "./Loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import "../styles/container.css";
-
+import "../styles/teamup.css";
+import address from "./address";
+// import laptop from "../laptop.png";
+// import Sliden from "./Slide";
+import Slides from "./Carousel";
 const Teamup = () => {
   const [cards, setCards] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setIsLoading(false);
     axios
-      .get("http://localhost:4444/teamup", {
+      .get(`http://${address.ip}:4444/teamup`, {
         withCredentials: true,
         headers: {
           Accept: "application/json",
@@ -38,22 +41,33 @@ const Teamup = () => {
     return (
       isLoading && (
         <div className="container">
-          <div className="heading1">
-            <p className="teamup">TeamUp Portal</p>
-            <p className="content">
-              You can find your companion who can help you in solving a problem
-              or accompany you in paricipating a hackathon or helping you in a
-              project
-            </p>
-            <span style={{ marginTop: "5%", fontSize: "20px" }}>
-              Add Your Post Below
-            </span>
-            <Link to="/Teamup/form">
-              <button className="bun">
-                <FontAwesomeIcon icon={faPlus} size="3x" />
-              </button>
-            </Link>
-            <div className="teamupimage"></div>
+          {/* <div className="banner"> */}
+          <div className="banner">
+            <div className="type">
+              <span className="teamup">TeamUp Portal</span>
+              {/* <span className="content">
+                You can find your companion who can help you in solving a
+                problem or accompany you in paricipating a hackathon or helping
+                you in a project
+              </span> */}
+              <span
+                style={{
+                  marginTop: "5%",
+                  fontSize: "20px",
+                }}
+              >
+                Add Your Post Below
+              </span>
+              <Link to="/Teamup/form">
+                <button className="bun">
+                  <FontAwesomeIcon icon={faPlus} size="3x" />
+                </button>
+              </Link>
+            </div>
+            {/* <Sliden /> */}
+            <div className="slide">
+              <Slides />
+            </div>
           </div>
 
           {cards.map((card) => (

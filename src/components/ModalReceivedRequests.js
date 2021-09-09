@@ -1,10 +1,12 @@
-import React from "react";
+import { React, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
 
 import "../styles/modal.css";
 import axios from "axios";
 import Auth from "./auth";
+
+import address from "./address";
 
 const overlay = {
   position: "fixed",
@@ -41,16 +43,18 @@ const h45 = {
 };
 
 const ModalReceived = (props) => {
+  const [disable, setDisable] = useState(false);
   if (!props.isOpen) return null;
   const submit = (status, deleted) => {
+    setDisable(true);
     let description = "";
     if (status === 2 && props.deleted === false) {
       console.log("inside accepted requests");
-      description = prompt("where/How/when contact/meet him");
-      if (description != null) {
+      description = prompt("where/How/when to contact/meet him");
+      if (description != null && description !== "" && description.length <= 100) {
         axios
           .post(
-            "http://localhost:4444/Profile/acceptrequest",
+            `http://${address.ip}:4444/Profile/acceptrequest`,
             {
               post_mong_id: props.post_mong_id,
               AlertDescription: description,
@@ -72,14 +76,19 @@ const ModalReceived = (props) => {
               window.location.reload();
             }
           });
-      } else {
-        alert("please fill the description");
+      } else if (description != null && description.length === 0) {
+        alert("please fill the desription");
+        setDisable(false);
+
+      } else if (description != null && description.length > 100) {
+        alert("charecters should be less than 100 charecters");
+        setDisable(false);
       }
     } else if (status === 0) {
       console.log("inside reject requests");
       axios
         .post(
-          "http://localhost:4444/Profile/rejectedrequest",
+          `http://${address.ip}:4444/Profile/rejectedrequest`,
           {
             post_mong_id: props.post_mong_id,
             status: status,
@@ -105,7 +114,7 @@ const ModalReceived = (props) => {
       if (deleted === true) {
         axios
           .post(
-            "http://localhost:4444/Profile/deleteacceptedrequest",
+            `http://${address.ip}:4444/Profile/deleteacceptedrequest`,
             {
               post_mong_id: props.ID,
               status: status,
@@ -130,7 +139,7 @@ const ModalReceived = (props) => {
       } else {
         axios
           .post(
-            "http://localhost:4444/Profile/deleteacceptedrequest",
+            `http://${address.ip}:4444/Profile/deleteacceptedrequest`,
             {
               post_mong_id: props.post_mong_id,
               status: status,
@@ -187,10 +196,10 @@ const ModalReceived = (props) => {
         </div>
         {props.status === 1 && (
           <div style={{ flexDirection: "row", justifyContent: "center" }}>
-            <button className="btn" type="submit" onClick={() => submit(0)}>
+            <button className="btn" type="submit" disabled={disable} onClick={() => submit(0)}>
               reject
             </button>
-            <button className="btn" type="submit" onClick={() => submit(2)}>
+            <button className="btn" type="submit" disabled={disable} onClick={() => submit(2)}>
               accept
             </button>
           </div>

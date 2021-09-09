@@ -8,13 +8,16 @@ import { Link } from "react-router-dom";
 import Auth from "./auth";
 import Loader from "./Loader.js";
 import axios from "axios";
+import address from "./address.js";
+import "../styles/teamup.css";
+import events from "../photos/events.png";
 const Events = () => {
   const [cards, setCards] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setIsLoading(false);
     axios
-      .get("http://localhost:4444/events/", {
+      .get(`http://${address.ip}:4444/events/`, {
         withCredentials: true,
         headers: {
           Accept: "application/json",
@@ -36,17 +39,34 @@ const Events = () => {
   if (isLoading) {
     return (
       <div className="container">
-        <div className="heading1">
-          <p className="teamup">Events</p>
-          <p className="content">Events </p>
-          <span style={{ marginTop: "5%", fontSize: "20px" }}>
-            Add Your Post Below
-          </span>
-          <Link to="/Events/form">
-            <button className="bun">
-              <FontAwesomeIcon icon={faPlus} size="3x" />
-            </button>
-          </Link>
+        {/* <div className="banner"> */}
+        <div className="banner">
+          <div className="type">
+            <span className="teamup">Events Portal</span>
+            {/* <span className="content">
+                You can find your companion who can help you in solving a
+                problem or accompany you in paricipating a hackathon or helping
+                you in a project
+              </span> */}
+            <span
+              style={{
+                marginTop: "5%",
+                fontSize: "20px",
+              }}
+            >
+              Add Your Post Below
+            </span>
+            <Link to="/Events/form">
+              <button className="bun">
+                <FontAwesomeIcon icon={faPlus} size="3x" />
+              </button>
+            </Link>
+          </div>
+          <div className="picbox">
+            <img src={events} alt="img" className="pic" />
+          </div>
+
+          {/* <Sliden /> */}
         </div>
         <div className="eventcontainer">
           {cards.map((card) => (

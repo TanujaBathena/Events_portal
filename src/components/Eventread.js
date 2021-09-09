@@ -5,6 +5,8 @@ import axios from "axios";
 import Auth from "./auth";
 import Loader from "./Loader";
 import Notfound from "./Notfound";
+import address from "./address";
+
 const Eventsread = (props) => {
   // let [result, setResult] = useState({
   //   _id: "",
@@ -42,7 +44,7 @@ const Eventsread = (props) => {
       postid: props.match.params.id,
     };
     axios
-      .post("http://localhost:4444/events/readmore", datatobesent, {
+      .post(`http://${address.ip}:4444/events/readmore`, datatobesent, {
         withCredentials: true,
         headers: {
           Accept: "application/json",
@@ -151,9 +153,11 @@ const Eventsread = (props) => {
     if (!error) {
       return (
         <div className="containerr">
-          <h1 style={{ margin: "auto" }}>
-            <b> {Title}</b>
-          </h1>
+          <div className="contentr" style={{ backgroundColor: "#F5f5f5" }}>
+            <h1 style={{ margin: "auto", textAlign: "center" }}>
+              <b>{Title}</b>
+            </h1>
+          </div>
           <div className="contentr">
             <p className="heading">Posted By</p>
             <p className="matter">{name}</p>

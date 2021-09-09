@@ -8,6 +8,8 @@ import "../styles/Teamupform.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Loader from "./Loader";
+import address from "./address";
+
 const Dropdown = (props) => {
   const options = [
     { label: "InfoSec", value: "InfoSec" },
@@ -182,18 +184,19 @@ const FilesUploader = (props) => {
           }}
           style={{ height: "25px", margin: "auto", width: "25%" }}
         />
-        <div style={{ display: "flex" }}>
+        <div className="filediv">
           {fileList.map((file) => {
             return (
-              <div key={file.id} style={{ width: "20%" }}>
-                <p>{file.name}</p>
+              <div key={file.id} className="filebox">
+                <p className="filename">{file.name}</p>
                 <button
                   type="button"
+                  className="cancel"
                   onClick={() => {
                     deleteFile(file.id);
                   }}
                 >
-                  <FontAwesomeIcon icon={faTimes} size="1x" />
+                  <FontAwesomeIcon icon={faTimes} size="2x" />
                 </button>
               </div>
             );
@@ -216,8 +219,8 @@ const Eventedit = (props) => {
   let history = useHistory();
   const [btn_disable, setbtn_disable] = useState(false);
   let [isLoading, setIsLoading] = useState(false);
-  const [fromDate, setFromDate] = useState();
-  let [toDate, setToDate] = useState();
+  const [fromDate, setFromDate] = useState("");
+  let [toDate, setToDate] = useState("");
 
   const lengthValidation = (strng, maxlen) => {
     if (strng.length > maxlen) return false;
@@ -240,14 +243,36 @@ const Eventedit = (props) => {
       alert(`Only ${maxLen2} characters allowed`);
       setDescription(description.slice(0, maxLen2));
     }
-  }, [EventTitle, venue, description, maxLen1, maxLen2]);
+    let d1 = new Date(fromDate);
+    let d2 = new Date(toDate);
+    console.log(new Date());
+    if (fromDate.length === toDate.length && fromDate.length > 1) {
+      console.log("khsvbdzj");
+      if (d1 >= d2) {
+        alert("To date must be after from date");
+        setFromDate("");
+        setToDate("");
+      }
+    }
+    // if (fromDate.length !== toDate.length) {
+    //   console.log("2nd if");
+    if (d1 < new Date()) {
+      alert("From date and time must be greater than current date and time");
+      setFromDate("");
+    }
+    if (d2 < new Date()) {
+      alert("To date and time must be greater than current date and time");
+      setToDate("");
+    }
+    // }
+  }, [EventTitle, venue, description, maxLen1, maxLen2, fromDate, toDate]);
   useEffect(() => {
     // setIsLoading(false);
     // console.log(props.location.postid.id);
     if (props.location.postid !== undefined) {
       axios
         .post(
-          "http://localhost:4444/edit/events/getpost",
+          `http://${address.ip}:4444/edit/events/getpost`,
           {
             postid: props.location.postid || null,
           },
@@ -401,7 +426,7 @@ const Eventedit = (props) => {
     data.append("description", description);
     for (let i = 0; i < fileList.length; i++) data.append("files", fileList[i]);
     axios
-      .post("http://localhost:4444/edit/events/submit", data, {
+      .post(`http://${address.ip}:4444/edit/events/submit`, data, {
         withCredentials: true,
         headers: {
           Accept: "application/json",
@@ -547,8 +572,8 @@ const Eventedit = (props) => {
                 setDescription(e.target.value);
               }}
               style={{
-                width: "70%",
-                height: "4vh",
+                width: "100%",
+                height: "50",
                 resize: "none",
                 marginRight: "auto",
               }}

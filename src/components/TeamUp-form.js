@@ -5,6 +5,7 @@ import MultiSelect from "react-multi-select-component";
 // import Multiselect from 'multiselect-react-dropdown';
 import "../styles/Teamupform.css";
 import axios from "axios";
+import address from "./address";
 
 //multiselecect
 //teamup submit redirect and disable
@@ -64,7 +65,7 @@ const Teamup_form = () => {
   const HandleInputs = async (event) => {
     setbtn_disable(true);
     event.preventDefault();
-    let url = "http://localhost:4444/teamup/submit";
+    let url = `http://${address.ip}:4444/teamup/submit`;
     if (Tag.length === 0) {
       alert("Tag field should not be empty");
       setbtn_disable(false);

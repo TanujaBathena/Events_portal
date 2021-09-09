@@ -8,6 +8,8 @@ import "../styles/Teamupform.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Loader from "./Loader";
+import address from "./address";
+
 const Dropdown = (props) => {
   const options = [
     { label: "CSE", value: "CSE" },
@@ -180,18 +182,19 @@ const FilesUploader = (props) => {
           }}
           style={{ height: "25px", margin: "auto", width: "25%" }}
         />
-        <div style={{ display: "flex" }}>
+        <div className="filediv">
           {fileList.map((file) => {
             return (
-              <div key={file.id} style={{ width: "20%" }}>
-                <p>{file.name}</p>
+              <div key={file.id} className="filebox">
+                <p className="filename">{file.name}</p>
                 <button
                   type="button"
+                  className="cancel"
                   onClick={() => {
                     deleteFile(file.id);
                   }}
                 >
-                  <FontAwesomeIcon icon={faTimes} size="1x" />
+                  <FontAwesomeIcon icon={faTimes} size="2x" />
                 </button>
               </div>
             );
@@ -208,7 +211,7 @@ const InternshipForm = (props) => {
   let [company, setCompany] = useState("");
   let [stipend, setStipend] = useState("");
   const [selected, setSelected] = useState([]); //branches data
-  let [date, setDate] = useState();
+  let [date, setDate] = useState("");
   let [description, setDescription] = useState("");
   let [duration, setDuration] = useState("");
   let history = useHistory();
@@ -247,6 +250,12 @@ const InternshipForm = (props) => {
       alert(`Only ${maxLen2} characters allowed`);
       setDescription(description.slice(0, maxLen2));
     }
+    if (date.length > 1) {
+      if (new Date(date) < new Date()) {
+        alert("From date and time must be greater than current date and time");
+        setDate("");
+      }
+    }
   }, [
     internshipRole,
     company,
@@ -255,6 +264,7 @@ const InternshipForm = (props) => {
     maxLen1,
     maxLen2,
     duration,
+    date,
   ]);
   useEffect(() => {
     // setIsLoading(false);
@@ -262,7 +272,7 @@ const InternshipForm = (props) => {
     if (props.location.postid !== undefined) {
       axios
         .post(
-          "http://localhost:4444/internships/edit",
+          `http://${address.ip}:4444/internships/edit`,
           {
             postid: props.location.postid || null,
           },
@@ -367,7 +377,7 @@ const InternshipForm = (props) => {
       for (let i = 0; i < fileList.length; i++)
         data.append("files", fileList[i]);
       axios
-        .post("http://localhost:4444/internships/edit/submit", data, {
+        .post(`http://${address.ip}:4444/internships/edit/submit`, data, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -503,8 +513,8 @@ const InternshipForm = (props) => {
                 setDescription(e.target.value);
               }}
               style={{
-                width: "70%",
-                height: "4vh",
+                width: "100%",
+                height: "250px",
                 resize: "none",
                 marginRight: "auto",
               }}

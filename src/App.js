@@ -24,6 +24,7 @@ import EventForm from "./components/Eventform";
 import Eventsread from "./components/Eventread";
 import Eventedit from "./components/Eventedit.js";
 import Notfound from "./components/Notfound";
+import Footer from "./components/Footer.js"
 function App() {
   return (
     <Router>
@@ -68,17 +69,12 @@ function App() {
           />
           <Protectedroutes path="/events/edit" exact component={Eventedit} />
           <Protectedroutes path="/events/:id" exact component={Eventsread} />
-          <Route path="/404notfound" component={Notfound} />
+          <Route path="/404notfound" exact  component={Notfound} />
           <Route path="/Login" component={Login} />
+          <Route path="/" exact component={Login} />
           <Route path="*" component={Notfound} />
         </Switch>
-        <div
-          style={{
-            marginTop: "10vh",
-            width: "100%",
-            height: "400px",
-          }}
-        ></div>
+        <Footer/>
       </div>
     </Router>
   );

@@ -1,0 +1,18 @@
+.im{
+    width:250px;
+    height:450px;
+}
+@media only screen and (min-width:750px)and( max-width: 1000px) {
+    .im{
+        height:350px;
+        width:80%;
+    }
+
+}
+@media only screen and (max-width: 1000px) {
+    .im{
+        height:250px;
+        width:100%;
+    }
+
+}

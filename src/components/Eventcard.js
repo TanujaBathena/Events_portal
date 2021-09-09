@@ -8,6 +8,8 @@ import Auth from "./auth";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles/loaderstar.css";
+import address from "./address";
+
 const Eventcard = (props) => {
   const [disabled, setdisable] = useState(false);
   const [starloading, setStarloading] = useState(false);
@@ -20,14 +22,18 @@ const Eventcard = (props) => {
     };
     if (state) {
       axios
-        .post("http://localhost:4444/starred/events/tounstar", datatobesent, {
-          withCredentials: true,
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Credentials": true,
-          },
-        })
+        .post(
+          `http://${address.ip}:4444/starred/events/tounstar`,
+          datatobesent,
+          {
+            withCredentials: true,
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Credentials": true,
+            },
+          }
+        )
         .then((res) => {
           if (res.data !== "notloggedin") {
             Auth.login();
@@ -41,7 +47,7 @@ const Eventcard = (props) => {
     } else {
       //   console.log("unnnnnnnnstar");
       axios
-        .post("http://localhost:4444/starred/events/tostar", datatobesent, {
+        .post(`http://${address.ip}:4444/starred/events/tostar`, datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -60,6 +66,24 @@ const Eventcard = (props) => {
           }
         });
     }
+  };
+  const newpage = () => {
+    let text_field = props.title;
+    let date = props.fromdate.replaceAll("-", "");
+    date = date.replaceAll(":", "");
+    date = date.replaceAll(".", "");
+    // date = date + "/" + date;
+    let date1 = props.todate.replaceAll("-", "");
+    date1 = date1.replaceAll(":", "");
+    date1 = date1.replaceAll(".", "");
+    // date1 = date1 + "/" + date1;
+    console.log(date, date1);
+    let url = `https://calendar.google.com/calendar/u/0/r/eventedit?text=${encodeURIComponent(
+      text_field
+    )}&dates=${encodeURIComponent(date)}/${encodeURIComponent(
+      date1
+    )}&location=${encodeURIComponent(props.venue)}`;
+    window.open(url);
   };
 
   return (
@@ -148,6 +172,7 @@ const Eventcard = (props) => {
         {starloading && <div className="loaderstar comp"></div>}
         <p className="headinge">{props.title}</p>
         <button
+          onClick={() => newpage()}
           style={{
             border: "0px",
             marginLeft: "25px",
@@ -165,7 +190,7 @@ const Eventcard = (props) => {
         </button>
         <h4 className="tv">
           {" "}
-          <b>Timings</b>
+          <b>Timings(mm/dd/yyyy)</b>
         </h4>
         <h5 className="tv">
           {new Date(props.fromdate).toLocaleString("en-US", {
@@ -190,13 +215,18 @@ const Eventcard = (props) => {
           <b>Venue</b>
         </h4>
         <h5 className="tv">{props.venue}</h5>
-        <button
-          className="btneventm"
-          type="submit"
-          style={{ width: "max-content" }}
+        <Link
+          style={{ marginTop: "auto", marginLeft: "auto" }}
+          to={`Events/${props.ID}`}
         >
-          Read More
-        </button>
+          <button
+            className="btneventm"
+            type="submit"
+            style={{ width: "max-content" }}
+          >
+            Read More
+          </button>
+        </Link>
       </div>
     </div>
   );

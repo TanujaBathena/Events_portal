@@ -1,9 +1,10 @@
 import { React, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWindowClose } from "@fortawesome/free-regular-svg-icons";
+import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import Auth from "./auth";
 import "../styles/modal.css";
+import address from "./address";
 import { useHistory } from "react-router";
 const overlay = {
   position: "fixed",
@@ -50,13 +51,17 @@ const Modal = (props) => {
     const description = await prompt(
       "Why do you want to collaborate with person"
     );
-    console.log("Desccription ", description);
-    if (description != null && description !== "") {
+    console.log("Description ", description);
+    if (
+      description != null &&
+      description !== "" &&
+      description.length <= 100
+    ) {
       console.log(description, props.ID);
       setDisable(true);
       axios
         .post(
-          "http://localhost:4444/Profile/interested",
+          `http://${address.ip}:4444/Profile/interested`,
           {
             post_mong_id: props.ID,
             AlertDescription: description,
@@ -79,8 +84,11 @@ const Modal = (props) => {
             history.push("/myrequests");
           }
         });
-    } else if (description != null && description.length <= 10) {
+    } else if (description != null && description.length === 0) {
       alert("please fill the desription");
+      setDisable(false);
+    } else if (description != null && description.length > 100) {
+      alert("charecters should be less than 100 charecters");
       setDisable(false);
     }
   };
@@ -89,16 +97,24 @@ const Modal = (props) => {
     <div style={overlay}>
       <div className="modal">
         <div style={header}>
-          <div style={{ marginLeft: "3%" }}>
+          <div style={{ marginLeft: "3%", width: "90%" }}>
             <b>{props.title}</b>
           </div>
-
-          <FontAwesomeIcon
-            icon={faWindowClose}
-            size="1x"
-            onClick={props.onClose}
-            style={{ marginLeft: "auto" }}
-          />
+          <button
+            style={{
+              marginLeft: "auto",
+              marginBottom: "auto",
+              border: "0px",
+              width: "10%",
+              backgroundColor: "rgba(0,0,0,0)",
+            }}
+          >
+            <FontAwesomeIcon
+              icon={faWindowClose}
+              size="2x"
+              onClick={props.onClose}
+            />
+          </button>
         </div>
         <div style={body}>
           <h4 style={h45}>Posted By</h4>

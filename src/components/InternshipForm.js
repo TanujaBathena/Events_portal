@@ -8,6 +8,8 @@ import "../styles/Teamupform.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Loader from "./Loader";
+import address from "./address";
+
 const Dropdown = (props) => {
   const options = [
     { label: "CSE", value: "CSE" },
@@ -18,13 +20,19 @@ const Dropdown = (props) => {
   const selected = props.selected;
   const setSelected = props.setSelected;
 
-  const style = {
-    control: (base) => ({
-      ...base,
-      border: 0,
-      boxShadow: "none",
-    }),
-  };
+//   const style = {
+//     control: (base) => ({
+//       ...base,
+//       border: 0,
+//       boxShadow: "none",
+//     }),
+//   };
+const customStyles = {
+    ///.....
+    menuPortal: provided => ({ ...provided, zIndex: 9999 }),
+    menu: provided => ({ ...provided, zIndex: 9999 })
+    ///.....
+  }
 
   return (
     <span>
@@ -35,7 +43,7 @@ const Dropdown = (props) => {
         onChange={setSelected}
         labelledBy={"Select"}
         disableSearch={true}
-        styles={style}
+        styles={customStyles}
       />
     </span>
   );
@@ -180,18 +188,19 @@ const FilesUploader = (props) => {
           }}
           style={{ height: "25px", margin: "auto", width: "25%" }}
         />
-        <div style={{ display: "flex" }}>
+        <div className="filediv">
           {fileList.map((file) => {
             return (
-              <div key={file.id} style={{ width: "20%" }}>
-                <p>{file.name}</p>
+              <div key={file.id} className="filebox">
+                <p className="filename">{file.name}</p>
                 <button
                   type="button"
+                  className="cancel"
                   onClick={() => {
                     deleteFile(file.id);
                   }}
                 >
-                  <FontAwesomeIcon icon={faTimes} size="1x" />
+                  <FontAwesomeIcon icon={faTimes} size="2x" />
                 </button>
               </div>
             );
@@ -208,7 +217,7 @@ const InternshipForm = () => {
   let [company, setCompany] = useState("");
   let [stipend, setStipend] = useState("");
   const [selected, setSelected] = useState([]); //branches data
-  let [date, setDate] = useState();
+  let [date, setDate] = useState("");
   let [description, setDescription] = useState("");
   let [duration, setDuration] = useState("");
   let history = useHistory();
@@ -246,6 +255,12 @@ const InternshipForm = () => {
       alert(`Only ${maxLen2} characters allowed`);
       setDescription(description.slice(0, maxLen2));
     }
+    if (date.length > 1) {
+      if (new Date(date) < new Date()) {
+        alert("From date and time must be greater than current date and time");
+        setDate("");
+      }
+    }
   }, [
     internshipRole,
     company,
@@ -254,6 +269,7 @@ const InternshipForm = () => {
     maxLen1,
     maxLen2,
     duration,
+    date,
   ]);
   // console.log("input date", Date.parse(date), typeof Date.parse(date));
   // console.log("present data time", new Date(), typeof Date());
@@ -285,7 +301,7 @@ const InternshipForm = () => {
       for (let i = 0; i < fileList.length; i++)
         data.append("files", fileList[i]);
       axios
-        .post("http://localhost:4444/internships/submit", data, {
+        .post(`http://${address.ip}:4444/internships/submit`, data, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -416,8 +432,8 @@ const InternshipForm = () => {
                 setDescription(e.target.value);
               }}
               style={{
-                width: "70%",
-                height: "4vh",
+                width: "100%",
+                height: "250px",
                 resize: "none",
                 marginRight: "auto",
               }}

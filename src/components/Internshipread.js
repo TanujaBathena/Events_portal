@@ -5,6 +5,8 @@ import axios from "axios";
 import Auth from "./auth";
 import Loader from "./Loader";
 import Notfound from "./Notfound";
+import address from "./address";
+
 
 const Internshipread = (props) => {
   // let [result, setResult] = useState({
@@ -22,15 +24,15 @@ const Internshipread = (props) => {
   // });
   //eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(true);
-  const [name, setName] = useState("");
-  const [role, setRole] = useState("");
-  const [company, setCompany] = useState("");
-  const [branches, setBranches] = useState("");
-  const [stipend, setStipend] = useState("");
-  const [duration, setDuration] = useState("");
-  const [description, setDescription] = useState("");
-  const [files, setFiles] = useState("");
-  const [deadline, setDeadline] = useState("");
+  const [name, setName] = useState("-");
+  const [role, setRole] = useState("-");
+  const [company, setCompany] = useState("-");
+  const [branches, setBranches] = useState("-");
+  const [stipend, setStipend] = useState("-");
+  const [duration, setDuration] = useState("-");
+  const [description, setDescription] = useState("-");
+  const [files, setFiles] = useState("-");
+  const [deadline, setDeadline] = useState("-");
   //eslint-disable-next-line
   const [id, setId] = useState("");
   //eslint-disable-next-line
@@ -42,7 +44,7 @@ const Internshipread = (props) => {
       postid: props.match.params.id,
     };
     axios
-      .post("http://localhost:4444/internships/readmore", datatobesent, {
+      .post(`http://${address.ip}:4444/internships/readmore`, datatobesent, {
         withCredentials: true,
         headers: {
           Accept: "application/json",
@@ -132,9 +134,16 @@ const Internshipread = (props) => {
     if (!error) {
       return (
         <div className="containerr">
-          <h1 style={{ margin: "auto" }}>
-            <b>Internship at {company}</b>
-          </h1>
+          <div className="contentr" style={{ backgroundColor: "#F5f5f5" }}>
+            <h1
+              style={{
+                margin: "auto",
+                textAlign: "center",
+              }}
+            >
+              <b>Internship at {company}</b>
+            </h1>
+          </div>
           <div className="contentr">
             <p className="heading">Posted By</p>
             <p className="matter">{name}</p>

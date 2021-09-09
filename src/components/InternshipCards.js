@@ -6,6 +6,8 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Auth from "./auth";
+import address from "./address";
+
 // import Loader from "./Loader";
 import Loaderstar from "./Loaderstar";
 const InternshipCards = (props) => {
@@ -23,7 +25,7 @@ const InternshipCards = (props) => {
     };
     if (state) {
       axios
-        .post("http://localhost:4444/starred/intern/tounstar", datatobesent, {
+        .post(`http://${address.ip}:4444/starred/intern/tounstar`, datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -43,7 +45,7 @@ const InternshipCards = (props) => {
         });
     } else {
       axios
-        .post("http://localhost:4444/starred/intern/tostar", datatobesent, {
+        .post(`http://${address.ip}:4444/starred/intern/tostar`, datatobesent, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -192,7 +194,7 @@ const InternshipCards = (props) => {
         </Link>
         <div className="deadline">
           {/* DeadLine:{props.deadline.slice(0, 16).replace("T", "\t ,\t")} */}
-          DeadLine:{deadline}
+          Deadline(mm/dd/yyyy):{deadline}
         </div>
       </div>
     </div>
