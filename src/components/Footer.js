@@ -6,12 +6,14 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { faYoutube} from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Link} from "react-router-dom"
+import campus_logo from "../photos/iit-goa-logo.png"
+
 const Footer = () => {
     return (
         <div className="footbox">
             <div className="boxf">
                 <div className="aboutIIT">
-                    <img src="https://www.iitgoa.ac.in/img/iit-goa-logo.svg" alt="" style={{marginLeft:"20px",width:"200px",height:"200px",borderRadius:"50%"}}/>
+                    <img src={campus_logo} alt="" style={{marginLeft:"20px",width:"200px",height:"200px",borderRadius:"50%"}}/>
                     <div className="linki">
                         <button className="bun">
                             <FontAwesomeIcon icon={faFacebook} size="2x" />

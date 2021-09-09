@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/login.css";
 import address from "./address";
+import campus_logo from "../photos/iit-goa-logo.png"
 
 const Login = () => {
   const handleClick = (event) => {
@@ -11,7 +12,7 @@ const Login = () => {
     <div className="boxe">
       <img
         // src="https://img.icons8.com/fluent/48/000000/google-logo.png"
-        src="https://www.iitgoa.ac.in/img/iit-goa-logo.svg"
+        src={campus_logo}
         alt="google"
         style={{ width: "110px", height: "110px", borderRadius: "50%" }}
       />

@@ -3,6 +3,7 @@ import "../styles/nav.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import campus_logo from "../photos/iit-goa-logo.svg"
 
 const Navbar = (props) => {
   const myFunction = function () {
@@ -64,7 +65,7 @@ const Navbar = (props) => {
   return (
     <nav>
       <div className="logo">
-        <img src="https://www.iitgoa.ac.in/img/iit-goa-logo.svg" alt="" style={{marginLeft:"0px",width:"60px",height:"60px",borderRadius:"50%"}}/>
+        <img src={campus_logo} alt="" style={{marginLeft:"0px",width:"60px",height:"60px",borderRadius:"50%"}}/>
         <span style={{textAlign:"center"}}>IIT GOA</span>
       </div>
 
